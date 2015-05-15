@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/ http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0">
+	<description>월별 켈린더를 출력하는 태그</description>
+	<tlib-version>1.2</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>MonthTypeViewTag</short-name>
+	<tag>
+		<name>MonthTypeView</name>
+		<tag-class>myjsp.calPack.MonthTypeViewHandler</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>year</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>month</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>login_id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>
