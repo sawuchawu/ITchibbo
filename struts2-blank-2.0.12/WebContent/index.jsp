@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta charset="utf-8">
-<title>ITì·¨ë½€ - IT ì·¨ì—…ì •ë³´ ì‚¬ì´íŠ¸</title>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>ITÃë»Ç - IT Ãë¾÷Á¤º¸ »çÀÌÆ®</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="http://bootstraptaste.com" />
@@ -35,29 +37,29 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><font size="13"><span>IT</span>ì·¨ë½€</font></a>
+                    <a class="navbar-brand" href="index.html"><font size="13"><span>IT</span>Ãë»Ç</font></a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">ì±„ìš©ì •ë³´ <b class=" icon-angle-down"></b></a>
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Ã¤¿ëÁ¤º¸ <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="typography.html">ì±„ìš©ê³µê³ </a></li>
-                                <li><a href="components.html">ì§ì¢…ë³„ ê²€ìƒ‰</a></li>
-								<li><a href="pricingbox.html">ì±„ìš©ì •ë³´ ìƒì„¸ê²€ìƒ‰</a></li>
+                                <li><a href="typography.html">Ã¤¿ë°ø°í</a></li>
+                                <li><a href="components.html">Á÷Á¾º° °Ë»ö</a></li>
+								<li><a href="pricingbox.html">Ã¤¿ëÁ¤º¸ »ó¼¼°Ë»ö</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">ì·¨ì—…ì •ë³´ <b class=" icon-angle-down"></b></a>
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Ãë¾÷Á¤º¸ <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="typography.html">Typography</a></li>
                                 <li><a href="components.html">Components</a></li>
 								<li><a href="pricingbox.html">Pricing box</a></li>
                             </ul>
                         </li>
-                        <li><a href="portfolio.html">ì·¨ì—…ê°€ì´ë“œ</a></li>
-                        <li><a href="blog.html">ì»¤ë®¤ë‹ˆí‹°</a></li>
-                        <li><a href="contact.html">ê´€ë¦¬ìž</a></li>
+                        <li><a href="portfolio.html">Ãë¾÷°¡ÀÌµå</a></li>
+                        <li><a href="blog.html">Ä¿¹Â´ÏÆ¼</a></li>
+                        <li><a href="contact.html">°ü¸®ÀÚ</a></li>
                     </ul>
                 </div>
             </div>
