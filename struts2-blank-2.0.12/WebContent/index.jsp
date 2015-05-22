@@ -38,6 +38,10 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="index.html"><font size="13"><span>IT</span>취뽀</font></a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/login/login.jsp">로그인</a></li> <!-- 로그아웃 바꾸기 -->
+                        <li><a href="#">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
+                    </ul>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">

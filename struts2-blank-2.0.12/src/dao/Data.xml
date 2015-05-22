@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="bean.MemberBean">
+	<!-- <typeAlias alias="model" type="sist.model.DataBean" /> -->
+	
+	<select id="chkLogin" resultClass="String" parameterClass="String">
+		select MEM_PW from MEMBER where MEM_ID='$MEM_ID$'	
+	</select>
+</sqlMap>
+
+
+
+
+
+
+
+
+
+
+

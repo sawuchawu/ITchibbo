@@ -9,12 +9,12 @@
   <transactionManager type="JDBC" commitRequired="false">
     <dataSource type="SIMPLE">
       <property name="JDBC.Driver" value="oracle.jdbc.driver.OracleDriver"/>
-      <property name="JDBC.ConnectionURL" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+      <property name="JDBC.ConnectionURL" value="jdbc:oracle:thin:@211.63.89.228:1521:orcl"/>
       <property name="JDBC.Username" value="apple"/>
       <property name="JDBC.Password" value="apple"/>
     </dataSource>
   </transactionManager>  
-  <!-- <sqlMap resource="sist/dao/Data.xml"/> -->  
+  <sqlMap resource="/dao/Data.xml"/>  
 
 </sqlMapConfig>
 
