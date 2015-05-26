@@ -40,7 +40,7 @@
                     <a class="navbar-brand" href="index.html"><font size="13"><span>IT</span>취뽀</font></a>
                     <ul class="nav navbar-nav">
                         <li><a href="/login/login.jsp">로그인</a></li> <!-- 로그아웃 바꾸기 -->
-                        <li><a href="#">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
+                        <li><a href="/login/signup.jsp">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
                     </ul>
                 </div>
                 <div class="navbar-collapse collapse ">
@@ -56,14 +56,34 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업정보 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="typography.html">Typography</a></li>
-                                <li><a href="components.html">Components</a></li>
-								<li><a href="pricingbox.html">Pricing box</a></li>
+                                <li><a href="typography.html">취업 박람회</a></li>
+                                <li><a href="components.html">IT기술 동향</a></li>
+								<li><a href="pricingbox.html">취업 뉴스</a></li>
                             </ul>
                         </li>
-                        <li><a href="portfolio.html">취업가이드</a></li>
-                        <li><a href="blog.html">커뮤니티</a></li>
-                        <li><a href="contact.html">관리자</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업가이드 <b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="typography.html">취업 후기</a></li>
+                                <li><a href="components.html">합격 자소서</a></li>
+								<li><a href="pricingbox.html">포트폴리오</a></li>
+								<li><a href="pricingbox.html">직무분석</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="typography.html">자유게시판</a></li>
+                                <li><a href="components.html">Q&A</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">관리자 <b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="typography.html">회원관리</a></li>
+                                <li><a href="components.html">메뉴관리</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -112,107 +132,25 @@
 	
 
 	</section>
-	<section class="callaction">
+	<!-- <section class="callaction">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="big-cta">
 					<div class="cta-text">
-						<h2><span>Moderna</span> HTML Business Template</h2>
+						<h2><span>달력</span> 넣기// 달력을 메뉴안으로 넣을까?</h2>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</section>
+	</section> -->
 	<section id="content">
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="row">
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-gray aligncenter">
-								<h4>Fully responsive</h4>
-								<div class="icon">
-								<i class="fa fa-desktop fa-3x"></i>
-								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-								</p>
-									
-							</div>
-							<div class="box-bottom">
-								<a href="#">Learn more</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-gray aligncenter">
-								<h4>Modern Style</h4>
-								<div class="icon">
-								<i class="fa fa-pagelines fa-3x"></i>
-								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-								</p>
-									
-							</div>
-							<div class="box-bottom">
-								<a href="#">Learn more</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-gray aligncenter">
-								<h4>Customizable</h4>
-								<div class="icon">
-								<i class="fa fa-edit fa-3x"></i>
-								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-								</p>
-									
-							</div>
-							<div class="box-bottom">
-								<a href="#">Learn more</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-gray aligncenter">
-								<h4>Valid HTML5</h4>
-								<div class="icon">
-								<i class="fa fa-code fa-3x"></i>
-								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-								</p>
-									
-							</div>
-							<div class="box-bottom">
-								<a href="#">Learn more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- divider -->
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="solidline">
-				</div>
-			</div>
-		</div>
-		<!-- end divider -->
 		<!-- Portfolio Projects -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h4 class="heading">Recent Works</h4>
+				<h4 class="heading">최신 공고</h4>
 				<div class="row">
 					<section id="projects">
 					<ul id="thumbs" class="portfolio">
@@ -267,6 +205,89 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
+								<h4>IT 기술동향</h4>
+								<div class="icon">
+								<i class="fa fa-pagelines fa-3x"></i>
+								</div>
+								<p>
+								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+								</p>
+									
+							</div>
+							<div class="box-bottom">
+								<a href="#">Learn more</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
+								<h4>취업가이드</h4>
+								<div class="icon">
+								<i class="fa fa-edit fa-3x"></i>
+								</div>
+								<p>
+								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+								</p>
+									
+							</div>
+							<div class="box-bottom">
+								<a href="#">Learn more</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
+								<h4>합격 자소서</h4>
+								<div class="icon">
+								<i class="fa fa-code fa-3x"></i>
+								</div>
+								<p>
+								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+								</p>
+									
+							</div>
+							<div class="box-bottom">
+								<a href="#">Learn more</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
+								<h4>포트폴리오</h4>
+								<div class="icon">
+								<i class="fa fa-desktop fa-3x"></i>
+								</div>
+								<p>
+								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+								</p>
+									
+							</div>
+							<div class="box-bottom">
+								<a href="#">Learn more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- divider -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="solidline">
+				</div>
+			</div>
+		</div>
+		<!-- end divider -->
+		
 
 	</div>
 	</section>
