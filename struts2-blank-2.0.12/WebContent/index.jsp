@@ -24,6 +24,14 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+<script type="text/javascript">
+function popupLogin(){
+	var popUrl = "/login/test.jsp";	//팝업창에 출력될 페이지 URL
+	var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+	}
+</script>
+
 </head>
 <body>
 <div id="wrapper">
@@ -39,7 +47,7 @@
                     </button>
                     <a class="navbar-brand" href="index.html"><font size="13"><span>IT</span>취뽀</font></a>
                     <ul class="nav navbar-nav">
-                        <li><a href="/login/login.jsp">로그인</a></li> <!-- 로그아웃 바꾸기 -->
+                        <li><a href="javascript:popupLogin()">로그인</a></li> <!-- 로그아웃 바꾸기 -->
                         <li><a href="/login/signup.jsp">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
                     </ul>
                 </div>
@@ -80,6 +88,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">관리자 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
+                                <li><a href="/admin/admin.jsp">사람인</a></li>
                                 <li><a href="typography.html">회원관리</a></li>
                                 <li><a href="components.html">메뉴관리</a></li>
                             </ul>

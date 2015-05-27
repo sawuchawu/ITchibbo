@@ -10,9 +10,9 @@
   $(document).ready(function(){
 	 $("input[type=submit]").click(function(){
          $.ajax({
-            type: "GET"
+            type: "POST"
             ,dataType: "xml"
-            ,url: $(resultURL).val()
+            ,url: "/app/parsing.action"					//$(resultURL).val()
             ,crossDomain: true
             ,success: function(xml){
                  var xmlData = $(xml).find("job");
@@ -35,7 +35,7 @@
 <script type="text/javascript" src="/script/httpRequest.js"></script>
 <script type="text/javascript">
 	function search_query() {
-		var keywords = document.getElementById("keywords").value;`
+		var keywords = document.getElementById("keywords").value;
 		var published = document.getElementById("published").value;
 		var deadline = document.getElementById("deadline").value;
 		var ind_cd = document.getElementById("ind_cd").value;

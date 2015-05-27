@@ -2,6 +2,8 @@ package dao;
 
 import java.sql.SQLException;
 
+import bean.MemberBean;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 public class Controller {
@@ -26,5 +28,22 @@ public class Controller {
 		}
 		
 		return -1;		// 아이디가 없을 때
+	}
+	
+	public static void mem_Signup(MemberBean bean){
+		try {
+			client.startTransaction();
+			client.insert("bean.MemberBean.mem_Signup", bean);
+			client.commitTransaction();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				client.endTransaction();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
 	}
 }
