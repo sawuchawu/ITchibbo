@@ -9,15 +9,15 @@
 <meta name="description" content="" />
 <meta name="author" content="http://bootstraptaste.com" />
 <!-- css -->
-<link href="css/bootstrap.min.css" rel="stylesheet" />
-<link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
-<link href="css/jcarousel.css" rel="stylesheet" />
-<link href="css/flexslider.css" rel="stylesheet" />
-<link href="css/style.css" rel="stylesheet" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="/css/jcarousel.css" rel="stylesheet" />
+<link href="/css/flexslider.css" rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
 
 
 <!-- Theme skin -->
-<link href="skins/default.css" rel="stylesheet" />
+<link href="/skins/default.css" rel="stylesheet" />
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -67,7 +67,7 @@
                                 <li><a href="typography.html">취업 후기</a></li>
                                 <li><a href="components.html">합격 자소서</a></li>
 								<li><a href="pricingbox.html">포트폴리오</a></li>
-								<li><a href="../jsp/jobAnalysys.jsp">직무분석</a></li>
+								<li><a href="/jsp/recruitGuide/jobAnalysys.jsp">직무분석</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -370,16 +370,16 @@
 <!-- javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
-<script src="js/jquery.fancybox-media.js"></script>
-<script src="js/google-code-prettify/prettify.js"></script>
-<script src="js/portfolio/jquery.quicksand.js"></script>
-<script src="js/portfolio/setting.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/animate.js"></script>
-<script src="js/custom.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.fancybox.pack.js"></script>
+<script src="/js/jquery.fancybox-media.js"></script>
+<script src="/js/google-code-prettify/prettify.js"></script>
+<script src="/js/portfolio/jquery.quicksand.js"></script>
+<script src="/js/portfolio/setting.js"></script>
+<script src="/js/jquery.flexslider.js"></script>
+<script src="/js/animate.js"></script>
+<script src="/js/custom.js"></script>
 </body>
 </html>
