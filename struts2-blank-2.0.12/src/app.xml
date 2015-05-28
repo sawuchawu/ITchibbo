@@ -9,11 +9,14 @@
            		/index.jsp
            </result>
            <result name="fail" type="redirect">
-           		/login/login.jsp
+           		/jsp/login/loginFail.jsp
+           </result>
+           <result name="notFound" type="redirect">
+           		/jsp/login/loginFail.jsp
            </result>
          </action>
          
-                  
+                 
          <action name="signup" class="action.JoinAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
@@ -22,7 +25,7 @@
 				/index.jsp
 			</result>
 			<result name="fail" type="redirect">
-				/login/signup.jsp
+				/jsp/login/signup.jsp
 			</result>
 		</action>
 		

@@ -23,7 +23,19 @@
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+<script type="text/javascript">
+function popupLogin(){
+	var popUrl = "/jsp/login/login.jsp";	//팝업창에 출력될 페이지 URL
+	var popOption = "width=525, height=685, resizable=no, scrollbars=no, status=no";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+	}
+function popupJoin(){
+	var popUrl = "/jsp/login/signup.jsp";	//팝업창에 출력될 페이지 URL
+	var popOption = "width=525, height=685, resizable=no, scrollbars=no, status=no";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+	}	
+	
+</script>
 </head>
 <body>
 <div id="wrapper">
@@ -39,8 +51,8 @@
                     </button>
                     <a class="navbar-brand" href="index.jsp"><font size="13"><span>IT</span>취뽀</font></a>
                     <ul class="nav navbar-nav">
-                        <li><a href="/login/login.jsp">로그인</a></li> <!-- 로그아웃 바꾸기 -->
-                        <li><a href="/login/signup.jsp">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
+                        <li><a href="javascript:popupLogin()">로그인</a></li> <!-- 로그아웃 바꾸기 -->
+                        <li><a href="javascript:popupJoin()">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
                     </ul>
                 </div>
                 <div class="navbar-collapse collapse ">

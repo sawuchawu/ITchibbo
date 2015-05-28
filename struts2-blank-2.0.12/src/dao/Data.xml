@@ -6,7 +6,10 @@
 <sqlMap namespace="bean.MemberBean">
 	<!-- <typeAlias alias="model" type="sist.model.DataBean" /> -->
 	
-	<select id="chkLogin" resultClass="String" parameterClass="String">
+	<select id="chkId" resultClass="String" parameterClass="String">
+		select MEM_ID from MEMBER where MEM_ID='$MEM_ID$'	
+	</select>
+	<select id="chkPw" resultClass="String" parameterClass="String">
 		select MEM_PW from MEMBER where MEM_ID='$MEM_ID$'	
 	</select>
 	
