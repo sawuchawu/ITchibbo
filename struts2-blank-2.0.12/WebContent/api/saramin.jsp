@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 
 <html>
 <head>
@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/js/jquery-2.0.0.js"></script>
 <script type="text/javascript" src="/js/xdomainajax.js"></script>
+<script type="text/javascript" src="/js/xml2json.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	 $("input[type=submit]").click(function(){
@@ -15,27 +16,35 @@ $(document).ready(function(){
            ,dataType: "xml"
            ,url: $(resultURL).val()
            ,success: function(xml){
-           	var xmlDoc=$.parseXML(xml.responseText);
-           	
-                var xmlData = $(xmlDoc).find("job");
-                var listLength = xmlData.length;
-                
-                    var contentStr = "";
-                    $(xmlData).each(function(){
-                        contentStr += "Ã¤¿ë°ø°í¹øÈ£: "+$(this).find("id").text()+
-                        			   "Ã¤¿ë°ø°íÇ¥ÁØ url: "+$(this).find("url").text()+
-                        			   "°ø°í ÁøÇà ¿©ºÎ(1: ÁøÇàÁß, 0: ¸¶°¨): "+$(this).find("active").text()+"<br>";
-                    });
-                    $("results").append(contentStr);
-	                 console.log(xmlData); 
-	             /* var textXML = xml.responseText; 	// xmlÀ» text Çü½ÄÀ¸·Î °¡Á®¿Â´Ù.
-	             var data = $.xml2json(textXML);	// xml ÆÄ½ÌÇÏ¿© °¡Á®¿Â text¸¦ jsonÇüÅÂ·Î ¹Ù²ãÁØ´Ù.
-	             
-	             console.log(data.jobs.length); */
-	             
-	             
-             
-                
+	           	var xmlDoc=$.parseXML(xml.responseText);
+	           	
+	            var xmlData = $(xmlDoc).find("job");
+	            var listLength = xmlData.length;
+	            
+	            // íŒŒì‹± ì²«ë²ˆì§¸ ë°©ë²•
+	           /*  var contentStr = "";
+	            $(xmlData).each(function(){
+ 	                 contentStr += "ì±„ìš©ê³µê³ ë²ˆí˜¸: "+$(this).find("id").text()+"<br>"+
+	                			   "ì±„ìš©ê³µê³ í‘œì¤€ url: <a href="+$(this).find("url").text()+">ì±„ìš©ê³µê³  ë³´ëŸ¬ê°€ê¸°</a><br>"+
+	                   			   "ê³µê³  ì§„í–‰ ì—¬ë¶€(1: ì§„í–‰ì¤‘, 0: ë§ˆê°): "+$(this).find("active").text()+"<br><br>";
+               console.log($(this).find("location").text());
+	            }); */
+                //$("div#results").append(contentStr); 
+				/////////////////////////////////////////////////////////////////////	           
+                // íŒŒì‹± ë‘ë²ˆì¨° ë°©ë²•(xml2json í”ŒëŸ¬ê·¸ì¸ ì‚¬ìš©)	            
+                var textXML = xml.responseText; 	// xmlì„ text í˜•ì‹ìœ¼ë¡œ ê°€ì ¸ì˜¨ë‹¤.
+	            var dataJson = $.xml2json(textXML);	// xml íŒŒì‹±í•˜ì—¬ ê°€ì ¸ì˜¨ textë¥¼ jsoní˜•íƒœë¡œ ë°”ê¿”ì¤€ë‹¤.
+	            var data = dataJson.body.job_search.jobs.job;	// job ê¹Œì§€ì˜ ìœ„ì¹˜ 
+	            
+	            var contentStr = "";
+	            $(data).each(function(i){
+	            	contentStr += "ì±„ìš©ê³µê³ url: <a href="+data[i].url+">ì±„ìš©ê³µê³  ë³´ëŸ¬ê°€ê¸°</a><br>"+
+				        		  "ê·¼ë¬´í˜•íƒœ:"+data[i].position.job_type.text+"<br>"+
+				        		  "í•™ë ¥:"+data[i].position.required_education_level.text+"<br>"+
+				        		  "ì§ë¬´:"+data[i].position.job_category.text+"<br>"+
+	            				  "ê³µê³  ì§„í–‰ ì—¬ë¶€(1: ì§„í–‰ì¤‘, 0: ë§ˆê°): "+data[i].active+"<br><br>";
+	            });
+	            $("div#results").append(contentStr);
             }
          }); 
          //alert($(resultURL).val());
@@ -125,85 +134,85 @@ $(document).ready(function(){
 <body>
 	<form id="search_form" action="javascript:search_query();"
 		method="post">
-		Å°¿öµå:&nbsp;<input type="text" size="10" id="keywords" name="keywords" /><br><br>
-		µî·ÏÀÏ:&nbsp;<input type="text" size="10" id="published" name="published" /><br><br>
-		¸¶°¨ÀÏ:&nbsp;<input type="text" size="10" id="deadline" name="deadline" /> <br><br>
-		¾÷Á¾:&nbsp;
+		í‚¤ì›Œë“œ:&nbsp;<input type="text" size="10" id="keywords" name="keywords" /><br><br>
+		ë“±ë¡ì¼:&nbsp;<input type="text" size="10" id="published" name="published" /><br><br>
+		ë§ˆê°ì¼:&nbsp;<input type="text" size="10" id="deadline" name="deadline" /> <br><br>
+		ì—…ì¢…:&nbsp;
 		<select name="ind_cd" id="ind_cd">
 			<option value=""></option>
-			<option value="301" >¼Ö·ç¼Ç¡¤SI¡¤ERP¡¤CRM</option>
-			<option value="302">À¥¿¡ÀÌÁ¯½Ã</option>
-			<option value="304">¼îÇÎ¸ô¡¤¿ÀÇÂ¸¶ÄÏ</option>
-			<option value="305">Æ÷ÅÐ¡¤ÀÎÅÍ³Ý¡¤ÄÁÅÙÃ÷</option>
-			<option value="306">³×Æ®¿öÅ©¡¤Åë½Å¡¤¸ð¹ÙÀÏ</option>
-			<option value="307">ÇÏµå¿þ¾î¡¤Àåºñ</option>
-			<option value="308">Á¤º¸º¸¾È¡¤¹é½Å</option>
-			<option value="313">ITÄÁ¼³ÆÃ</option>
-			<option value="314">°ÔÀÓ</option>
+			<option value="301" >ì†”ë£¨ì…˜Â·SIÂ·ERPÂ·CRM</option>
+			<option value="302">ì›¹ì—ì´ì ¼ì‹œ</option>
+			<option value="304">ì‡¼í•‘ëª°Â·ì˜¤í”ˆë§ˆì¼“</option>
+			<option value="305">í¬í„¸Â·ì¸í„°ë„·Â·ì»¨í…ì¸ </option>
+			<option value="306">ë„¤íŠ¸ì›Œí¬Â·í†µì‹ Â·ëª¨ë°”ì¼</option>
+			<option value="307">í•˜ë“œì›¨ì–´Â·ìž¥ë¹„</option>
+			<option value="308">ì •ë³´ë³´ì•ˆÂ·ë°±ì‹ </option>
+			<option value="313">ITì»¨ì„¤íŒ…</option>
+			<option value="314">ê²Œìž„</option>
 		</select> <br><br>
-		Á÷¹«:&nbsp;
+		ì§ë¬´:&nbsp;
 		<select	name="job_category" id="job_category">
 			<option value=""></option>
-			<option value="401">À¥¸¶½ºÅÍ¡¤QA¡¤Å×½ºÅÍ</option>
-			<option value="402">¼­¹ö¡¤³×Æ®¿öÅ©¡¤º¸¾È</option>
-			<option value="403">À¥±âÈ¹¡¤À¥¸¶ÄÉÆÃ¡¤PM</option>
-			<option value="404">À¥ÇÁ·Î±×·¡¸Ó</option>
-			<option value="405">°ÔÀÓ¡¤Game</option>
-			<option value="406">ÄÁÅÙÃ÷¡¤»çÀÌÆ®¿î¿µ</option>
-			<option value="407">ÀÀ¿ëÇÁ·Î±×·¡¸Ó</option>
-			<option value="408">½Ã½ºÅÛÇÁ·Î±×·¡¸Ó</option>
-			<option value="409">ERP¡¤½Ã½ºÅÛºÐ¼®¡¤¼³°è</option>
-			<option value="410">Åë½Å¡¤¸ð¹ÙÀÏ</option>
-			<option value="411">ÇÏµå¿þ¾î¡¤¼ÒÇÁÆ®¿þ¾î</option>
-			<option value="412"> À¥µðÀÚÀÎ</option>
-			<option value="413">HTML¡¤À¥Ç¥ÁØ¡¤UI°³¹ß</option>
-			<option value="414">µ¿¿µ»ó¡¤ÆíÁý¡¤ÄÚµ¦</option>
-			<option value="415">IT¡¤µðÀÚÀÎ¡¤ÄÄÇ»ÅÍ±³À°</option>
-			<option value="416">µ¥ÀÌÅÍº£ÀÌ½º¡¤DBA</option>
+			<option value="401">ì›¹ë§ˆìŠ¤í„°Â·QAÂ·í…ŒìŠ¤í„°</option>
+			<option value="402">ì„œë²„Â·ë„¤íŠ¸ì›Œí¬Â·ë³´ì•ˆ</option>
+			<option value="403">ì›¹ê¸°íšÂ·ì›¹ë§ˆì¼€íŒ…Â·PM</option>
+			<option value="404">ì›¹í”„ë¡œê·¸ëž˜ë¨¸</option>
+			<option value="405">ê²Œìž„Â·Game</option>
+			<option value="406">ì»¨í…ì¸ Â·ì‚¬ì´íŠ¸ìš´ì˜</option>
+			<option value="407">ì‘ìš©í”„ë¡œê·¸ëž˜ë¨¸</option>
+			<option value="408">ì‹œìŠ¤í…œí”„ë¡œê·¸ëž˜ë¨¸</option>
+			<option value="409">ERPÂ·ì‹œìŠ¤í…œë¶„ì„Â·ì„¤ê³„</option>
+			<option value="410">í†µì‹ Â·ëª¨ë°”ì¼</option>
+			<option value="411">í•˜ë“œì›¨ì–´Â·ì†Œí”„íŠ¸ì›¨ì–´</option>
+			<option value="412"> ì›¹ë””ìžì¸</option>
+			<option value="413">HTMLÂ·ì›¹í‘œì¤€Â·UIê°œë°œ</option>
+			<option value="414">ë™ì˜ìƒÂ·íŽ¸ì§‘Â·ì½”ë±</option>
+			<option value="415">ITÂ·ë””ìžì¸Â·ì»´í“¨í„°êµìœ¡</option>
+			<option value="416">ë°ì´í„°ë² ì´ìŠ¤Â·DBA</option>
 		</select> <br><br>
-		±Ù¹«ÇüÅÂ:<br>
-		<input type="radio" name="job_type"  value="0">¸ðµÎ Ç¥½Ã
-		<input type="radio" name="job_type"  value="1">Á¤±ÔÁ÷
-		<input type="radio" name="job_type"  value="2">°è¾àÁ÷
-		<input type="radio" name="job_type"  value="3">º´¿ªÆ¯·Ê
-		<input type="radio" name="job_type"  value="4">ÀÎÅÏÁ÷
-		<input type="radio" name="job_type"  value="5">½Ã°£Á¦/ÀÏ¿ëÁ÷
-		<input type="radio" name="job_type"  value="6">ÆÄ°ßÁ÷
-		<input type="radio" name="job_type"  value="7">ÇØ¿ÜÃë¾÷
-		<input type="radio" name="job_type"  value="8">À§ÃËÁ÷<br>
-		<input type="radio" name="job_type"  value="9">ÇÁ¸®·£¼­
-		<input type="radio" name="job_type"  value="10">°è¾àÁ÷ (Á¤±ÔÁ÷ ÀüÈ¯°¡´É)
-		<input type="radio" name="job_type"  value="11">ÀÎÅÏÁ÷ (Á¤±ÔÁ÷ ÀüÈ¯°¡´É)
-		<input type="radio" name="job_type"  value="12">¿¬¼ö»ý (±³À°»ý)
-		<input type="radio" name="job_type"  value="13">º°Á¤Á÷
-		<input type="radio" name="job_type"  value="14">ÆÄÆ®
-		<input type="radio" name="job_type"  value="15">ÀüÀÓ<br><br>
-		ÇÐ·Â:&nbsp;
-		<input type="radio" name="edu_lv" value="">¸ðµÎ Ç¥½Ã
-		<input type="radio" name="edu_lv" value="1">°íµîÇÐ±³ Á¹¾÷
-		<input type="radio" name="edu_lv" value="2">´ëÇÐ(2,3³â) Á¹¾÷
-		<input type="radio" name="edu_lv" value="3">´ëÇÐ±³(4³â) Á¹¾÷
-		<input type="radio" name="edu_lv" value="4">¼®»çÁ¹¾÷
-		<input type="radio" name="edu_lv" value="5">¹Ú»çÁ¹¾÷
-		<input type="radio" name="edu_lv" value="99">ÇÐ·Â¹«°ü<br><br>
-		Á¤·Ä¹æ¹ý:&nbsp;
+		ê·¼ë¬´í˜•íƒœ:<br>
+		<input type="radio" name="job_type"  value="0">ëª¨ë‘ í‘œì‹œ
+		<input type="radio" name="job_type"  value="1">ì •ê·œì§
+		<input type="radio" name="job_type"  value="2">ê³„ì•½ì§
+		<input type="radio" name="job_type"  value="3">ë³‘ì—­íŠ¹ë¡€
+		<input type="radio" name="job_type"  value="4">ì¸í„´ì§
+		<input type="radio" name="job_type"  value="5">ì‹œê°„ì œ/ì¼ìš©ì§
+		<input type="radio" name="job_type"  value="6">íŒŒê²¬ì§
+		<input type="radio" name="job_type"  value="7">í•´ì™¸ì·¨ì—…
+		<input type="radio" name="job_type"  value="8">ìœ„ì´‰ì§<br>
+		<input type="radio" name="job_type"  value="9">í”„ë¦¬ëžœì„œ
+		<input type="radio" name="job_type"  value="10">ê³„ì•½ì§ (ì •ê·œì§ ì „í™˜ê°€ëŠ¥)
+		<input type="radio" name="job_type"  value="11">ì¸í„´ì§ (ì •ê·œì§ ì „í™˜ê°€ëŠ¥)
+		<input type="radio" name="job_type"  value="12">ì—°ìˆ˜ìƒ (êµìœ¡ìƒ)
+		<input type="radio" name="job_type"  value="13">ë³„ì •ì§
+		<input type="radio" name="job_type"  value="14">íŒŒíŠ¸
+		<input type="radio" name="job_type"  value="15">ì „ìž„<br><br>
+		í•™ë ¥:&nbsp;
+		<input type="radio" name="edu_lv" value="">ëª¨ë‘ í‘œì‹œ
+		<input type="radio" name="edu_lv" value="1">ê³ ë“±í•™êµ ì¡¸ì—…
+		<input type="radio" name="edu_lv" value="2">ëŒ€í•™(2,3ë…„) ì¡¸ì—…
+		<input type="radio" name="edu_lv" value="3">ëŒ€í•™êµ(4ë…„) ì¡¸ì—…
+		<input type="radio" name="edu_lv" value="4">ì„ì‚¬ì¡¸ì—…
+		<input type="radio" name="edu_lv" value="5">ë°•ì‚¬ì¡¸ì—…
+		<input type="radio" name="edu_lv" value="99">í•™ë ¥ë¬´ê´€<br><br>
+		ì •ë ¬ë°©ë²•:&nbsp;
 		<select	name="sort" id="sort">
 			<option value=""></option>
-			<option value="pd" >°Ô½ÃÀÏ ¿ª¼ø(±âº»°ª)</option>
-			<option value="pa" >°Ô½ÃÀÏ¼ø</option>
-			<option value="ud" >ÃÖ±Ù¼öÁ¤¼ø</option>
-			<option value="ua" >¼öÁ¤ÀÏ Á¤¼ø</option>
-			<option value="da" >¸¶°¨ÀÏ Á¤¼ø</option>
-			<option value="dd" >¸¶°¨ÀÏ ¿ª¼ø</option>
-			<option value="rc" >Á¶È¸¼ö ¿ª¼ø</option>
-			<option value="ac" >Áö¿øÀÚ¼ö ¿ª¼ø</option>
-			<option value="re" >´äº¯¼ö ¿ª¼ø</option>
+			<option value="pd" >ê²Œì‹œì¼ ì—­ìˆœ(ê¸°ë³¸ê°’)</option>
+			<option value="pa" >ê²Œì‹œì¼ìˆœ</option>
+			<option value="ud" >ìµœê·¼ìˆ˜ì •ìˆœ</option>
+			<option value="ua" >ìˆ˜ì •ì¼ ì •ìˆœ</option>
+			<option value="da" >ë§ˆê°ì¼ ì •ìˆœ</option>
+			<option value="dd" >ë§ˆê°ì¼ ì—­ìˆœ</option>
+			<option value="rc" >ì¡°íšŒìˆ˜ ì—­ìˆœ</option>
+			<option value="ac" >ì§€ì›ìžìˆ˜ ì—­ìˆœ</option>
+			<option value="re" >ë‹µë³€ìˆ˜ ì—­ìˆœ</option>
 		</select> <br><br>
 		
-		Ä«¿îÆ®(1~110): &nbsp;<input type="text" size="10" id="count" name="count" /> <br><br>
+		ì¹´ìš´íŠ¸(1~110): &nbsp;<input type="text" size="10" id="count" name="count" /> <br><br>
 		<input type="submit">
 	</form>
-	<input type="text" id="resultURL" value="">
+	<input type="hidden" id="resultURL" value="">
 	<div id="results"></div>
 </body>
 </html>

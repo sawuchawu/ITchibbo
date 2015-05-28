@@ -44,12 +44,12 @@ function joinClose(){
 						<p>
 							<label for="username" class="uname" data-icon="u"> ID </label> 
 							<input id="id" name="id"
-								required="required" type="text"	 />
+								required="required" type="text"	 placeholder="아이디 입력"/>
 						</p>
 						<p>
 							<label for="password" class="youpasswd" data-icon="p">
 								Your password </label> <input id="pw" name="pw"
-								required="required" type="password" placeholder="eg. X8df!90EO" />
+								required="required" type="password" placeholder="비밀번호 입력" />
 						</p>
 						<p class="keeplogin">
 							<input type="checkbox" name="loginkeeping" id="loginkeeping"

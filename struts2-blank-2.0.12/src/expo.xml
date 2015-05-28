@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!-- jsp 파일 연결 -->
+    <package name="expo" namespace="/expo" extends="struts-default">
+
+        <action name="dataInsert" class="expo.action.DataInsertAction">
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">expoList</param>
+        	</result>
+        </action>
+		<action name="expoList" class="expo.action.DataListAction">
+			<result>/jsp/expo/finallist.jsp</result>
+		</action>
+		<!-- <action name="dataInfo" class="recruit.action.DataInfoAction">
+			<result name="info">/recruit/info.jsp</result>
+			<result name="modify">/recruit/modify.jsp</result>
+		</action>
+        Add actions here
+        <action name="datamodify" class="recruit.action.DataModifyAction">
+        	<result type="chain">
+        		<param name="actionName">dataInfo</param>
+        	</result>
+        </action> -->
+ 
+    </package>
+</struts>

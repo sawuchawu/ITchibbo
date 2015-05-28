@@ -68,7 +68,7 @@ function popupJoin(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업정보 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="typography.html">취업 박람회</a></li>
+                                <li><a href="/jsp/jobInfo/expo/finallist.jsp">취업 박람회</a></li>
                                 <li><a href="components.html">IT기술 동향</a></li>
 								<li><a href="pricingbox.html">취업 뉴스</a></li>
                             </ul>
@@ -114,25 +114,28 @@ function popupJoin(){
               <li>
                 <img src="img/slides/1.jpg" alt="" />
                 <div class="flex-caption">
-                    <h3>Modern Design</h3> 
+                    <!-- <h3>Modern Design</h3> 
 					<p>Duis fermentum auctor ligula ac malesuada. Mauris et metus odio, in pulvinar urna</p> 
-					<a href="#" class="btn btn-theme">Learn More</a>
+					<a href="#" class="btn btn-theme">Learn More</a> -->
+					<p>IT직무 채용 및 취업 정보 제공</p> 
                 </div>
               </li>
               <li>
                 <img src="img/slides/2.jpg" alt="" />
                 <div class="flex-caption">
-                    <h3>Fully Responsive</h3> 
+                   <!--  <h3>Fully Responsive</h3> 
 					<p>Sodales neque vitae justo sollicitudin aliquet sit amet diam curabitur sed fermentum.</p> 
-					<a href="#" class="btn btn-theme">Learn More</a>
+					<a href="#" class="btn btn-theme">Learn More</a> -->
+					<p>IT직무 채용공고 일정 관리</p>
                 </div>
               </li>
               <li>
                 <img src="img/slides/3.jpg" alt="" />
                 <div class="flex-caption">
-                    <h3>Clean & Fast</h3> 
+                    <!-- <h3>Clean & Fast</h3> 
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit donec mer lacinia.</p> 
-					<a href="#" class="btn btn-theme">Learn More</a>
+					<a href="#" class="btn btn-theme">Learn More</a> -->
+					<p>IT인들만의 커뮤니티 공간</p>
                 </div>
               </li>
             </ul>

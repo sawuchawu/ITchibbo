@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h6><a href="/recruits/recruitList.action">go</a></h6>
 </body>
 </html>
