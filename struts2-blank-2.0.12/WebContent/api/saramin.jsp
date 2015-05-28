@@ -1,36 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR;">
 <title>Insert title here</title>
-<script type="text/javascript" src="/script/jquery-2.0.0.js"></script>
+<script type="text/javascript" src="/js/jquery-2.0.0.js"></script>
+<script type="text/javascript" src="/js/xdomainajax.js"></script>
 <script type="text/javascript">
-  $(document).ready(function(){
+$(document).ready(function(){
 	 $("input[type=submit]").click(function(){
-         $.ajax({
-            type: "POST"
-            ,dataType: "xml"
-            ,url: "/app/parsing.action"					//$(resultURL).val()
-            ,crossDomain: true
-            ,success: function(xml){
-                 var xmlData = $(xml).find("job");
-                 var listLength = xmlData.length;
-                 if (listLength) {
-                     var contentStr = "";
-                     $(xmlData).each(function(){
-                         contentStr += "채용공고번호: "+$(this).find("id").text()+
-                         			   "채용공고표준 url: "+$(this).find("url").text()+
-                         			   "공고 진행 여부(1: 진행중, 0: 마감): "+$(this).find("active").text()+"<br>";
-                     });
-                     $("results").append(contentStr);
-                 }
-             }
-          });
-          //alert($(resultURL).val());
-     });
- }); 
+        $.ajax({
+           type: "GET"
+           ,dataType: "xml"
+           ,url: $(resultURL).val()
+           ,success: function(xml){
+           	var xmlDoc=$.parseXML(xml.responseText);
+           	
+                var xmlData = $(xmlDoc).find("job");
+                var listLength = xmlData.length;
+                
+                    var contentStr = "";
+                    $(xmlData).each(function(){
+                        contentStr += "채용공고번호: "+$(this).find("id").text()+
+                        			   "채용공고표준 url: "+$(this).find("url").text()+
+                        			   "공고 진행 여부(1: 진행중, 0: 마감): "+$(this).find("active").text()+"<br>";
+                    });
+                    $("results").append(contentStr);
+	                 console.log(xmlData); 
+	             /* var textXML = xml.responseText; 	// xml을 text 형식으로 가져온다.
+	             var data = $.xml2json(textXML);	// xml 파싱하여 가져온 text를 json형태로 바꿔준다.
+	             
+	             console.log(data.jobs.length); */
+	             
+	             
+             
+                
+            }
+         }); 
+         //alert($(resultURL).val());
+    });
+}); 
 </script>
 <script type="text/javascript" src="/script/httpRequest.js"></script>
 <script type="text/javascript">

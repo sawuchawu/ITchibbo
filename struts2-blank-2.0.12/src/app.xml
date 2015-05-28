@@ -13,12 +13,7 @@
            </result>
          </action>
          
-         <action name="parsing" class="action.ParseAction">
-         	<result>
-         		/api/saraminParse.jsp
-         	</result>
-         </action>
-         
+                  
          <action name="signup" class="action.JoinAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
