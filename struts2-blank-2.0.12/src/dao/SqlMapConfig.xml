@@ -15,7 +15,8 @@
     </dataSource>
   </transactionManager>  
   <sqlMap resource="/dao/Data.xml"/>  
-
+  <sqlMap resource="/expo/dao/ExpoDao.xml"/>
+	
 </sqlMapConfig>
 
 

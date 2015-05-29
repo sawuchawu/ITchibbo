@@ -37,10 +37,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.jsp"><font size="13"><span>IT</span>취뽀</font></a>
+                    <a class="navbar-brand" href="/index.jsp"><font size="13"><span>IT</span>취뽀</font></a>
                     <ul class="nav navbar-nav">
-                        <li><a href="/login/login.jsp">로그인</a></li> <!-- 로그아웃 바꾸기 -->
-                        <li><a href="/login/signup.jsp">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
+                        <li><a href="javascript:popupLogin()">로그인</a></li> <!-- 로그아웃 바꾸기 -->
+                        <li><a href="javascript:popupJoin()">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
                     </ul>
                 </div>
                 <div class="navbar-collapse collapse ">
@@ -80,6 +80,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">관리자 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
+                            	<li><a href="/api/saramin.jsp">사람인</a></li>
                                 <li><a href="typography.html">회원관리</a></li>
                                 <li><a href="components.html">메뉴관리</a></li>
                             </ul>

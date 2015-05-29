@@ -13,18 +13,18 @@
         	</result>
         </action>
 		<action name="expoList" class="expo.action.DataListAction">
-			<result>/jsp/expo/finallist.jsp</result>
+			<result>/jsp/jobInfo/expo/finallist.jsp</result>
 		</action>
-		<!-- <action name="dataInfo" class="recruit.action.DataInfoAction">
-			<result name="info">/recruit/info.jsp</result>
-			<result name="modify">/recruit/modify.jsp</result>
+		<action name="dataInfo" class="expo.action.DataInfoAction">
+			<result name="info">/jsp/jobInfo/expo/finalinfo.jsp</result>
+			<!-- <result name="modify">/recruit/modify.jsp</result> -->
 		</action>
-        Add actions here
-        <action name="datamodify" class="recruit.action.DataModifyAction">
+       
+    <!--     <action name="datamodify" class="recruit.action.DataModifyAction">
         	<result type="chain">
         		<param name="actionName">dataInfo</param>
         	</result>
-        </action> -->
+        </action>  -->
  
     </package>
 </struts>

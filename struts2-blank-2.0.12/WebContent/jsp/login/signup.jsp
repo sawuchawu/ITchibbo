@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="/css/animate-custom.css" />
 <script type="text/javascript">
 function JoinClose(){
-	window.close();
+	//window.close();
 	document.inFrm.submit();
 }
 </script>

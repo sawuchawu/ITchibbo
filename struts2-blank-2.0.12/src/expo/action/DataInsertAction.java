@@ -38,12 +38,12 @@ public class DataInsertAction implements Action,Preparable,ModelDriven<ExpoBean>
 		// TODO Auto-generated method stub
 		System.out.println(bean);
 
-		String path="D:\\project\\git\\ITchibbo\\struts2-blank-2.0.12\\WebContent\\img\\expo\\";
+		String path="D:\\project\\git\\ITchibbo\\ITchibbo\\struts2-blank-2.0.12\\WebContent\\img\\expo\\";
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
 		try {
 			fis = new FileInputStream(bean.getFile());
-			fos = new FileOutputStream(path+bean.getExp_fileName());
+			fos = new FileOutputStream(path+bean.getFileFileName());
 			byte []b= new byte[1024*8];
 			int length=0;
 			while((length=fis.read(b))!=-1){

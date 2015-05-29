@@ -68,7 +68,7 @@ function popupJoin(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업정보 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/jsp/jobInfo/expo/finallist.jsp">취업 박람회</a></li>
+                                <li><a href="/expo/expoList.action">취업 박람회</a></li>
                                 <li><a href="components.html">IT기술 동향</a></li>
 								<li><a href="pricingbox.html">취업 뉴스</a></li>
                             </ul>
@@ -89,6 +89,7 @@ function popupJoin(){
                                 <li><a href="components.html">Q&A</a></li>
                             </ul>
                         </li>
+                        <li><a href="/contact/contact.html">CONTACT</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">관리자 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">

@@ -5,14 +5,23 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="expo">
 	<typeAlias alias="ExpoBean" type="expo.bean.ExpoBean" />
+<!-- 	EXP_NO	MEM_ID	EXP_TITLE	EXP_DATE	EXP_FILENAME	 -->
 	<insert id="insertExpo" parameterClass="ExpoBean">
-		INSERT INTO TEST01
+		INSERT INTO EXPO
 		VALUES(
-		#id#,#title#,#company#,#regdate#,
-		#contents#,#pass#,'1',#fileFileName#)
+		EXPO_SEQ.NEXTVAL,'admin1',#exp_title#,#exp_date#,#fileFileName#	)
 	</insert>
-	<select parameterClass="java.lang.String" id="selectExpo"
-		resultClass="ExpoBean"> SELECT COMPANY,TITLE,REGDATE,NO,fileFileName FROM TEST01
+	<select  id="selectExpo"
+		resultClass="ExpoBean"> SELECT EXP_NO,MEM_ID,EXP_TITLE,EXP_DATE,EXP_FILENAME FROM EXPO
+	</select>
+	<select id="selectExpoInfo" resultClass="ExpoBean"
+		parameterClass="java.lang.Integer">
+		SELECT
+		EXP_NO,MEM_ID,EXP_TITLE,EXP_DATE,EXP_FILENAME
+		FROM
+		EXPO
+		WHERE
+		EXP_NO=#VALUE#
 	</select>
 </sqlMap>
 

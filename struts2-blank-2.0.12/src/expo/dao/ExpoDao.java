@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
-import dao.ServiceUtil;
 import expo.bean.ExpoBean;
 
 public class ExpoDao {
@@ -32,5 +31,8 @@ public class ExpoDao {
 	}
 	public static List<ExpoBean>selectExpo()throws Exception{
 		return client.queryForList("expo.selectExpo");
+	}
+	public static ExpoBean selectExpoInfo(int no)throws Exception{
+		return (ExpoBean)client.queryForObject("expo.selectExpoInfo",no);
 	}
 }

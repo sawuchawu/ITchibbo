@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 		 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,7 +45,7 @@ function si_ok(){
 	d=document.getElementById("d").value;
 	e=document.getElementById("e").value;
 	f=document.getElementById("f").value;
-	document.frm.exp_date.value=a+"³â"+b+"¿ù"+c+"ÀÏ"+"~"+d+"³â"+e+"¿ù"+f+"ÀÏ";
+	document.frm.exp_date.value=a+"ë…„"+b+"ì›”"+c+"ì¼"+"~"+d+"ë…„"+e+"ì›”"+f+"ì¼";
 }
 function sendData(){
 	obj = document.frm;
@@ -63,26 +63,26 @@ function sendData(){
 		<fieldset>
 			<legend>Legend</legend>
 			<div class="form_table">
-				<table border="1" cellspacing="0" summary="Ç¥ÀÇ ¿ä¾àÀ» ¹İµå½Ã ³Ö¾î ÁÖ¼¼¿ä">
+				<table border="1" cellspacing="0" summary="í‘œì˜ ìš”ì•½ì„ ë°˜ë“œì‹œ ë„£ì–´ ì£¼ì„¸ìš”">
 					<tbody>
 
 						<tr>
 							<th scope="row">ID</th>
 							<td>
-								<div class="item">ADMIN</div>
+								<div class="item">ADMIN1</div>
 							</td>
 						</tr>
 						<tr>
-							<th scope="row">Á¦¸ñ</th>
+							<th scope="row">ì œëª©</th>
 							<td>
 								<div class="item">
-									<input title="·¹ÀÌºí ÅØ½ºÆ®" class="i_text" type="text" size="50" id="exp_title" name="exp_title">
+									<input title="ë ˆì´ë¸” í…ìŠ¤íŠ¸" class="i_text" type="text" size="50" id="exp_title" name="exp_title">
 								</div>
 							</td>
 						</tr>
 
 						<tr>
-							<th scope="row">±â°£</th>
+							<th scope="row">ê¸°ê°„</th>
 							<td>
 								<div class="item">
 									<select name="a" SIZE="1" id="a">
@@ -121,10 +121,10 @@ function sendData(){
 							</td>
 						</tr>
 						<tr>
-							<th scope="row">ÆÄÀÏ</th>
+							<th scope="row">íŒŒì¼</th>
 							<td>
 								<div class="item">
-									<input title="·¹ÀÌºí ÅØ½ºÆ®" type="file" name="file" id="file">
+									<input title="ë ˆì´ë¸” í…ìŠ¤íŠ¸" type="file" name="file" id="file">
 								</div>
 							</td>
 						</tr>
@@ -136,8 +136,8 @@ function sendData(){
 	<!-- //UI Object -->
 	<!-- UI Object -->
 	<div align="right">
-		<a class="btn_big" href="javascript:sendData()"><strong>ÀúÀå</strong></a> <a class="btn_big"
-			href="#"><span>Ãë¼Ò</span></a>
+		<a class="btn_big" href="javascript:sendData()"><strong>ì €ì¥</strong></a> <a class="btn_big"
+			href="/expo/expoList.action"><span>ì·¨ì†Œ</span></a>
 
 	</div>
 	<!-- //UI Object -->

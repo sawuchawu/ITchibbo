@@ -22,17 +22,17 @@ $(document).ready(function(){
 	            var listLength = xmlData.length;
 	            
 	            // 파싱 첫번째 방법
-	           /*  var contentStr = "";
+	           var contentStr = "";
 	            $(xmlData).each(function(){
  	                 contentStr += "채용공고번호: "+$(this).find("id").text()+"<br>"+
 	                			   "채용공고표준 url: <a href="+$(this).find("url").text()+">채용공고 보러가기</a><br>"+
 	                   			   "공고 진행 여부(1: 진행중, 0: 마감): "+$(this).find("active").text()+"<br><br>";
-               console.log($(this).find("location").text());
-	            }); */
+               console.log($(this).find("title").getValue());
+	            });
                 //$("div#results").append(contentStr); 
 				/////////////////////////////////////////////////////////////////////	           
                 // 파싱 두번쨰 방법(xml2json 플러그인 사용)	            
-                var textXML = xml.responseText; 	// xml을 text 형식으로 가져온다.
+                /* var textXML = xml.responseText; 	// xml을 text 형식으로 가져온다.
 	            var dataJson = $.xml2json(textXML);	// xml 파싱하여 가져온 text를 json형태로 바꿔준다.
 	            var data = dataJson.body.job_search.jobs.job;	// job 까지의 위치 
 	            
@@ -45,6 +45,7 @@ $(document).ready(function(){
 	            				  "공고 진행 여부(1: 진행중, 0: 마감): "+data[i].active+"<br><br>";
 	            });
 	            $("div#results").append(contentStr);
+	            console.log(data); */
             }
          }); 
          //alert($(resultURL).val());

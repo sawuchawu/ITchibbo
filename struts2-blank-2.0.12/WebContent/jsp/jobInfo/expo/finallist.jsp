@@ -1,136 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link href="/css/finallist.css" rel="stylesheet" />
+<link href="/css/button.css" rel="stylesheet" />
 </head>
 <body>
-	<!-- UI Object -->
-	<table class="tbl_type" border="1" cellspacing="0"
-		summary="°Ô½ÃÆÇÀÇ ±ÛÁ¦¸ñ ¸®½ºÆ®">
-		<caption>°Ô½ÃÆÇ ¸®½ºÆ®</caption>
-		<colgroup>
-			<col width="30">
-			<col width="80">
-			<col>
-			<col width="115">
-			<col width="85">
-			<col width="60">
-		</colgroup>
-		<thead>
-			<tr>
-				<th scope="col">&nbsp;</th>
-				<th scope="col">No</th>
-				<th scope="col">Á¦¸ñ</th>
-				<th scope="col">±Û¾´ÀÌ</th>
-				<th scope="col">³¯Â¥</th>
-				<th scope="col">Á¶È¸¼ö</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td class="frm"><input id="chk_sel" type="checkbox" value=""><label
-					for="chk_sel">¼±ÅÃ</label></td>
-				<td class="num">10</td>
-				<td class="title"><a href="#">»õ·Î¿î °Ô½ÃÆÇ ±Û¾²±â »õ·Î¿î °Ô½ÃÆÇ ±Û¾²±â »õ·Î¿î
-						°Ô½ÃÆÇ ±Û¾²±â »õ·Î¿î °Ô½ÃÆÇ ±Û¾²±â »õ·Î¿î °Ô½ÃÆÇ ±Û¾²±â »õ·Î¿î °Ô½ÃÆÇ ±Û¾²±â</a></td>
-				<td><a href="#">³×ÀÌ¹ö¸Ç</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">1234</td>
-			</tr>
-			<tr class="reply">
-				<td class="frm"><input id="chk_sel2" type="checkbox" value=""><label
-					for="chk_sel2">¼±ÅÃ</label></td>
-				<td class="num">&nbsp;</td>
-				<td class="title" style="padding-left: 10px;"><a href="#">ºí·Î±×
-						°³Æí ´ä±Û</a></td>
-				<td><a href="#">³×ÀÌ¹ö¸Ç</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">1234</td>
-			</tr>
-			<tr class="reply">
-				<td class="frm"><input id="chk_sel3" type="checkbox" value=""><label
-					for="chk_sel3">¼±ÅÃ</label></td>
-				<td class="num">&nbsp;</td>
-				<td class="title" style="padding-left: 20px;"><a href="#">ºí·Î±×
-						°³Æí ´ä±Û</a></td>
-				<td><a href="#">³×ÀÌ¹ö¸Ç</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">1234</td>
-			</tr>
-			<tr class="reply">
-				<td class="frm"><input id="chk_sel4" type="checkbox" value=""><label
-					for="chk_sel4">¼±ÅÃ</label></td>
-				<td class="num">&nbsp;</td>
-				<td class="title" style="padding-left: 30px;"><a href="#">ºí·Î±×
-						°³Æí ´ä±Û</a> <img width="13" height="12" class="pic" alt="Ã·ºÎÀÌ¹ÌÁö"
-					src="img/ic_pic.gif"> <a class="comment" href="#">[5]</a> <img
-					width="10" height="9" class="new" alt="»õ±Û" src="img/ic_new.gif"></td>
-				<td><a href="#">³×ÀÌ¹ö¸Ç</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">1234</td>
-			</tr>
-			<tr>
-				<td class="frm"><input id="chk_sel5" type="checkbox" value=""><label
-					for="chk_sel5">¼±ÅÃ</label></td>
-				<td class="num">9</td>
-				<td class="title"><a href="#">ºí·Î±× °³Æí ÀÛ¾÷ ÀÏÁ¤ 1</a></td>
-				<td><a href="#">UIT·¦</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">12345</td>
-			</tr>
-			<tr>
-				<td class="frm"><input id="chk_sel6" type="checkbox" value=""><label
-					for="chk_sel6">¼±ÅÃ</label></td>
-				<td class="num">8</td>
-				<td class="title"><a href="#">ºí·Î±× °³Æí ÀÛ¾÷ ÀÏÁ¤ 1</a></td>
-				<td><a href="#">UIT·¦</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">12345</td>
-			</tr>
-			<tr>
-				<td class="frm"><input id="chk_sel7" type="checkbox" value=""><label
-					for="chk_sel7">¼±ÅÃ</label></td>
-				<td class="num">7</td>
-				<td class="title"><a href="#">ºí·Î±× °³Æí ÀÛ¾÷ ÀÏÁ¤ 1</a></td>
-				<td><a href="#">UIT·¦</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">12345</td>
-			</tr>
-			<tr>
-				<td class="frm"><input id="chk_sel8" type="checkbox" value=""><label
-					for="chk_sel8">¼±ÅÃ</label></td>
-				<td class="num">6</td>
-				<td class="title"><a href="#">ºí·Î±× °³Æí ÀÛ¾÷ ÀÏÁ¤ 1</a></td>
-				<td><a href="#">UIT·¦</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">12345</td>
-			</tr>
-			<tr>
-				<td class="frm"><input id="chk_sel9" type="checkbox" value=""><label
-					for="chk_sel9">¼±ÅÃ</label></td>
-				<td class="num">5</td>
-				<td class="title"><a href="#">ºí·Î±× °³Æí ÀÛ¾÷ ÀÏÁ¤ 1</a></td>
-				<td><a href="#">UIT·¦</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">12345</td>
-			</tr>
-			<tr>
-				<td class="frm"><input id="chk_sel10" type="checkbox" value=""><label
-					for="chk_sel10">¼±ÅÃ</label></td>
-				<td class="num">4</td>
-				<td class="title"><a href="#">ºí·Î±× °³Æí ÀÛ¾÷ ÀÏÁ¤ 1</a></td>
-				<td><a href="#">UIT·¦</a></td>
-				<td class="date">2008/02/14</td>
-				<td class="hit">12345</td>
-			</tr>
-		</tbody>
-	</table>
-	<!-- //UI Object -->
-	<input type="button" value="±Û¾²±â" onclick="location.href='/jsp/jobInfo/expo/finaledit.jsp'">
+
+<!-- UI Object -->
+<table class="tbl_type" border="1" cellspacing="0" summary="ê²Œì‹œíŒì˜ ê¸€ì œëª© ë¦¬ìŠ¤íŠ¸">
+<caption>ê²Œì‹œíŒ ë¦¬ìŠ¤íŠ¸</caption>
+<colgroup>
+<col>
+<col width="250">
+</colgroup>
+<thead>
+<tr>
+
+
+<th scope="col">ì œëª©</th>
+<th scope="col">ë§ˆê°ì¼</th>
+
+</tr>
+</thead>
+<tbody>
+<c:forEach var="i" items="${list}">
+<tr>
+<td class="title"><a href="/expo/dataInfo.action?exp_no=${i.exp_no}&job=info">${i.exp_title}</a></td>
+<td>${i.exp_date}</td>
+</tr>
+</c:forEach>
+</tbody>
+</table>
+<!-- //UI Object -->
+<div align="right">
+		<!-- <a class="btn_big" href="javascript:sendData()"><strong>ì €ìž¥</strong></a>  -->
+		<a class="btn_big"
+			href="/jsp/jobInfo/expo/finaledit.jsp"><span>ê¸€ì“°ê¸°</span></a>
+
+	</div>
 
 </body>
 </html>

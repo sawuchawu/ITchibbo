@@ -24,7 +24,7 @@ function loginClose(){
 	document.loFrm.submit();
 }
 function joinClose(){
-	window.close();
+	//window.close();			// close го╦И submit ╬х╣й
 	document.inFrm.submit();
 }
 </script>
