@@ -10,45 +10,22 @@
 <script type="text/javascript" src="/js/xml2json.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	responseText='';
 	 $("input[type=submit]").click(function(){
         $.ajax({
            type: "GET"
            ,dataType: "xml"
            ,url: $(resultURL).val()
            ,success: function(xml){
-	           	var xmlDoc=$.parseXML(xml.responseText);
-	           	
-	            var xmlData = $(xmlDoc).find("job");
-	            var listLength = xmlData.length;
-	            
-	            // 파싱 첫번째 방법
-	           var contentStr = "";
-	            $(xmlData).each(function(){
- 	                 contentStr += "채용공고번호: "+$(this).find("id").text()+"<br>"+
-	                			   "채용공고표준 url: <a href="+$(this).find("url").text()+">채용공고 보러가기</a><br>"+
-	                   			   "공고 진행 여부(1: 진행중, 0: 마감): "+$(this).find("active").text()+"<br><br>";
-               console.log($(this).find("title").getValue());
-	            });
-                //$("div#results").append(contentStr); 
-				/////////////////////////////////////////////////////////////////////	           
-                // 파싱 두번쨰 방법(xml2json 플러그인 사용)	            
-                /* var textXML = xml.responseText; 	// xml을 text 형식으로 가져온다.
-	            var dataJson = $.xml2json(textXML);	// xml 파싱하여 가져온 text를 json형태로 바꿔준다.
-	            var data = dataJson.body.job_search.jobs.job;	// job 까지의 위치 
-	            
-	            var contentStr = "";
-	            $(data).each(function(i){
-	            	contentStr += "채용공고url: <a href="+data[i].url+">채용공고 보러가기</a><br>"+
-				        		  "근무형태:"+data[i].position.job_type.text+"<br>"+
-				        		  "학력:"+data[i].position.required_education_level.text+"<br>"+
-				        		  "직무:"+data[i].position.job_category.text+"<br>"+
-	            				  "공고 진행 여부(1: 진행중, 0: 마감): "+data[i].active+"<br><br>";
-	            });
-	            $("div#results").append(contentStr);
-	            console.log(data); */
+        	   responseText = xml.responseText;
+			       // console.log(xml);
             }
          }); 
-         //alert($(resultURL).val());
+			   console.log(responseText);
+        /* var parser = new DOMParser();
+        var parsedDom = parser.parseFromString(responseText, "text/xml");
+        var positions = parsedDom.getElementsByTagName("position");
+        var title = positions[0].getElementsByTagName("title")[0].innerHTML; */
     });
 }); 
 </script>
