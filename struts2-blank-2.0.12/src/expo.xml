@@ -17,14 +17,18 @@
 		</action>
 		<action name="dataInfo" class="expo.action.DataInfoAction">
 			<result name="info">/jsp/jobInfo/expo/finalinfo.jsp</result>
-			<!-- <result name="modify">/recruit/modify.jsp</result> -->
+			 <result name="modify">/jsp/jobInfo/expo/finalmodify.jsp</result> 
 		</action>
        
-    <!--     <action name="datamodify" class="recruit.action.DataModifyAction">
+        <action name="dataModify" class="expo.action.DataModifyAction">
         	<result type="chain">
         		<param name="actionName">dataInfo</param>
         	</result>
-        </action>  -->
- 
+        </action>  
+ 		<action name="dataDelete" class="expo.action.dataDeleteAction">
+ 			<result name="success" type="chain">
+          		<param name="actionName">expoList</param>
+        	 </result>
+ 		</action>
     </package>
 </struts>

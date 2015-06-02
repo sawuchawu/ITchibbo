@@ -12,17 +12,30 @@
 		EXPO_SEQ.NEXTVAL,'admin1',#exp_title#,#exp_date#,#fileFileName#	)
 	</insert>
 	<select  id="selectExpo"
-		resultClass="ExpoBean"> SELECT EXP_NO,MEM_ID,EXP_TITLE,EXP_DATE,EXP_FILENAME FROM EXPO
+		resultClass="ExpoBean"> SELECT EXP_NO,MEM_ID,EXP_TITLE,EXP_DATE,FILEFILENAME FROM EXPO
 	</select>
 	<select id="selectExpoInfo" resultClass="ExpoBean"
 		parameterClass="java.lang.Integer">
 		SELECT
-		EXP_NO,MEM_ID,EXP_TITLE,EXP_DATE,EXP_FILENAME
+		EXP_NO,MEM_ID,EXP_TITLE,EXP_DATE,FILEFILENAME
 		FROM
 		EXPO
 		WHERE
 		EXP_NO=#VALUE#
 	</select>
+	<update id="ExpoUpdateData" parameterClass="ExpoBean">
+		 UPDATE  EXPO 
+		 SET EXP_TITLE=#exp_title#,EXP_DATE=#exp_date#, 
+		 	fileFileName=#fileFileName# 
+		 	WHERE EXP_NO=#exp_no# 
+		 	
+		 	<!-- EXP_NO	MEM_ID	EXP_TITLE	EXP_DATE	FILEFILENAME -->	
+		 	
+	</update>
+	<delete id="deleteData" parameterClass="java.lang.Integer">
+	  DELETE FROM EXPO
+	  WHERE EXP_NO=#VALUE#
+	</delete>
 </sqlMap>
 
 

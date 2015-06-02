@@ -9,7 +9,7 @@
     <constant name="struts.devMode" value="false" />
 
     <include file="app.xml"/>
-	<include file="expo.xml"/>
+	<include file="expo.xml"></include>
     <!-- Add packages here -->
 
 </struts>

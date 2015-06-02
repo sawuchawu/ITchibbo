@@ -10,9 +10,18 @@ import com.opensymphony.xwork2.Preparable;
 import expo.bean.ExpoBean;
 import expo.dao.ExpoDao;
 
-public class DataInsertAction implements Action,Preparable,ModelDriven<ExpoBean>{
+public class DataModifyAction implements Action,Preparable,ModelDriven<ExpoBean> {
 	private ExpoBean bean;
+	private String job;
 	
+	public String getJob() {
+		return job;
+	}
+
+	public void setJob(String job) {
+		this.job = job;
+	}
+
 	public ExpoBean getBean() {
 		return bean;
 	}
@@ -30,14 +39,13 @@ public class DataInsertAction implements Action,Preparable,ModelDriven<ExpoBean>
 	@Override
 	public void prepare() throws Exception {
 		// TODO Auto-generated method stub
-		this.bean=new ExpoBean();
+		this.bean= new ExpoBean();
 	}
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
 		System.out.println(bean);
-
+		// TODO Auto-generated method stub
 		String path="C:\\Users\\helloworld\\git\\ITchibbo\\struts2-blank-2.0.12\\WebContent\\img\\expo\\";
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
@@ -60,8 +68,9 @@ public class DataInsertAction implements Action,Preparable,ModelDriven<ExpoBean>
 				// TODO: handle exception
 			}
 		}
-		ExpoDao.insertExpo(bean);
+		ExpoDao.ExpoUpdateData(bean);
 		return SUCCESS;
 	}
 
+	
 }

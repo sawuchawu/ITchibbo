@@ -29,10 +29,43 @@ public class ExpoDao {
 			}
 		}
 	}
+	public static void deleteData(int exp_no){
+		try {
+			client.startTransaction();
+			client.delete("expo.deleteData", exp_no);
+			client.commitTransaction();			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			
+			try {
+				client.endTransaction();				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 	public static List<ExpoBean>selectExpo()throws Exception{
 		return client.queryForList("expo.selectExpo");
 	}
 	public static ExpoBean selectExpoInfo(int no)throws Exception{
 		return (ExpoBean)client.queryForObject("expo.selectExpoInfo",no);
+	}
+	public static void ExpoUpdateData(ExpoBean bean){
+		try {
+			client.startTransaction();
+			client.update("expo.ExpoUpdateData",bean);
+			client.commitTransaction();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				client.endTransaction();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
 	}
 }

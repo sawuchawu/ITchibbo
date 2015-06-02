@@ -9,7 +9,7 @@
 <link href="/css/button.css" rel="stylesheet" />
 </head>
 <body>
-
+${bean }
 	<!-- UI Object -->
 	<table class="tbl_type" border="1" cellspacing="0" summary="글 내용을 표시">
 		<caption>글 읽기</caption>
@@ -35,17 +35,17 @@
 			</tr>
 			<tr>
 				<td class="cont" > 
-					<%-- <img alt="" src="/img/expo/${bean.fileFileName}" > --%>
-					<img alt="" src="/img/expo/1.jpg" > 
+					 <img alt="" src="/img/expo/${bean.fileFileName}" >
 				</td>
 			</tr>
 		</tbody>
 	</table>
 <!-- UI Object -->
 	<div align="right">
-		<!-- <a class="btn_big" href="javascript:sendData()"><strong>저장</strong></a>  -->
+		 <a class="btn_big" href="/expo/dataInfo.action?exp_no=${bean.exp_no}&job=modify"><strong>수정</strong></a>  
+		 <a class="btn_big" href="/expo/dataDelete.action?exp_no=${bean.exp_no}"><strong>삭제</strong></a>  
 		<a class="btn_big"
-			href="/expo/expoList.action"><span>취소</span></a>
+			href="/expo/expoList.action"><span>목록</span></a>
 
 	</div>
 	<!-- //UI Object -->
