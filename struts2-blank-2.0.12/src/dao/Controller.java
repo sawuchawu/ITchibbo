@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import bean.MemberBean;
 
@@ -11,6 +12,17 @@ public class Controller {
 	
 	static{
 		client=dao.ServiceUtil.getSqlMapClient();
+	}
+	
+	
+	public static boolean loginCheck(HashMap<String, String>map)throws Exception{
+		String pw=(String)client.queryForObject("bean.MemberBean.loginCheck", map);
+		if(pw!=null&& pw.length()>0){
+			if(pw.equals(map.get("pw"))){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public static int chkLogin(String id, String pw){

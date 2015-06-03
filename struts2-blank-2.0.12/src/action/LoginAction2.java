@@ -1,16 +1,10 @@
 package action;
 
-import java.util.HashMap;
-
-import javax.servlet.http.HttpSession;
-
-import org.apache.struts2.ServletActionContext;
-
 import com.opensymphony.xwork2.Action;
 
 import dao.Controller;
 
-public class LoginAction implements Action {
+public class LoginAction2 implements Action {
 	private String id;
 	private String pw;
 
@@ -34,19 +28,7 @@ public class LoginAction implements Action {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		
-		HashMap<String, String>map=new HashMap<String,String>();
-		map.put("id", id);
-		map.put("pw", pw);
-		
-		if(Controller.loginCheck(map)){
-			HttpSession session=ServletActionContext.getRequest().getSession();
-			session.setAttribute("id", id);
-			session.setMaxInactiveInterval(60);
-			return SUCCESS;
-		}
-		return "fail";
-		
-/*		System.out.println(id+" "+pw);
+		System.out.println(id+" "+pw);
 		
 		int chk = Controller.chkLogin(id, pw);
 		
@@ -56,12 +38,7 @@ public class LoginAction implements Action {
 			return "fail";
 		}else{		// 아이디 없음
 			return "notFound";
-		}*/
+		}
 	}
-	
-	
-
-
-
 
 }
