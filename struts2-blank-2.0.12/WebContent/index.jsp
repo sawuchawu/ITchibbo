@@ -60,7 +60,7 @@ function popupJoin(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">채용정보 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="typography.html">채용공고</a></li>
+                                <li><a href="/jsp/recruitInfo/recruit/recruitList.jsp">채용공고</a></li>
                                 <li><a href="components.html">직종별 검색</a></li>
 								<li><a href="pricingbox.html">채용정보 상세검색</a></li>
                             </ul>
@@ -93,7 +93,7 @@ function popupJoin(){
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">관리자 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/api/saramin.jsp">사람인</a></li>
+                                <!-- <li><a href="/api/saramin.jsp">사람인</a></li> -->
                                 <li><a href="typography.html">회원관리</a></li>
                                 <li><a href="components.html">메뉴관리</a></li>
                             </ul>
@@ -118,7 +118,7 @@ function popupJoin(){
                     <!-- <h3>Modern Design</h3> 
 					<p>Duis fermentum auctor ligula ac malesuada. Mauris et metus odio, in pulvinar urna</p> 
 					<a href="#" class="btn btn-theme">Learn More</a> -->
-					<p>IT직무 채용 및 취업 정보 제공</p> 
+					<p><b>IT직무 채용 및 취업 정보 제공</b></p> 
                 </div>
               </li>
               <li>
@@ -127,7 +127,7 @@ function popupJoin(){
                    <!--  <h3>Fully Responsive</h3> 
 					<p>Sodales neque vitae justo sollicitudin aliquet sit amet diam curabitur sed fermentum.</p> 
 					<a href="#" class="btn btn-theme">Learn More</a> -->
-					<p>IT직무 채용공고 일정 관리</p>
+					<p><b>IT직무 채용공고 일정 관리</b></p>
                 </div>
               </li>
               <li>
@@ -136,7 +136,7 @@ function popupJoin(){
                     <!-- <h3>Clean & Fast</h3> 
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit donec mer lacinia.</p> 
 					<a href="#" class="btn btn-theme">Learn More</a> -->
-					<p>IT인들만의 커뮤니티 공간</p>
+					<p><b>IT인들만의 커뮤니티 공간</b></p>
                 </div>
               </li>
             </ul>
