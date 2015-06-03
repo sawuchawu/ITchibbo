@@ -1,20 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="Login and Registration Form with HTML5 and CSS3" />
-<meta name="keywords"
-	content="html5, css3, form, switch, animation, :target, pseudo-class" />
-<meta name="author" content="Codrops" />
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css" href="/css/ldemo.css" />
-<link rel="stylesheet" type="text/css" href="/css/lstyle.css" />
-<link rel="stylesheet" type="text/css" href="/css/animate-custom.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link href="/css/loginForm.css" rel="stylesheet" />
+<script type="text/javascript" src="/script/jquery-2.0.0.js"></script>
+<script type="text/javascript" src="/js/loginForm.js"></script>
 <script type="text/javascript">
 function JoinClose(){
 	//window.close();
@@ -23,76 +18,54 @@ function JoinClose(){
 </script>
 </head>
 <body>
-	<div class="container">
-		<section>
-		<div id="container_demo">
-			<!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
-			<a class="hiddenanchor" id="toregister"></a> <a class="hiddenanchor"
-				id="tologin"></a>
-			<div id="wrapper">
-				<div id="login" class="animate form">
-				
-					<form id="inFrm" name="inFrm" method="post" action="/app/signup.action" enctype="multipart/form-data" autocomplete="off">
-						<h1>Sign up</h1>
-						
-						<p><label for="uid" class="uid"
-								data-icon="u">Your userId </label> <input
-								id="mem_id" name="mem_id"
-								required="required" type="text" placeholder="æ∆¿Ãµ ¿‘∑¬" />
-						</p>
-						
-						
-						<p>
-							<label for="upw" class="upw" data-icon="p">Your
-								password </label> <input id="mem_pw" name="mem_pw"
-								required="required" type="password" placeholder="∫Òπ–π¯»£ ¿‘∑¬" />
-						</p>
-						
-						
-						<p>
-							<label for="upw2" class="upw2"
-								data-icon="p">Please confirm your password </label> <input
-								id="mem_pw_re" name="mem_pw_re"
-								required="required" type="password" placeholder="∫Òπ–π¯»£ »Æ¿Œ" />
-						</p>
-
-
-						<p>
-							<label for="uname" class="uname" data-icon="u">Your
-								username</label> <input id="mem_name" name="mem_name"
-								required="required" type="text" placeholder="¿Ã∏ß ¿‘∑¬" />
-						</p>
-						
-						
-						<p>
-							<label for="uemail" class="uemail" data-icon="e">
-								Your email</label> <input id="mem_email" name="mem_email"
-								required="required" type="email"
-								placeholder="¿Ã∏ﬁ¿œ ¿‘∑¬" />
-						</p>
-						
-						
-						<p>
-							<label for="uphone" class="uphone"
-								data-icon="u">Your PhoneNumber</label> <input
-								id="mem_phone" name="mem_phone"
-								required="required" type="text" placeholder="«⁄µÂ∆˘ π¯»£ ¿‘∑¬" />
-						</p>
-	
-						
-						<p class="signin button">
-							<input type="button" value="Sign up" onclick="JoinClose()" />
-						</p>
-<!-- 						<p class="change_link">
-							Already a member ? <a href="#tologin" class="to_register"> Go
-								and log in </a>
-						</p> -->
-					</form>
+<div class="container">
+    	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+								<a href="#" class="active" >ÌöåÏõêÍ∞ÄÏûÖ</a>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form id="register-form" action="/app/signup.action" method="post" role="form" style="display: block;">
+									<div class="form-group">
+										<input type="text" name="mem_id" id="mem_id" tabindex="1" class="form-control" placeholder="ÏïÑÏù¥Îîî" value="">
+									</div>
+									<div class="form-group">
+										<input type="password" name="mem_pw" id="mem_pw" tabindex="1" class="form-control" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏">
+									</div>
+									<div class="form-group">
+										<input type="password" name="mem_pw_re" id="mem_pw_re" tabindex="1" class="form-control" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏ ÌôïÏù∏">
+									</div>
+									<div class="form-group">
+										<input type="text" name="mem_name" id="mem_name" tabindex="1" class="form-control" placeholder="Ïù¥Î¶Ñ" value="">
+									</div>
+									<div class="form-group">
+										<input type="email" name="mem_email" id="mem_email" tabindex="1" class="form-control" placeholder="Ïù¥Î©îÏùº" value="">
+									</div>
+									<div class="form-group">
+										<input type="text" name="mem_phone" id="mem_phone" tabindex="1" class="form-control" placeholder="Ï†ÑÌôîÎ≤àÌò∏" value="">
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Í∞ÄÏûÖ">
+											</div>
+										</div>
+									</div>
+								</form>
+								
+							</div>
+						</div>
+					</div>
 				</div>
-
 			</div>
 		</div>
-		</section>
 	</div>
+
 </body>
 </html>

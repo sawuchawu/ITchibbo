@@ -1,8 +1,0 @@
-@CHARSET "EUC-KR";
-/* UI Object */
-a.btn_big{display:inline-block;padding-right:4px;background:url(http://static.naver.com/groupware/2010/bg_btn_default.gif) no-repeat 100% 0;font-family:'µ¸¿ò',dotum;font-size:12px;color:#444;line-height:26px;word-spacing:-1px;text-decoration:none !important;white-space:nowrap}
-a.btn_big span,a.btn_big strong{display:block;padding:1px 8px 0 12px;background:url(http://static.naver.com/groupware/2010/bg_btn_default.gif) no-repeat}
-a.btn_sml{display:inline-block;padding-right:4px;background:url(http://static.naver.com/groupware/2010/bg_btn_default.gif) no-repeat 100% -27px;font-family:'µ¸¿ò',dotum;font-size:11px;color:#444;line-height:21px;letter-spacing:-1px;word-spacing:-1px;text-decoration:none !important;white-space:nowrap}
-a.btn_sml span,a.btn_sml strong{display:block;padding:1px 4px 0 8px;background:url(http://static.naver.com/groupware/2010/bg_btn_default.gif) no-repeat 0 -27px}
-/* //UI Object */
-

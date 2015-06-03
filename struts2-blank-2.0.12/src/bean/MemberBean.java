@@ -11,6 +11,8 @@ public class MemberBean {
 	public MemberBean() {
 		super();
 	}
+	
+	
 	public MemberBean(String mem_id, String mem_pw, String mem_name,
 			String mem_email, String mem_phone) {
 		super();

@@ -4,7 +4,8 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <package name="app" namespace="/app" extends="struts-default">
-         <action name="login" class="action.LoginAction">
+    
+<!--          <action name="login" class="action.LoginAction">
            <result name="success" type="redirect">
            		/index.jsp
            </result>
@@ -14,8 +15,23 @@
            <result name="notFound" type="redirect">
            		/jsp/login/loginFail.jsp
            </result>
-         </action>
+         </action> -->
          
+         
+      <action name="login" class="action.LoginAction">
+        <result name="success" type="redirect">
+           /index.jsp
+        </result>
+        <result name="fail" type="redirect"> 
+        /jsp/login/loginFail.jsp
+        </result>
+      </action>
+      
+      <action name="logout" class="action.LogoutAction">
+      <result name="success" type="redirect">
+      /index.jsp
+      </result>
+      </action>
                  
          <action name="signup" class="action.JoinAction">
 			<interceptor-ref name="prepare" />

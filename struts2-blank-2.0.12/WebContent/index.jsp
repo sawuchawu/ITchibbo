@@ -23,6 +23,7 @@
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+<script type="text/javascript" src="/js/jquery-2.0.0.js"></script>
 <script type="text/javascript">
 function popupLogin(){
 	var popUrl = "/jsp/login/login.jsp";	//팝업창에 출력될 페이지 URL
@@ -35,9 +36,37 @@ function popupJoin(){
 		window.open(popUrl,"",popOption);
 	}	
 	
+function logProcess(id) {
+	var ids=id;
+	//alert(ids+" "+$("input#lid").val());
+/* 	if(ids==null){
+		$("#log").text('로그인');
+		$("#log").attr("href", "/jsp/login/login.jsp");
+		} else if(ids!=null){
+		$("#log").text('로그아웃');
+		}  */
+	
+	if(ids==='dd'&& $("input#lid").val()=='null'){// 로그인해야됨
+	//	alert(1);
+		$("#log").text('로그인');
+		$("#log").attr("href", "/jsp/login/login.jsp");
+	}else{// 로그아웃
+	//	alert(2);
+		$("#log").text('로그아웃');
+		$("#log").attr("href", "/app/logout.action");
+	}
+}
+
+$(document).ready(function() {
+});
+	
 </script>
 </head>
-<body>
+<body onload="logProcess('dd')">
+<!-- <form action="/app/logout.action" method="post"><button type="submit">logout</button></form> -->
+<%-- ${id }
+<%=session.getAttribute("id") %> --%>
+<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
 <div id="wrapper">
 	<!-- start header -->
 	<header>
@@ -51,10 +80,11 @@ function popupJoin(){
                     </button>
                     <a class="navbar-brand" href="index.jsp"><font size="13"><span>IT</span>취뽀</font></a>
                     <ul class="nav navbar-nav">
-                        <li><a href="javascript:popupLogin()">로그인</a></li> <!-- 로그아웃 바꾸기 -->
-                        <li><a href="javascript:popupJoin()">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
+                        <li><a href="#" id="log"></a></li> <!-- 로그아웃 바꾸기 -->
+                        <li><a href="/jsp/login/signup.jsp">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
                     </ul>
                 </div>
+             
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">

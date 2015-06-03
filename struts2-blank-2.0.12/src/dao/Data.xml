@@ -9,8 +9,14 @@
 	<select id="chkId" resultClass="String" parameterClass="String">
 		select MEM_ID from MEMBER where MEM_ID='$MEM_ID$'	
 	</select>
+	
 	<select id="chkPw" resultClass="String" parameterClass="String">
 		select MEM_PW from MEMBER where MEM_ID='$MEM_ID$'	
+	</select>
+	
+	<select id="loginCheck" parameterClass="java.util.HashMap" resultClass="java.lang.String">
+		SELECT MEM_PW FROM MEMBER
+		WHERE MEM_ID=#id#
 	</select>
 	
 	<insert id="mem_Signup" parameterClass="bean.MemberBean">
