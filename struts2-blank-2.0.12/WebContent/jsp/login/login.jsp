@@ -10,6 +10,16 @@
 <link href="/css/loginForm.css" rel="stylesheet" />
 <script type="text/javascript" src="/script/jquery-2.0.0.js"></script>
 <script type="text/javascript" src="/js/loginForm.js"></script>
+<script type="text/javascript">
+function loginClose(){
+	window.close();
+	document.loFrm.submit();
+}
+function joinClose(){
+	//window.close();			// close �ϸ� submit �ȵ�
+	document.inFrm.submit();
+}
+</script>
 </head>
 <body>
 <div class="container">
@@ -83,9 +93,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
+
 	</div>
 	</body>
 </html>

@@ -9,6 +9,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link href="/css/loginForm.css" rel="stylesheet" />
 <script type="text/javascript" src="/script/jquery-2.0.0.js"></script>
+<script type="text/javascript" src="/js/loginForm.js"></script>
+<script type="text/javascript">
+function JoinClose(){
+	//window.close();
+	document.inFrm.submit();
+}
+</script>
 </head>
 <body>
 <div class="container">
