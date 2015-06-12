@@ -37,6 +37,8 @@ function popupJoin(){
 	}	
 	
 function logProcess(id) {
+	new WOW().init();		//	팀원 소개 효과 함수
+	
 	var ids=id;
 
 	if(ids==='dd'&& $("input#lid").val()=='null'){// 로그인해야됨

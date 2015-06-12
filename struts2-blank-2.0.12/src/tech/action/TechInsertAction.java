@@ -40,7 +40,7 @@ public class TechInsertAction implements Action, Preparable,
 		// TODO Auto-generated method stub
 		//System.out.println(bean);
 
-		String path="D:\\project\\ITchibbo\\struts2-blank-2.0.12\\WebContent\\img\\tech\\";
+		String path="D:\\project\\ITchibbo\\ITchibbo\\struts2-blank-2.0.12\\WebContent\\img\\tech\\";
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
 		try {

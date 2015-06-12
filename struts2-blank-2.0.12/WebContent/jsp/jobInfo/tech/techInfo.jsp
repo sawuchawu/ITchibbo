@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- <html lang="en"> -->
 <html>
@@ -17,7 +17,9 @@
 <link href="/css/jcarousel.css" rel="stylesheet" />
 <link href="/css/flexslider.css" rel="stylesheet" />
 <link href="/css/style.css" rel="stylesheet" />
-<link href="/css/recr<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>uitList.css" rel="stylesheet" />
+<link
+	href="/css/recr<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>uitList.css"
+	rel="stylesheet" />
 <link href="/css/button.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="/css/tcal.css" />
 <link href="/css/portfolioInfo.css" rel="stylesheet" />
@@ -37,33 +39,36 @@
 <script src="/js/jquery.flexslider.js"></script>
 <script src="/js/animate.js"></script>
 <script src="/js/custom.js"></script>
-<script type="text/javascript" src="/js/jquery-2.0.0.js" charset = "EUC-KR"></script>
+<script type="text/javascript" src="/js/jquery-2.0.0.js"
+	charset="EUC-KR"></script>
 <script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						$("#tx").focus(function() {
+							$(this).text('');
+						});
 
-	
-	$(document).ready(function() {
-		$("#tx").focus(function() {
-			$(this).text('');
-		});
-		
-		$("#tx").keyup(function() {
-			$("#read").html(($(this).val().length));
-			if ($(this).val().length > 30) {
-				alert('30글자 초과');
-				$("#tx").val(($("#tx").val().substr(0, 30)));
-			}
-		});
-		
-		$("button#save").click(function() {
-			if ($("#tx").val().length == 0
-					|| $("#tx").val() == "한줄 토크를 달아주세요! (30자)") {
-				alert('DataCheck!');
-			} else {
-				$("form#replyForm").submit();
-			}
-		});
+						$("#tx").keyup(function() {
+							$("#read").html(($(this).val().length));
+							if ($(this).val().length > 30) {
+								alert('30글자 초과');
+								$("#tx").val(($("#tx").val().substr(0, 30)));
+							}
+						});
 
-	});
+						$("button#save")
+								.click(
+										function() {
+											if ($("#tx").val().length == 0
+													|| $("#tx").val() == "한줄 토크를 달아주세요! (30자)") {
+												alert('DataCheck!');
+											} else {
+												$("form#replyForm").submit();
+											}
+										});
+
+					});
 </script>
 
 
@@ -141,33 +146,42 @@
 								<table width="840" height="" class="tbl_type" cellspacing="0">
 									<tbody>
 										<tr>
-											<td rowspan="5" width="620"><img
-												src="/img/tech/${bean.fileFileName}" width="600" /></td>
-											<td height="15">${bean.mem_id}</td>
-										</tr>
-										<tr>
-											<td class="td_title" height="30">${bean.tec_title}</td>
-										</tr>
-										<tr>
-
-											<td height="30"><img alt="" src="/img/button/eye.jpg" width="15">
-							&nbsp;&nbsp;${bean.tec_hit }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- 
+											<td style="text-align:right;">
+												${bean.mem_id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<img alt="" src="/img/button/eye.jpg" width="15">${bean.tec_hit }
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${bean.tec_date}
 											</td>
 										</tr>
 										<tr>
+											<td align="center" rowspan="5" style="width: 840px";>
+												<img src="/img/tech/${bean.fileFileName}">
+											</td>
+										</tr>
+										<%-- <tr>
+											<td>${bean.tec_content}</td>
+										</tr> --%>
+
+
+										<%-- 	<td height="30"><img alt="" src="/img/button/eye.jpg" width="15">
+							&nbsp;&nbsp;${bean.tec_hit }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${bean.tec_date}
+											</td> --%>
+
+										<%-- <tr>
+											<td class="td_title" height="30">${bean.tec_title}</td>
+										</tr> --%>
+										<%-- <tr>
 											<td>${bean.tec_content}</td>
 										</tr>
 										<tr>
 											<td><img src="/img/ad.jpg" width="200" /><br></td>
-										</tr>
+										</tr> --%>
 									</tbody>
 								</table>
 
 								<div align="center">
-									<br>
-									<br> <a class="btn_big"
+									<br> <br> <a class="btn_big"
 										href="/tech/techInfo.action?tec_no=${bean.tec_no}&job=modify"><strong>수정</strong></a>
 									<a class="btn_big"
 										href="/tech/techDelete.action?tec_no=${bean.tec_no}"><strong>삭제</strong></a>
@@ -214,24 +228,24 @@
 						</form>
 
 						<c:if test="${list.size()>0 }">
-						<strong class="screen_out">전체 댓글</strong>
-						<c:forEach var="i" items="${list}">
-							<div class="list_cmt" style="width: 800px;">
-								<div class="cmt_body">
-									${i.mem_id}
-									<span class="txt_time">${i.rep_regdate}</span>
-									
-									<p class="txt_desc">${i.rep_content}</p>
+							<strong class="screen_out">전체 댓글</strong>
+							<c:forEach var="i" items="${list}">
+								<div class="list_cmt" style="width: 800px;">
+									<div class="cmt_body">
+										${i.mem_id} <span class="txt_time">${i.rep_regdate}</span>
+
+										<p class="txt_desc">${i.rep_content}</p>
+									</div>
+									<div class="cmt_foot">
+										<%-- <a href="/tech/techReplyModify.action?tec_no=${i.rep_infono}&rep_no=${i.rep_no}&job=modify">수정</a><span class="txt_bar">|</span> --%>
+										<a href="#">수정</a><span class="txt_bar">|</span> <a
+											href="/tech/techReplyDelete.action?tec_no=${i.rep_infono}&rep_no=${i.rep_no}&job=info">삭제</a><span
+											class="txt_bar">
+									</div>
+
 								</div>
-								<div class="cmt_foot"> 
-									<%-- <a href="/tech/techReplyModify.action?tec_no=${i.rep_infono}&rep_no=${i.rep_no}&job=modify">수정</a><span class="txt_bar">|</span> --%>
-									<a href="#">수정</a><span class="txt_bar">|</span>
-									<a href="/tech/techReplyDelete.action?tec_no=${i.rep_infono}&rep_no=${i.rep_no}&job=info">삭제</a><span class="txt_bar">
-								</div>
-								
-							</div>
-						</c:forEach>
-					</c:if>
+							</c:forEach>
+						</c:if>
 					</div>
 					</article>
 					<center>
@@ -260,8 +274,8 @@
 						<ul class="cat">
 							<li><i class="icon-angle-right"></i><a
 								href="javascript:jobSearch(401);">취업박람회</a><span id="j1"></span></li>
-							<li><i class="icon-angle-right"></i><a href="/jsp/jobInfo/tech/techList.jsp">>IT기술동향</a><span
-								id="j2"></span></li>
+							<li><i class="icon-angle-right"></i><a
+								href="/jsp/jobInfo/tech/techList.jsp">>IT기술동향</a><span id="j2"></span></li>
 							<li><i class="icon-angle-right"></i><a
 								href="javascript:jobSearch(403);">취업뉴스</a><span id="j3"></span></li>
 						</ul>

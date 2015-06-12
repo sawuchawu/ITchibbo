@@ -471,7 +471,7 @@ function reset(){
 					</tr>
 					</tbody>
 				</table><br>
-				<center><a href="#" class="btn btn-info">채용공고 자세히 보기</a></center>
+				<center><a href="#" id="info"class="btn btn-info">채용공고 자세히 보기</a></center>
 				</div>
 				<!-- //recruit INFO -->
 				

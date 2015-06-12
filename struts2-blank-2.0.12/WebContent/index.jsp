@@ -15,7 +15,6 @@
 <link href="/css/flexslider.css" rel="stylesheet" />
 <link href="/css/style.css" rel="stylesheet" />
 
-
 <!-- Theme skin -->
 <link href="/skins/default.css" rel="stylesheet" />
 

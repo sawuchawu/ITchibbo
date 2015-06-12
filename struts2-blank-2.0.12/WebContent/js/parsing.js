@@ -211,7 +211,7 @@ function infoPgae(rId){
 			$("td#experience_level").text(experience_level);
 			$("td#edu_lv").text(edu_lv);
 			$("td#salary").text(salary);
-			$("button#info").attr("onclick", "window.open('"+data.url+"', '"+ title+" 채용공고');");
+			$("#info").attr("onclick", "window.open('"+data.url+"', '"+ title+" 채용공고');");
 			
 		}
 

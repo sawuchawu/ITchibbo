@@ -135,39 +135,26 @@ function readURL(input) {
 								<form action="/tech/techModify.action" method="post" name="frm"
 									id="frm" enctype="multipart/form-data">
 									<input type="hidden" name="tec_no" value="${bean.tec_no}">
-									<table class="tbl_type" cellspacing="0">
+									<table  width="800" class="tbl_type" cellspacing="0">
 
 										<tbody>
-											<tr>
-												<td rowspan="10" width="620"><img
-													src="/img/tech/${bean.fileFileName}" id="blah" width="600" /></td>
-												<td height="15"><input type="text" name="mem_id"
-													value="${bean.mem_id}" style="width: 250px;"></td>
-
-
-
+												<tr>
+												<td style="text-align:right;">
+												${bean.mem_id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<img alt="" src="/img/button/eye.jpg" width="15">${bean.tec_hit }
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${bean.tec_date}
+											</td>
 											</tr>
 											<tr>
-												<td class="td_title" height="30" width="100"><input type="text"
-													name="tec_title" value="${bean.tec_title}"
-													style="width: 250px;"></td>
-											</tr>
-											<tr>
-												<td height="30"><img alt="" src="/img/button/eye.jpg" width="15">
-							&nbsp;&nbsp;${bean.tec_hit }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${bean.tec_date}
+												<td class="td_title" height="30">
+													<input type="text" name="tec_title" value="${bean.tec_title}" style="width: 800px;">
 												</td>
-											</tr>
+												</tr>
 											<tr>
-												<td><textarea title="레이블 텍스트" class="i_text" rows="15"
-														cols="65" name="tec_content" id="tec_content" value=""
-														style="width: 250px;"></textarea></td>
-											</tr>
-
-											<tr>
-												<td><img src="/img/ad.jpg" width="200"
-													style="width: 250px;"><br></td>
+												<td>
+													<textarea title="레이블 텍스트" class="i_text" rows="15" cols="65" name="tec_content" id="tec_content" value=""
+														style="width: 800px;"></textarea>
+												</td>
 											</tr>
 
 											<tr>

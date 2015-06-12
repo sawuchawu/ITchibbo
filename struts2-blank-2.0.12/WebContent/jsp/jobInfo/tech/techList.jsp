@@ -209,9 +209,9 @@
 					<div class="widget">
 						<h4 class="widgetheading">취업정보</h4>
 						<ul class="cat">
-							<li><i class="icon-angle-right"></i><a href="javascript:jobSearch(401);">취업박람회</a><span id="j1"></span></li>
+							<li><i class="icon-angle-right"></i><a href="/expo/expoList.action">취업박람회</a><span id="j1"></span></li>
 							<li><i class="icon-angle-right"></i><a href="/tech/techList.action">IT기술동향</a><span id="j2"></span></li>
-							<li><i class="icon-angle-right"></i><a href="javascript:jobSearch(403);">취업뉴스</a><span id="j3"></span></li>
+							<li><i class="icon-angle-right"></i><a href="#">취업뉴스</a><span id="j3"></span></li>
 						</ul>
 					</div>
 					<div class="widget">

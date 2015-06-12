@@ -16,7 +16,7 @@
 	<include file="review.xml"></include>
 	<include file="coverLetter.xml"></include>
 	<include file="portfolio.xml"></include>
-
+	<include file="expo.xml" />
 	<!-- Add packages here -->
 
 </struts>
