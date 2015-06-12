@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!-- jsp 파일 연결 -->
+    <package name="recruit" namespace="/recruit" extends="struts-default">
+        <action name="recruitInsert" class="recruit.action.RecruitInsertAction">
+        	<result name="success" type="dispatcher">
+        		/jsp/recruitInfo/recruit/recruitJsonData.jsp
+        	</result>
+        </action>
+        
+        <!-- <action name="recruiteList" class="recruite.action.RecruiteListAction">
+        	<result name="success">
+        		/jsp/recruitInfo/recruit/recruitList.jsp
+        	</result>
+        </action> -->
+        
+    </package>
+</struts>

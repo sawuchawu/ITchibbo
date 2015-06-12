@@ -45,6 +45,52 @@
 			</result>
 		</action>
 		
+		<action name="memberList" class="action.MemberAction">
+		<result type="dispatcher" name="success">
+		/jsp/login/memAjax.jsp
+		</result>
+		</action>
+		
+		
+		<action name="memInfo" class="action.MemInfoAction">
+			 <result name="info">/jsp/myPage/memInfo.jsp</result>
+			 <result name="modify">/jsp/myPage/memModify.jsp</result> 
+		</action>
+       
+
+        
+       <action name="memModify" class="action.MemModifyAction">
+          <result name="success" type="chain">
+            <param name="actionName">memInfo</param>           
+          </result>
+       </action>
+
+
+		<action name="adminMemList" class="action.MemberAction">
+			<result>/jsp/admin/memList.jsp</result>
+		</action>
+
+
+
+        <action name="adminMemModify" class="action.MemModifyAction">
+        <result name="success" type="redirect">
+           /jsp/admin/memList.jsp
+        </result>
+        </action>
+        
+        <action name="memSignout" class="action.MemSignoutAction">
+        <result name="success" type="redirect">
+           /index.jsp
+        </result>
+        </action>
+        
+        <action name="pwModify" class="action.MempwModifyAction">
+        <result name="success" type="redirect">
+           /jsp/admin/memList.jsp
+        </result>
+        </action>
+        
+          
     </package>
 </struts>
 

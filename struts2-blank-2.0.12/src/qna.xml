@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!-- jsp 파일 연결 -->
+    <package name="qna" namespace="/qna" extends="struts-default">
+
+        <action name="qnaInsert" class="qna.action.qnaInsertAction">
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">qnaList</param>
+        	</result>
+        </action>
+		<action name="qnaList" class="qna.action.qnaListAction">
+			<result>/jsp/community/qna/qnaList.jsp</result>
+		</action>
+		 <action name="qnaInfo" class="qna.action.qnaInfoAction">
+			<result name="info">/jsp/community/qna/qnaInfo.jsp</result>
+			<result name="modify">/jsp/community/qna/qnaModify.jsp</result>
+		</action>
+		<action name="qnaModify" class="qna.action.qnaModifyAction">
+        	<result type="chain">
+        		<param name="actionName">qnaInfo</param>
+        	</result>
+        </action>  
+        <action name="qnaDelete" class="qna.action.qnaDeleteAction">
+ 			<result name="success" type="chain">
+          		<param name="actionName">qnaList</param>
+        	 </result>
+ 		</action>
+ 		
+ 		
+ 		 <action name="qnareplyInsert" class="qna.action.QnareplyInsertAction">
+         <result  type="chain">
+           <param name="actionName">qnaInfo</param>
+         </result>
+       </action>
+       
+      <action name="hit" class="qna.action.qnaHitAction">
+       		<result name="success" type="chain">
+       			<param name="actionName">qnaInfo</param>
+       		</result>
+       </action>
+        
+
+        
+        <action name="qnaReplyDelete" class="qna.action.qnaReplyDeleteAction">
+      	<result name="success" type="chain">
+          		<param name="actionName">qnaInfo</param>
+        	 </result>
+       </action>
+        
+    </package>
+</struts>

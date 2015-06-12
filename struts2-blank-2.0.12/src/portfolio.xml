@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!-- jsp 파일 연결 -->
+    <package name="portfolio" namespace="/portfolio" extends="struts-default">
+    
+        <action name="portfolioInsert" class="portfolio.action.PortfolioInsert">
+        
+        <interceptor-ref name="prepare"/>
+        <interceptor-ref name="modelDriven"/>
+        <interceptor-ref name="fileUpload"/>
+        <interceptor-ref name="params"/>    
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">portfolioList</param>
+        	</result>
+        </action>
+        
+       	<action name="portfolioList" class = "portfolio.action.PortfolioList">
+        	<result name = "success">
+        		/jsp/recruitGuide/portfolio/portfolioList.jsp
+        	</result>
+        	
+        </action>
+        
+        <action name="portfolioInfo" class = "portfolio.action.PortfolioInfo">
+        	<result name = "info" type = "dispatcher">
+        		/jsp/recruitGuide/portfolio/portfolioInfo.jsp
+        	</result>
+        	<result name = "modify">
+        		
+        		/jsp/recruitGuide/portfolio/portfolioModify.jsp
+        		
+        	</result>
+        	
+        </action>
+        
+        <action name="portfolioModify" class = "portfolio.action.PortfolioModify">
+        <interceptor-ref name="prepare"/>
+        <interceptor-ref name="modelDriven"/>
+        <interceptor-ref name="fileUpload"/>
+        <interceptor-ref name="params"/>  
+        	<result name = "success" type = "chain">
+        		<param name="actionName">portfolioInfo</param>
+        	</result>
+        </action>
+        
+        <action name="portfolioDelete" class="portfolio.action.PortfolioDelete">
+	        <result name="success" type = "chain">
+	        	<param name="actionName">portfolioList</param>
+	        </result>
+        </action>
+        
+        <action name="portfolioReplyInsert" class = "reply.action.ReplyInsert">
+        	<result name = "success" type = "chain">
+      			<param name = "actionName">portfolioInfo</param>
+        	</result>
+        </action>
+        
+        <action name = "hit" class = "portfolio.action.DataHitAction">
+        	<interceptor-ref name="params"></interceptor-ref>
+        	<result name="success" type="chain">
+        	<param name="actionName">portfolioInfo</param>
+        </result>
+        
+        </action>
+        
+        <action name = "portfolioSearchJob" class = "portfolio.action.PortfolioSearchJob">
+        	<result name = "success">
+        		/jsp/recruitGuide/portfolio/portfolioSearchJob.jsp
+        		
+        		
+        	</result>
+        </action>
+    </package>
+</struts>

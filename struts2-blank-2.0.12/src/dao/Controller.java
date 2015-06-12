@@ -2,8 +2,10 @@ package dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 
 import bean.MemberBean;
+
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -15,11 +17,19 @@ public class Controller {
 	}
 	
 	
+	public static int selectMf(String id) throws Exception{
+		return (Integer)client.queryForObject("bean.MemberBean.chkMf",id);
+	}
+	
 	public static boolean loginCheck(HashMap<String, String>map)throws Exception{
 		String pw=(String)client.queryForObject("bean.MemberBean.loginCheck", map);
+		String mdf=(String)client.queryForObject("bean.MemberBean.chkMdf", map);
+
 		if(pw!=null&& pw.length()>0){
 			if(pw.equals(map.get("pw"))){
-				return true;
+				if(mdf.equals("1")){
+					return true;
+				}
 			}
 		}
 		return false;
@@ -31,19 +41,19 @@ public class Controller {
 			String PW = (String)client.queryForObject("bean.MemberBean.chkPw", id);
 			
 			/*if(PW.equals(pw)){
-				return 1;		// ·Î±×ÀÎ ¼º°ø
+				return 1;		// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			}else{
-				return 0;		// ºñ¹ø Æ²·ÈÀ» ¶§
+				return 0;		// ï¿½ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			}*/
 			
 			if(ID!=null){
 				if(PW.equals(pw)){
-					return 1;		// ·Î±×ÀÎ ¼º°ø(id, pw ÀÖÀ»¶§)
+					return 1;		// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(id, pw ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 				}else{
-					return 0;		// pw Æ²·ÈÀ» ¶§
+					return 0;		// pw Æ²ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 				}
 			}else{
-				return -1;			// id ¾øÀ» ¶§
+				return -1;			// id ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			}
 			
 		} catch (SQLException e) {
@@ -51,7 +61,7 @@ public class Controller {
 			e.printStackTrace();
 		}
 		
-		return -1;		// ¾ÆÀÌµğ°¡ ¾øÀ» ¶§
+		return -1;		// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	}
 	
 	public static void mem_Signup(MemberBean bean){
@@ -70,4 +80,75 @@ public class Controller {
 			}
 		}
 	}
+	
+	
+	
+	public static List<MemberBean> selectMem() throws Exception{
+		return client.queryForList("bean.MemberBean.selectMem");
+	}
+	
+	
+	//ë§ˆì´í˜ì´ì§€-ìê¸°ì •ë³´ë³´ê¸°
+	public static MemberBean selectMemInfo(String id)throws Exception{
+		return (MemberBean)client.queryForObject("bean.MemberBean.selectMemInfo",id);
+	}
+	
+	public static String selectPw(String id) throws Exception{
+		return (String)client.queryForObject("bean.MemberBean.chkPw",id);
+	}
+	
+	
+	//ë§ˆì´í˜ì´ì§€-ìê¸°ì •ë³´ë³´ê¸°-ì •ë³´ìˆ˜ì •
+	public static void memUpdateData(MemberBean bean){
+		try {
+			client.startTransaction();
+			client.update("bean.MemberBean.memUpdateData",bean);
+			client.commitTransaction();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				client.endTransaction();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	public static void memSignout(MemberBean bean){
+		try {
+			client.startTransaction();
+			client.update("bean.MemberBean.memSignout",bean);
+			client.commitTransaction();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				client.endTransaction();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	public static void memPwUpdate(MemberBean bean){
+		try {
+			client.startTransaction();
+			client.update("bean.MemberBean.memPwUpdate",bean);
+			client.commitTransaction();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				client.endTransaction();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	
 }

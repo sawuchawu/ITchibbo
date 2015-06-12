@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="cov">
+	<typeAlias alias="CovBean" type="cov.bean.CovBean" />
+	<!-- COV_NO MEM_ID COV_TITLE COV_COM COV_CONTENT COV_PRICE COV_JOB COV_DATE 
+		COV_YEAR COV_SPEC COV_PATH -->
+	<insert id="insertCov" parameterClass="CovBean">
+		INSERT INTO COVERLETTER
+		VALUES(
+		COV_NO_SEQ.NEXTVAL,'admin1',#cov_title#,#cov_com#,
+		#cov_content#,#cov_price#,#cov_job#,#cov_date#,#cov_year#,#cov_spec#,#fileFileName#)
+	</insert>
+
+	<select id="selectCov" resultClass="CovBean"> SELECT
+		COV_NO,MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
+		COV_JOB,COV_DATE,COV_YEAR,COV_SPEC,FILEFILENAME FROM COVERLETTER
+	</select>
+
+
+	<select id="selectCovInfo" resultClass="CovBean" >
+		SELECT
+		COV_NO,MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
+		COV_JOB,COV_DATE,COV_YEAR,COV_SPEC,FILEFILENAME
+		FROM
+		COVERLETTER
+		WHERE
+		COV_NO=#VALUE#
+	</select>
+
+	<!-- COV_NO MEM_ID COV_TITLE COV_COM COV_CONTENT COV_PRICE COV_JOB COV_DATE 
+		COV_YEAR COV_SPEC FILEFILENAME -->
+
+	<update id="covUpdateData" parameterClass="CovBean">
+		UPDATE COVERLETTER
+		SET COV_TITLE=#cov_title#,COV_COM=#cov_com#,COV_CONTENT=#cov_content#,
+		COV_PRICE=#cov_price#, COV_JOB=#cov_job#,COV_DATE=#cov_date#,
+		COV_YEAR=#cov_year#,COV_SPEC=#cov_spec#,FILEFILENAME=#fileFileName#
+		WHERE COV_NO=#cov_no#
+
+
+	</update>
+
+	<delete id="deleteCov" >
+		DELETE FROM COVERLETTER
+		WHERE COV_NO=#VALUE#
+	</delete>
+
+</sqlMap>

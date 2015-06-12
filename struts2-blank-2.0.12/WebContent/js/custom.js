@@ -2,7 +2,7 @@
 jQuery(document).ready(function($) {
 "use strict";
 
-	
+		new WOW().init();
 		//add some elements with animate effect
 
 		$(".big-cta").hover(

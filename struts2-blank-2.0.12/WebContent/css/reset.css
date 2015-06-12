@@ -1,0 +1,120 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}
+fieldset,img {border:0 none}
+dl,ul,ol,menu,li {list-style:none}
+blockquote, q {quotes: none}
+blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
+input,select,textarea,button {vertical-align:middle}
+button {border:0 none;background-color:transparent;cursor:pointer}
+body {background:#fff}
+body,th,td,input,select,textarea,button {font-size:12px;line-height:1.5;font-family:'돋움',dotum,sans-serif;color:#333} /* color값은 디자인가이드에 맞게사용 */
+a {color:#333;text-decoration:none}
+a:active, a:hover {text-decoration:underline}
+address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
+
+.img_sample {
+	background: url(http://ui.daum.net/snippet/image?idx=34) no-repeat
+}
+
+.txt_bar {
+	color: #ccc;
+	margin: 0 3px
+}
+
+.cmt_comm {
+	overflow: hidden;
+	width: 100%;
+	padding: 0 20px
+}
+
+.cmt_comm .fld_cmt {
+	overflow: hidden;
+	width: 72%;
+	padding-top: 20px
+}
+
+.cmt_comm .fld_cmt .tf_cmt {
+	width: 600px;
+	height: 57px;
+	padding: 10px;
+	border: 1px solid #c9c9c9
+}
+
+.cmt_comm .fld_cmt .btn_cmt {
+	overflow: hidden;
+	width: 79px;
+	height: 57px;
+	border: 0;
+	text-indent: -9999px;
+	cursor: pointer
+}
+
+.cmt_comm .fld_cmt .info_append {
+	height: 25px;
+	font-size: 11px;
+	line-height: 25px;
+	color: #666;
+	text-align: right
+}
+
+.cmt_comm .fld_cmt .txt_byte {
+	font-weight: bold;
+	color: #17439c
+}
+
+.cmt_comm .list_cmt {
+	overflow: hidden;
+	position: relative;
+	width: 72%;
+	padding: 15px 0;
+	border-bottom: 1px solid #ccc
+}
+
+.cmt_comm .list_cmt .cmt_head {
+	position: absolute;
+	top: 18px;
+	left: 0;
+	width: 100px;
+	height: 50px;
+	margin-right: 15px;
+	background-color: #d88
+}
+
+.cmt_comm .list_cmt .cmt_body {
+	
+}
+
+.cmt_comm .list_cmt .info_append {
+	display: block;
+	height: 20px
+}
+
+.cmt_comm .list_cmt .txt_name {
+	font-weight: bold;
+	color: #888
+}
+
+.cmt_comm .list_cmt .txt_time {
+	
+	color: #b1b1b1
+}
+
+.cmt_comm .list_cmt .txt_desc {
+	font-size: 12px;
+	line-height: 18px
+}
+
+.cmt_comm .list_cmt .link_reply {
+	display: inline-block;
+	margin-top: 5px;
+	font-weight: bold;
+	color: #17439c
+}
+
+.cmt_comm .list_cmt .cmt_foot {
+	overflow: hidden;
+	position: absolute;
+	top: 15px;
+	right: 0;
+	height: 40px;
+	font-size: 11px
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="tech" namespace="/tech" extends="struts-default">
+
+        <action name="techInsert" class="tech.action.TechInsertAction">
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">techList</param>
+        	</result>
+        </action>
+		<action name="techList" class="tech.action.TechListAction">
+			<result name="success">/jsp/jobInfo/tech/techList.jsp</result>
+		</action>
+		<action name="techInfo" class="tech.action.TechInfoAction">
+			<result name="info">/jsp/jobInfo/tech/techInfo.jsp</result>
+			 <result name="modify">/jsp/jobInfo/tech/techModify.jsp</result> 
+		</action>
+       
+        <action name="techModify" class="tech.action.TechModifyAction">
+        <interceptor-ref name="prepare"/>
+        <interceptor-ref name="modelDriven"/>
+        <interceptor-ref name="fileUpload"/>
+        <interceptor-ref name="params"/>
+        	<result type="chain">
+        		<param name="actionName">techInfo</param>
+        	</result>
+        </action>  
+ 		<action name="techDelete" class="tech.action.TechDeleteAction">
+ 			<result name="success" type="chain">
+          		<param name="actionName">techList</param>
+        	 </result>
+ 		</action>
+ 		<action name="techReplyInsert" class="reply.action.ReplyInsertAction">
+ 		 <result name="success" type="chain">
+ 		  <param name="actionName">techInfo</param>
+ 		 </result>
+ 		</action>
+ 		<action name="techReplyDelete" class="reply.action.ReplyDeleteAction">
+      	<result name="success" type="chain">
+          		<param name="actionName">techInfo</param>
+        	 </result>
+       </action>
+      
+      <action name="techHit" class="tech.action.TechHitAction">
+      	<result name="success" type="chain">
+      	 <param name="actionName">techInfo</param>
+      	</result>
+      </action>
+
+    </package>
+</struts>

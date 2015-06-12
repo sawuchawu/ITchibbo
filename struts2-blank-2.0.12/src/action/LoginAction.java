@@ -13,6 +13,17 @@ import dao.Controller;
 public class LoginAction implements Action {
 	private String id;
 	private String pw;
+	private String mf;
+	
+
+
+	public String getMf() {
+		return mf;
+	}
+
+	public void setMf(String mf) {
+		this.mf = mf;
+	}
 
 	public String getId() {
 		return id;
@@ -33,14 +44,17 @@ public class LoginAction implements Action {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		
 		HashMap<String, String>map=new HashMap<String,String>();
 		map.put("id", id);
 		map.put("pw", pw);
+		map.put("mf", mf);
 		
 		if(Controller.loginCheck(map)){
+			mf = Integer.toString(Controller.selectMf(id));
 			HttpSession session=ServletActionContext.getRequest().getSession();
 			session.setAttribute("id", id);
+			session.setAttribute("mf", mf);
+			session.setAttribute("pw", pw);
 			session.setMaxInactiveInterval(60);
 			return SUCCESS;
 		}
@@ -50,11 +64,11 @@ public class LoginAction implements Action {
 		
 		int chk = Controller.chkLogin(id, pw);
 		
-		if(chk==1){				// ·Î±×ÀÎ ¼º°ø
+		if(chk==1){				// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			return "success";
-		}else if(chk==0){		// ºñ¹ø ¿À·ù
+		}else if(chk==0){		// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			return "fail";
-		}else{		// ¾ÆÀÌµð ¾øÀ½
+		}else{		// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 			return "notFound";
 		}*/
 	}

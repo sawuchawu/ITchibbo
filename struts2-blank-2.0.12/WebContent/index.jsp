@@ -38,37 +38,32 @@ function popupJoin(){
 	
 function logProcess(id) {
 	var ids=id;
-	//alert(ids+" "+$("input#lid").val());
-/* 	if(ids==null){
-		$("#log").text('로그인');
-		$("#log").attr("href", "/jsp/login/login.jsp");
-		} else if(ids!=null){
-		$("#log").text('로그아웃');
-		}  */
-	
+
 	if(ids==='dd'&& $("input#lid").val()=='null'){// 로그인해야됨
-	//	alert(1);
 		$("#log").text('로그인');
 		$("#log").attr("href", "/jsp/login/login.jsp");
+		$("#log2").text('회원가입');
+		$("#log2").attr("href", "/jsp/login/signup.jsp");
 	}else{// 로그아웃
-	//	alert(2);
-		$("#log").text('로그아웃');
-		$("#log").attr("href", "/app/logout.action");
+	if($("input#lmf").val()=='0'){
+			$("#adm").text('관리자');
+		}
+		$("#log2").text('로그아웃');
+		$("#log2").attr("href", "/app/logout.action");
+		$("#log").text('마이페이지');
+		$("#log").attr("href", "/app/memInfo.action?mem_id=${id}&job=info");
 	}
 }
-
-$(document).ready(function() {
-});
-	
 </script>
 </head>
 <body onload="logProcess('dd')">
 <!-- <form action="/app/logout.action" method="post"><button type="submit">logout</button></form> -->
 <%-- ${id }
 <%=session.getAttribute("id") %> --%>
-<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
 <div id="wrapper">
 	<!-- start header -->
+	<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
+	<input type="hidden" value="<%=session.getAttribute("mf") %>" id="lmf">
 	<header>
         <div class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -78,53 +73,48 @@ $(document).ready(function() {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.jsp"><font size="13"><span>IT</span>취뽀</font></a>
+                    <a class="navbar-brand" href="/index.jsp"><font size="13"><span>IT</span>취뽀</font></a>
                     <ul class="nav navbar-nav">
                         <li><a href="#" id="log"></a></li> <!-- 로그아웃 바꾸기 -->
-                        <li><a href="/jsp/login/signup.jsp">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
+                        <li><a href="#" id="log2"></a></li> <!-- 마이페이지 바꾸기 -->
                     </ul>
                 </div>
              
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">채용정보 <b class=" icon-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/jsp/recruitInfo/recruit/recruitList.jsp">채용공고</a></li>
-                                <li><a href="components.html">직종별 검색</a></li>
-								<li><a href="pricingbox.html">채용정보 상세검색</a></li>
-                            </ul>
+                            <a href="/jsp/recruitInfo/recruit.jsp" class="dropdown-toggle " >채용공고 <b class=" icon-angle-down"></b></a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업정보 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/expo/expoList.action">취업 박람회</a></li>
-                                <li><a href="components.html">IT기술 동향</a></li>
+                                <li><a href="/tech/techList.action">IT기술 동향</a></li>
 								<li><a href="pricingbox.html">취업 뉴스</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업가이드 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="typography.html">취업 후기</a></li>
-                                <li><a href="components.html">합격 자소서</a></li>
-								<li><a href="pricingbox.html">포트폴리오</a></li>
+                                <li><a href="/review/reviewList.action">취업 후기</a></li>
+                                <li><a href="/cov/covList.action">합격 자소서</a></li>
+								<li><a href="/portfolio/portfolioList.action">포트폴리오</a></li>
 								<li><a href="/jsp/recruitGuide/jobAnalysys.jsp">직무분석</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="typography.html">자유게시판</a></li>
-                                <li><a href="components.html">Q&A</a></li>
+                                <li><a href="/brd/brdList.action">자유게시판</a></li>
+                                <li><a href="/qna/qnaList.action">Q&A</a></li>
                             </ul>
                         </li>
                         <li><a href="/contact/contact.html">CONTACT</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">관리자 <b class=" icon-angle-down"></b></a>
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" id="adm"><b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <!-- <li><a href="/api/saramin.jsp">사람인</a></li> -->
-                                <li><a href="typography.html">회원관리</a></li>
+                                <li><a href="/api/saramin.jsp">사람인</a></li>
+                                <li><a href="/app/adminMemList.action">회원관리</a></li>
                                 <li><a href="components.html">메뉴관리</a></li>
                             </ul>
                         </li>
@@ -148,7 +138,7 @@ $(document).ready(function() {
                     <!-- <h3>Modern Design</h3> 
 					<p>Duis fermentum auctor ligula ac malesuada. Mauris et metus odio, in pulvinar urna</p> 
 					<a href="#" class="btn btn-theme">Learn More</a> -->
-					<p><b>IT직무 채용 및 취업 정보 제공</b></p> 
+					<p>IT직무 채용 및 취업 정보 제공</p> 
                 </div>
               </li>
               <li>
@@ -157,7 +147,7 @@ $(document).ready(function() {
                    <!--  <h3>Fully Responsive</h3> 
 					<p>Sodales neque vitae justo sollicitudin aliquet sit amet diam curabitur sed fermentum.</p> 
 					<a href="#" class="btn btn-theme">Learn More</a> -->
-					<p><b>IT직무 채용공고 일정 관리</b></p>
+					<p>IT직무 채용공고 일정 관리</p>
                 </div>
               </li>
               <li>
@@ -166,7 +156,7 @@ $(document).ready(function() {
                     <!-- <h3>Clean & Fast</h3> 
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit donec mer lacinia.</p> 
 					<a href="#" class="btn btn-theme">Learn More</a> -->
-					<p><b>IT인들만의 커뮤니티 공간</b></p>
+					<p>IT인들만의 커뮤니티 공간</p>
                 </div>
               </li>
             </ul>

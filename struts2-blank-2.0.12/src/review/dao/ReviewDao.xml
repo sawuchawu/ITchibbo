@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="review">
+	<typeAlias alias="ReviewBean" type="review.bean.ReviewBean" />
+
+	<insert id="insertReview" parameterClass="ReviewBean">
+	INSERT INTO REVIEW (REV_NO,MEM_ID,REV_TITLE,REV_COM,REV_JOB,REV_YEAR,REV_CAREER,REV_CONTENT)
+	VALUES(REVIEW_SEQ.NEXTVAL,#mem_id#,#rev_title#,#rev_com#,#rev_job#,#rev_year#,#rev_career#,#rev_content#)
+	</insert>
+	
+<!--  	<select id="selectReview" resultClass="ReviewBean" > 
+ 	SELECT
+ 	REV_NO,MEM_ID,TO_CHAR(REV_YEAR,'YYYY')||' '||REV_COM||' '||REV_JOB REV_TITLE,
+ 	REV_COM,REV_JOB,REV_YEAR,REV_CAREER,REV_CONTENT,TO_CHAR(REV_DATE,'YYYY-MM-DD') REV_DATE
+	FROM REVIEW
+	</select> -->
+	
+	<select  id="selectReview"
+		resultClass="ReviewBean" parameterClass="java.util.HashMap"> 
+		SELECT RM,REV_NO,MEM_ID,REV_TITLE,REV_COM,REV_JOB,REV_YEAR,REV_CAREER,REV_CONTENT,
+        REV_DATE,REV_HIT
+        FROM(
+        SELECT ROWNUM RM,REV_NO,MEM_ID,REV_TITLE,REV_COM,REV_JOB,REV_YEAR,REV_CAREER,REV_CONTENT,
+        REV_DATE,REV_HIT
+        FROM(
+        SELECT REV_NO,MEM_ID,TO_CHAR(REV_YEAR,'YYYY')||' '||REV_COM||' '||REV_JOB REV_TITLE,
+ 		REV_COM,REV_JOB,REV_YEAR,REV_CAREER,REV_CONTENT,TO_CHAR(REV_DATE,'YYYY-MM-DD') REV_DATE,REV_HIT
+        FROM REVIEW
+        ORDER BY REV_NO DESC))
+        WHERE RM BETWEEN #start# AND #end#
+	</select>
+	
+	
+	 <select id="selectReviewInfo" resultClass="ReviewBean"
+		parameterClass="java.lang.Integer">
+		SELECT 
+		REV_NO,MEM_ID,TO_CHAR(REV_YEAR,'YYYY')||' '||REV_COM||' '||REV_JOB REV_TITLE,
+ 	REV_COM,REV_JOB,REV_YEAR,REV_CAREER,REV_CONTENT
+		FROM REVIEW
+		WHERE REV_NO=#VALUE#
+	</select>
+	
+	<update id="ReviewUpdateData" parameterClass="ReviewBean">
+		 UPDATE REVIEW 
+		 SET REV_TITLE=#rev_title#,REV_COM=#rev_com#,REV_JOB=#rev_job#,REV_YEAR=#rev_year#,
+		 REV_CAREER=#rev_career#,REV_CONTENT=#rev_content#
+		 WHERE REV_NO=#rev_no# 
+	</update>
+	
+	
+	<delete id="deleteData" parameterClass="java.lang.Integer">
+	  DELETE FROM REVIEW
+	  WHERE REV_NO=#VALUE#
+	</delete>
+	
+	<update id="updateRevHit" parameterClass="Integer">
+	UPDATE REVIEW SET REV_HIT=REV_HIT+1
+	 WHERE REV_NO=#rev_no#
+	</update>
+	
+	<select id="selectReply" parameterClass="Integer" resultClass="reply.bean.ReplyBean">
+		SELECT REP_NO,MEM_ID,REP_CONTENT,TO_CHAR(REP_REGDATE,'YYYY/MM/DD') REP_REGDATE,REP_INFONO,REP_REF,REP_PNUM,
+			REP_STEP,REP_REPLY,REP_JOB,REP_FLAG	
+		FROM REPLYBOARD
+		WHERE REP_INFONO=#VALUE#
+		ORDER BY REP_REF DESC,REP_NO ASC
+		
+	</select>
+	
+	<select id="getTotalRow" resultClass="java.lang.Integer">
+	 SELECT COUNT(*) FROM REVIEW
+	</select>
+	
+	<delete id="deleteReply" parameterClass="java.lang.Integer">
+	  DELETE FROM REPLYBOARD
+	  WHERE REP_NO=#VALUE#
+	</delete>
+	
+		<select id="getSequence" resultClass="Integer">
+		SELECT REPLYBOARD_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+		<insert id="insertReply" parameterClass="reply.bean.ReplyBean">
+		INSERT INTO REPLYBOARD VALUES(#rep_no#,#mem_id#,#rep_content#,SYSDATE,
+			#rep_infono#,#rep_ref#,#rep_pnum#,#rep_step#,0,#rep_job#,3)
+	</insert>
+</sqlMap>
+
+
+
+
+
+
+
+
+
+
+

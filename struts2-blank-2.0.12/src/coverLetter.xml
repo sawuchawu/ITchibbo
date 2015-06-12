@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!-- jsp 파일 연결 -->
+    <package name="cov" namespace="/cov" extends="struts-default">
+
+        <action name="covInsert" class="cov.action.covInsertAction">
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">covList</param>
+        	</result>
+        </action>
+		<action name="covList" class="cov.action.covListAction">
+			<result>/jsp/recruitGuide/coverLetter/covList.jsp</result>
+		</action>
+		
+		<action name="covInfo" class="cov.action.covInfoAction">
+			<result name="info">/jsp/recruitGuide/coverLetter/covInfo.jsp</result>
+			 <result name="modify">/jsp/recruitGuide/coverLetter/covModify.jsp</result> 
+		</action>
+       
+       
+        <action name="covModify" class="cov.action.covModifyAction">
+        	<result type="chain">
+        		<param name="actionName">covInfo</param>
+        	</result>
+        </action>  
+
+ 		<action name="covDelete" class="cov.action.covDeleteAction">
+ 			<result name="success" type="chain">
+          		<param name="actionName">covList</param>
+        	 </result>
+ 		</action> 
+ 		
+      <action name="scrapAdd" class="mypage.action.ScrapAddAction">
+         <result>/jsp/myPage/scrapList.jsp</result>
+       </action>  
+       
+       <action name="deleteScrap" class="mypage.action.ScrapDeleteAction">
+         <result name="success" type="redirect">/jsp/myPage/scrapList.jsp</result>
+         <result name="empty" type="redirectAction">
+          <param name="actionName">covList</param>
+         </result>
+       </action>   
+		 
+    </package>
+</struts>

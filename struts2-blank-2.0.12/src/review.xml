@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!-- jsp 파일 연결 -->
+    <package name="review" namespace="/review" extends="struts-default">
+
+        <action name="reviewInsert" class="review.action.ReviewInsertAction">
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">reviewList</param>
+        	</result>
+        </action>
+
+		<action name="reviewList" class="review.action.ReviewListAction">
+			<result>/jsp/recruitGuide/review/reviewList.jsp</result>
+		</action>
+		
+		<action name="reviewInfo" class="review.action.ReviewInfoAction">
+			<result name="info">/jsp/recruitGuide/review/reviewInfo.jsp</result>
+			<result name="modify">/jsp/recruitGuide/review/reviewModify.jsp</result> 
+		</action>
+		
+       
+         <action name="reviewModify" class="review.action.ReviewModifyAction">
+        	<result type="chain">
+        		<param name="actionName">reviewInfo</param>
+        	</result>
+        </action>  
+        
+ 		<action name="reviewDelete" class="review.action.reviewDeleteAction">
+ 			<result name="success" type="chain">
+          		<param name="actionName">reviewList</param>
+        	 </result>
+ 		</action>
+ 		
+ 		
+ 		
+     	<action name="revReplyInsert" class="review.action.RevReplyInsertAction">
+         <result  type="chain">
+           <param name="actionName">reviewInfo</param>
+         </result>
+       </action>
+       
+      <action name="hit" class="review.action.RevHitAction">
+       		<result name="success" type="chain">
+       			<param name="actionName">reviewInfo</param>
+       		</result>
+       </action>
+        
+
+        
+        <action name="revReplyDelete" class="review.action.RevReplyDeleteAction">
+      	<result name="success" type="chain">
+          		<param name="actionName">reviewInfo</param>
+        	 </result>
+       </action>
+       
+    </package>
+    
+    
+
+</struts>

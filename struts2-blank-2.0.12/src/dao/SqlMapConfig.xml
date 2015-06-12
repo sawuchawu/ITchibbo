@@ -15,7 +15,13 @@
     </dataSource>
   </transactionManager>  
   <sqlMap resource="/dao/Data.xml"/>  
-  <sqlMap resource="/expo/dao/ExpoDao.xml"/>
+  <sqlMap resource="/tech/dao/TechDao.xml"/>
+  <sqlMap resource="/qna/dao/QnaDao.xml" /> 
+  <sqlMap resource="/brd/dao/BrdDao.xml" /> 
+  <sqlMap resource="/review/dao/ReviewDao.xml" /> 
+  <sqlMap resource="/cov/dao/CovDao.xml" /> 
+  <sqlMap resource="/portfolio/dao/PortfolioDao.xml" /> 
+  <!-- <sqlMap resource="/expo/dao/ExpoDao.xml"/> -->
 	
 </sqlMapConfig>
 

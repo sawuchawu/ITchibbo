@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!-- jsp 파일 연결 -->
+    <package name="brd" namespace="/brd" extends="struts-default">
+
+        <action name="brdInsert" class="brd.action.brdInsertAction">
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">brdList</param>
+        	</result>
+        </action>
+		<action name="brdList" class="brd.action.brdListAction">
+			<result>/jsp/community/board/boardList.jsp</result>
+		</action>
+		 <action name="brdInfo" class="brd.action.brdInfoAction">
+			<result name="info">/jsp/community/board/boardInfo.jsp</result>
+			<result name="modify">/jsp/community/board/boardModify.jsp</result>
+		</action>
+		<action name="brdModify" class="brd.action.brdModifyAction">
+        	<result type="chain">
+        		<param name="actionName">brdInfo</param>
+        	</result>
+        </action>  
+       
+        <action name="brdDelete" class="brd.action.brdDeleteAction">
+ 			<result name="success" type="chain">
+          		<param name="actionName">brdList</param>
+        	 </result>
+ 		</action> 
+        
+         <action name="brdreplyInsert" class="brd.action.brdreplyInsertAction">
+         <result  type="chain">
+           <param name="actionName">brdInfo</param>
+         </result>
+       </action>
+       
+   
+       
+        <action name="hit" class="brd.action.brdHitAction">
+       		<result name="success" type="chain">
+       			<param name="actionName">brdInfo</param>
+       		</result>
+       </action>
+
+        <action name="brdReplyDelete" class="brd.action.brdReplyDeleteAction">
+      	<result name="success" type="chain">
+          		<param name="actionName">brdInfo</param>
+        	 </result>
+       </action>
+        
+    </package>
+</struts>

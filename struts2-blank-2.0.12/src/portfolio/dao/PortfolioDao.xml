@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="portfolio">
+	<typeAlias alias="portfolioData" type="portfolio.bean.PortfolioBean" />
+		<insert id = "insertPortfolio" parameterClass="portfolioData">
+			INSERT INTO PORTFOLIO VALUES(
+			PORTFOLIO_SEQ.NEXTVAL,'admin2', #por_title#,#por_job#,#por_content#,#pdfFileName#,#imgFileName#, SYSDATE, 0, 0) 	
+		</insert>
+			
+		
+		
+		
+		
+		<select id = "selectPortfolioInfo" resultClass = "portfolioData" parameterClass = "java.lang.Integer">
+			SELECT POR_NO,MEM_ID,POR_TITLE,POR_JOB,POR_CONTENT,PDFFILENAME,IMGFILENAME, TO_CHAR(POR_REGDATE, 'YYYY/MM/DD')POR_REGDATE, POR_HIT
+			FROM PORTFOLIO
+			WHERE POR_NO = #VALUE#
+		</select>
+		
+		<update id = "updatePortfolio" parameterClass = "portfolioData">
+			UPDATE PORTFOLIO SET POR_TITLE=#por_title#, POR_JOB=#por_job#, 
+			POR_CONTENT=#por_content#, PDFFILENAME=#pdfFileName#, IMGFILENAME=#imgFileName#, POR_REGDATE=SYSDATE
+			WHERE POR_NO = #por_no#
+			
+		</update>
+		
+		<delete id = "deletePortfolio" parameterClass="java.lang.Integer">
+			DELETE FROM PORTFOLIO 
+			WHERE POR_NO = #VALUE# 
+		</delete>
+		
+		<select id = "getTotalRow" resultClass = "java.lang.Integer">
+			SELECT COUNT(*) FROM PORTFOLIO
+		</select> 
+		
+		<select id="selectPortfolio" resultClass="portfolioData" parameterClass="java.util.HashMap">
+			SELECT POR_NO,MEM_ID,POR_TITLE,POR_JOB,POR_CONTENT,PDFFILENAME,IMGFILENAME,POR_REGDATE
+			FROM(
+			SELECT ROWNUM RM, POR_NO,MEM_ID,POR_TITLE,POR_JOB,POR_CONTENT,PDFFILENAME,IMGFILENAME,POR_REGDATE
+			FROM(
+			SELECT POR_NO,MEM_ID,POR_TITLE,POR_JOB,POR_CONTENT,PDFFILENAME,IMGFILENAME,
+			       TO_CHAR(POR_REGDATE, 'YYYY/MM/DD')POR_REGDATE
+			FROM PORTFOLIO
+			ORDER BY POR_NO DESC))
+			WHERE RM BETWEEN #start# AND #end#
+		</select>
+		
+		<select id = "getSequence" resultClass = "java.lang.Integer">
+			SELECT REPLYPORTFOLIO_SEQ.NEXTVAL FROM DUAL
+		</select>
+		
+		<insert id = "insertReply" parameterClass="reply.bean.ReplyBean">
+			INSERT INTO REPLYBOARD VALUES(
+				#rep_no#, 'admin2', #rep_content#, SYSDATE, #rep_infono#, #rep_ref#, #rep_pnum#, #rep_step#, #rep_reply#, #rep_job#, #rep_flag#
+			)
+			
+		
+		</insert>
+		
+		<select id="selectPortfolioReply" resultClass = "reply.bean.ReplyBean" parameterClass = "java.lang.Integer">
+			SELECT REP_NO, MEM_ID, REP_CONTENT, REP_REGDATE, REP_INFONO, REP_REF, REP_PNUM, REP_STEP, REP_REPLY
+			FROM REPLYBOARD
+			WHERE REP_INFONO = #VALUE#
+			ORDER BY REP_REF DESC, REP_NO ASC
+		</select>
+		
+		<update id = "updateHit" parameterClass="java.lang.Integer">
+			UPDATE PORTFOLIO SET POR_HIT=POR_HIT+1
+			WHERE POR_NO = #VALUE#
+		</update>
+		
+		<select id = "selectPortfolioSearchJob" resultClass = "portfolioData" parameterClass="java.lang.String">
+			SELECT POR_NO,MEM_ID,POR_TITLE,POR_JOB,POR_CONTENT,PDFFILENAME,IMGFILENAME,POR_REGDATE,POR_HIT
+			FROM PORTFOLIO	
+			WHERE POR_JOB = #VALUE#
+		</select>
+</sqlMap>

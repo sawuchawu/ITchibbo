@@ -11,7 +11,15 @@
 	</select>
 	
 	<select id="chkPw" resultClass="String" parameterClass="String">
-		select MEM_PW from MEMBER where MEM_ID='$MEM_ID$'	
+		select MEM_PW from MEMBER where MEM_ID='$id$'	
+	</select>
+	
+	<select id="chkMf" parameterClass="String" resultClass="java.lang.Integer">
+		select MEM_FLAG from MEMBER where MEM_ID='$VALUE$'	
+	</select>
+	
+	<select id="chkMdf" parameterClass="java.util.HashMap" resultClass="java.lang.String">
+		select MEM_D_FLAG from MEMBER where MEM_ID='$id$'	
 	</select>
 	
 	<select id="loginCheck" parameterClass="java.util.HashMap" resultClass="java.lang.String">
@@ -19,10 +27,48 @@
 		WHERE MEM_ID=#id#
 	</select>
 	
+	
+	
+	
 	<insert id="mem_Signup" parameterClass="bean.MemberBean">
 	INSERT INTO MEMBER(MEM_ID,MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE) 
 	VALUES(#mem_id#,#mem_pw#,#mem_name#,#mem_email#,#mem_phone#)
 	</insert>
+	
+	
+	  <select id="selectMem" resultClass="bean.MemberBean">
+  		SELECT MEM_ID,MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE
+  		FROM MEMBER
+  	</select>
+  	
+  		<!-- 마이페이지-자기정보보기 -->
+	<select id="selectMemInfo" resultClass="bean.MemberBean" parameterClass="java.lang.String">
+  		SELECT MEM_ID,MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE
+  		FROM MEMBER	
+		WHERE
+		MEM_ID=#VALUE#
+	</select>
+	
+	
+	<!-- 마이페이지-정보보기-정보수정 -->
+	<update id="memUpdateData" parameterClass="bean.MemberBean">
+		 UPDATE MEMBER 
+		 SET MEM_ID=#mem_id#,MEM_PW=#mem_pw#, 
+		 	MEM_NAME=#mem_name#,MEM_EMAIL=#mem_email#,MEM_PHONE=#mem_phone#
+		 	WHERE MEM_ID=#mem_id# 
+	</update>
+	
+	<update id="memSignout" parameterClass="bean.MemberBean">
+		UPDATE MEMBER 
+		SET MEM_D_FLAG=0
+		WHERE MEM_ID=#mem_id# 
+	</update>
+	
+	<update id="memPwUpdate" parameterClass="bean.MemberBean">
+		 UPDATE MEMBER 
+		 SET MEM_PW=#mem_pw#
+		 WHERE MEM_ID=#mem_id# 
+	</update>
 	
 </sqlMap>
 
