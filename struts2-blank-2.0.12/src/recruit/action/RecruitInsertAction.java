@@ -37,7 +37,7 @@ public class RecruitInsertAction implements Action {
 		System.out.println("[gson]recruitJson="+recruitJson);
 		
 		System.out.println("bean="+recruitJson);
-		System.out.println(recruitJson.getTitle());
+		//System.out.println(recruitJson.getTitle());
 		//System.out.println("[JSONObject]"+jsonObject);
 		
 		//System.out.println(jsonData.);

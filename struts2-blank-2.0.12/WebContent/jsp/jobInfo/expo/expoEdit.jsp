@@ -28,6 +28,7 @@
     
 <link href="/css/portfolioEdit.css" rel="stylesheet" />
 <script type="text/javascript" src="/js/jquery-2.0.0.js" charset = "EUC-KR"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 /* 이미지 미리보기 */
         function readURL(input) {

@@ -53,7 +53,7 @@
 		
 		
 		<action name="memInfo" class="action.MemInfoAction">
-			 <result name="info">/jsp/myPage/memInfo.jsp</result>
+			<result name="info">/jsp/myPage/memInfo.jsp</result>
 			 <result name="modify">/jsp/myPage/memModify.jsp</result> 
 		</action>
        
@@ -85,10 +85,14 @@
         </action>
         
         <action name="pwModify" class="action.MempwModifyAction">
-        <result name="success" type="redirect">
-           /jsp/admin/memList.jsp
+        <result name="success" type="chain">
+           <param name="actionName">adMemList</param>
         </result>
         </action>
+        
+        <action name="adMemList" class="action.adMemListAction">
+			<result>/jsp/admin/memList.jsp</result>
+		</action>
         
           
     </package>

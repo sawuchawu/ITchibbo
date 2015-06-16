@@ -68,6 +68,12 @@ function reset(){
 	var keywords = $("input#keywords").val("");
 }
 
+// 스크랩
+function bookmark(){
+	var jsonRec = {"rec_id" : title , "rec_title" : job_type, "rec_job" : salary, "rec_fdate":expiration};
+	
+}
+
 </script>
 
 
@@ -433,11 +439,14 @@ function reset(){
 					<tr>
 						<td><span id="title" style="font-size: 16px; font-weight: bold; word-spacing:5px"></span></td>
 						<td></td>
-						<td><a href="#" class="btn btn-info">스크랩</a></td>
+						<td><a href="javascript:bookmark();" class="btn btn-info">스크랩</a></td>
 					</tr>
 					<tr><td height="8"></td></tr>
 				</table>
 				<table cellspacing="0" border="1" class="tbl_type1">
+					<input type="hidden" id="" value/>	<!-- 채용id -->
+					<input type="hidden" id="" value/>	<!-- 시작일 -->
+					
 					<colgroup>
 						<col width="60"><col width="170"><col width="60"><col width="170">
 					</colgroup>

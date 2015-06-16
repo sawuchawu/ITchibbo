@@ -1,71 +1,81 @@
-package cov.action;
+package action;
 
 import java.util.HashMap;
 import java.util.List;
 
+import bean.MemberBean;
 
 import com.opensymphony.xwork2.Action;
 
-import cov.bean.CovBean;
-import cov.dao.CovDao;
+import dao.Controller;
 
-public class covListAction implements Action {
-	private List<CovBean> list;
+public class adMemListAction implements Action{
+
+	
+	private List<MemberBean> list;
 	private int currentPage = 1;
 	private int start;
 	private int end;
 	private StringBuffer sb = new StringBuffer();
+	
+	
+	public List<MemberBean> getList() {
+		return list;
+	}
 
-	
-	
+
+	public void setList(List<MemberBean> list) {
+		this.list = list;
+	}
+
+
 	public int getCurrentPage() {
 		return currentPage;
 	}
+
 
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
 
+
 	public int getStart() {
 		return start;
 	}
+
 
 	public void setStart(int start) {
 		this.start = start;
 	}
 
+
 	public int getEnd() {
 		return end;
 	}
+
 
 	public void setEnd(int end) {
 		this.end = end;
 	}
 
+
 	public StringBuffer getSb() {
 		return sb;
 	}
+
 
 	public void setSb(StringBuffer sb) {
 		this.sb = sb;
 	}
 
-	public List<CovBean> getList() {
-		return list;
-	}
-
-	public void setList(List<CovBean> list) {
-		this.list = list;
-	}
-	
 	public void paging() {
 		try {
 			// paging
-			int pageScale = 3;// tuple or page NumberCount
+			int pageScale = 10;// tuple or page NumberCount
 			int totalRow = 1;
-			totalRow = CovDao.getTotalRow();
+			totalRow = Controller.getTotalRow();
 
-			System.out.println("covtotalRow  :  " + totalRow);
+			System.out.println("totalRow  :  " + totalRow);
 
 			int totalPage = totalRow % pageScale == 0 ? (totalRow / pageScale)
 					: (totalRow / pageScale) + 1;
@@ -83,9 +93,9 @@ public class covListAction implements Action {
 				endPage = totalPage;
 			}
 	        
-			sb.append("<a href='/cov/covList.action?currentPage=1'><img src='/img/button/btn_first.gif'/></a>&nbsp;&nbsp;&nbsp;");
+			sb.append("<a href='/app/adMemList.action?currentPage=1'><img src='/img/button/btn_first.gif'/></a>&nbsp;&nbsp;&nbsp;");
 			if (block > 1) {
-				sb.append("<a href='/cov/covList.action?currentPage="
+				sb.append("<a href='/app/adMemList.action?currentPage="
 						+ (startPage - 1)
 						+ "'><img src='/img/button/btn_prev.gif'/></a>&nbsp;&nbsp;&nbsp;");
 			} else {
@@ -96,18 +106,18 @@ public class covListAction implements Action {
 				if (currentPage == i) {
 					sb.append("<font size=4 color=blue>[" + i + "]</font>&nbsp;&nbsp;&nbsp;");
 				} else {
-					sb.append("<a href='/cov/covList.action?currentPage=" + i
+					sb.append("<a href='/app/adMemList.action?currentPage=" + i
 							+ "'>[" + i + "]</a>&nbsp;&nbsp;&nbsp;");
 				}
 			}
 			sb.append("</span>");
 			if (endPage < totalPage)
-				sb.append("<a href='/cov/covList.action?currentPage="
+				sb.append("<a href='/app/adMemList.action?currentPage="
 						+ (endPage + 1)
 						+ "'><img src='/img/button/btn_next.gif'/></a>&nbsp;&nbsp;&nbsp;");
 			else
 				sb.append("<a href='#'><img src='/img/button/btn_next.gif'/></a>&nbsp;&nbsp;&nbsp;");
-			sb.append("<a href='/cov/covList.action?currentPage=" + totalPage
+			sb.append("<a href='/app/adMemList.action?currentPage=" + totalPage
 					+ "'><img src='/img/button/btn_last.gif'/></a>");
 
 		} catch (Exception e) {
@@ -115,14 +125,14 @@ public class covListAction implements Action {
 		}
 	}
 
-	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		paging();
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		map.put("start", start);
 		map.put("end", end);
-		list = CovDao.selectCov(map);
+		list=Controller.adSelectMem(map);
 		return SUCCESS;
 	}
+	
 }

@@ -70,6 +70,18 @@
 		 WHERE MEM_ID=#mem_id# 
 	</update>
 	
+	<select id="adSelectMem" resultClass="bean.MemberBean" parameterClass="java.util.HashMap">
+		SELECT RM,RM,MEM_ID,MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE
+        FROM(
+        SELECT ROWNUM RM,MEM_ID,MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE,MEM_FLAG,MEM_D_FLAG
+        FROM MEMBER
+		WHERE MEM_FLAG='1' AND MEM_D_FLAG='1')
+        WHERE RM BETWEEN #start# AND #end#
+	</select>
+	
+	<select id="getTotalRow" resultClass="java.lang.Integer">
+	 SELECT COUNT(*) FROM MEMBER
+	</select>
 </sqlMap>
 
 

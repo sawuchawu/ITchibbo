@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!-- <html lang="en"> -->
 <html>
 <head>
@@ -18,8 +19,9 @@
 <link href="/css/recruitList.css" rel="stylesheet" />
 <link href="/css/button.css" rel="stylesheet" />
 <link href="/css/finallist.css" rel="stylesheet" />
+<link href="/css/finallist.css" rel="stylesheet" />
+<link href="/css/button.css" rel="stylesheet" />
 <script type="text/javascript" src="/js/jquery-2.0.0.js"></script>
-<script type="text/javascript" src="/js/paging.js"></script>
 <script type="text/javascript" src="/js/xdomainajax.js"></script>
 <script type="text/javascript" src="/js/xml2json.js"></script>
 <script type="text/javascript" src="/js/calcDate.js"></script>
@@ -37,62 +39,20 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.js"></script>
 <script type="text/javascript">
 
- function showList(){
-		var temp="";
-		$.ajax(
-				{
-					url:"/app/memberList.action",
-					type:"get",
-					dataType:"json",
-					success:function(data){
-						var c=0;
-						$.each(data,function(i,dom){
-					    	temp+="<tr><td>"+dom.mem_id+"</td><td id=\"tdpw\"><input class=\"i_text\" readonly=\"readonly\" style=\"border: 0px;text-align: center;\" type=\"text\" size=\"10\" id="
-					    	+dom.mem_id+" value="+dom.mem_pw+"></td><td>"+dom.mem_name+"</td><td>"+dom.mem_email+"</td><td>"
-					    	+dom.mem_phone+"</td><td><a class=\"btn_big\" href=\"#\" id="+dom.mem_id
-					    	+" onclick=\"memModi('"+dom.mem_id+"')\"><strong>수정</strong></a></td></tr>";
-							
-						});
-				           $("#showtable").html(temp);
-				           alert($('tbody tr').length);
-				           //printListPaging();
-					}
-		});
- }
+
  
  function memModi(val){
 		var mem_id = val;
 		var mem_pw = $("input#"+mem_id).val();
-		// alert($("#mempass").text());
-		// alert(memId);
-		 //alert($("#mem_pw"+memId+"").attr("type"));
-		// alert($("#mempass"+memId+"").text());
-		 //alert(dom.mem_id);
-		 //alert('수정');
-		 //alert($("#tdpw").children().attr("id"));
-		 //alert(memId);
-		//alert($("a#"+memId).attr("href"));
+
 		 $("input#"+mem_id).removeAttr("readonly");
 		 $("input#"+mem_id).attr("style","text-align: center;");
 		 $("a#"+mem_id).children().text('저장');
 		 $("a#"+mem_id).attr("onclick","memModi2('"+mem_id+"')");
-		// alert($("a#"+mem_id).attr("onclick"));
-//		$("a#"+mem_id).attr("href","/index.jsp");
 
-		// $("a#"+mem_id).attr("href","/mem_id="+mem_id+"&mem_pw="+mem_pw);
-		 
-		// $("#mem_pw"+memId).val($("#mempass"+memId).text());
-		 //alert('ddd'+$("#mempass"+memId).text(' '));	
-		 
-/* 		 if($("#mid").text()==memId){
-		 $("#mem_pw"+memId+"").attr("type","text");
-		 $("#mempass"+memId+"").text('');
-		 } */
-		 //<input class="i_text" type="text" size="50" id="mem_pw" name="mem_pw" value="">
  }
  function memModi2(val){
 		var mem_id = val;
-	//	alert(val);
 		var mem_pw = $("input#"+val).val();
 		$("a#"+mem_id).attr("href","/app/pwModify.action?mem_id="+mem_id+"&mem_pw="+mem_pw);
  }
@@ -108,9 +68,9 @@
     <![endif]-->
 
 </head>
-<body onload="showList()">
+<body>
 <div id="wrapper">
-	<!-- start header -->
+<!-- start header -->
 	<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
 	<input type="hidden" value="<%=session.getAttribute("mf") %>" id="lmf">
 	<header>
@@ -163,7 +123,7 @@
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" id="adm"><b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/api/saramin.jsp">사람인</a></li>
-                                <li><a href="/app/adminMemList.action">회원관리</a></li>
+                                <li><a href="/app/adMemList.action">회원관리</a></li>
                                 <li><a href="components.html">메뉴관리</a></li>
                             </ul>
                         </li>
@@ -193,35 +153,51 @@
 						<div class="post-image">
 							<div class="post-heading">
 								
+<h4>회원관리</h4>
 								
-								
-								
-
-<!-- UI Object -->
 <table class="tbl_type" border="1" cellspacing="0" summary="게시판의 글제목 리스트">
 <caption>게시판 리스트</caption>
 <colgroup>
 <col>
 <col width="250">
 </colgroup>
-<thead >
+<thead>
 <tr>
-
-
 <th scope="col">아이디</th>
 <th scope="col">비밀번호</th>
 <th scope="col">이름</th>
 <th scope="col">이메일</th>
 <th scope="col">핸드폰</th>
 <th scope="col">수정</th>
+
 </tr>
 </thead>
-<tbody id="showtable">
+<tbody>
+<c:forEach var="i" items="${list}" varStatus="cnt">
+<tr>
 
+<td>${i.mem_id}</td>
+<td><input class="i_text" readonly="readonly" style="border: 0px;text-align: center;" type="text" size="10" 
+id="${i.mem_id}" value="${i.mem_pw}"></td>
+<td>${i.mem_name}</td>
+<td>${i.mem_email}</td>
+<td>${i.mem_phone}</td>
+<td><a class="btn_big" href="#" id="${i.mem_id}" onclick="memModi('${i.mem_id}')"><strong>수정</strong></a></td>
+
+</tr>
+</c:forEach>
 </tbody>
 </table>
+<!-- //UI Object -->
 
+					<div class="row">
+						<br>
+						<div>
 
+							<div class="paging" align="center">${sb}</div>
+						</div>
+
+					</div>
 								
 								
 								
@@ -257,9 +233,10 @@
 				<div class="widget">
 					<h4 class="widgetheading">관리자</h4>
 					<ul class="cat">
-						<li><i class="icon-angle-right"></i><a href="#">사람인</a></li>
-						<li><i class="icon-angle-right"></i><a href="/app/adminMemList.action">회원관리</a></li>
+						<li><i class="icon-angle-right"></i><a href="#">캘린더</a></li>
+						<li><i class="icon-angle-right"></i><a href="/app/adMemList.action">회원관리</a></li>
 						<li><i class="icon-angle-right"></i><a href="#">메뉴관리</a></li>
+
 					</ul>
 				</div>
 

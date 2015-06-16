@@ -113,7 +113,7 @@ function logProcess(id) {
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" id="adm"><b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/api/saramin.jsp">사람인</a></li>
-                                <li><a href="/app/adminMemList.action">회원관리</a></li>
+                                <li><a href="/app/adMemList.action">회원관리</a></li>
                                 <li><a href="components.html">메뉴관리</a></li>
                             </ul>
                         </li>
@@ -252,7 +252,7 @@ function logProcess(id) {
 								<i class="fa fa-pagelines fa-3x"></i>
 								</div>
 								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+								기술동향1
 								</p>
 									
 							</div>

@@ -8,15 +8,30 @@
 	<!-- COV_NO MEM_ID COV_TITLE COV_COM COV_CONTENT COV_PRICE COV_JOB COV_DATE 
 		COV_YEAR COV_SPEC COV_PATH -->
 	<insert id="insertCov" parameterClass="CovBean">
-		INSERT INTO COVERLETTER
-		VALUES(
-		COV_NO_SEQ.NEXTVAL,'admin1',#cov_title#,#cov_com#,
-		#cov_content#,#cov_price#,#cov_job#,#cov_date#,#cov_year#,#cov_spec#,#fileFileName#)
+		INSERT INTO COVERLETTER (COV_NO,MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
+		COV_JOB,COV_YEAR,COV_SPEC,FILEFILENAME,COV_DATE)
+		VALUES(COV_NO_SEQ.NEXTVAL,#mem_id#,#cov_title#,#cov_com#,
+		#cov_content#,#cov_price#,#cov_job#,#cov_year#,#cov_spec#,#fileFileName#,SYSDATE)
 	</insert>
 
-	<select id="selectCov" resultClass="CovBean"> SELECT
-		COV_NO,MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
+
+	<select id="selectCov" resultClass="CovBean" parameterClass="java.util.HashMap"> 
+		SELECT RM,COV_NO,MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
+		COV_JOB,COV_DATE,COV_YEAR,COV_SPEC,FILEFILENAME
+        FROM(
+        SELECT ROWNUM RM,COV_NO,MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
+		COV_JOB,COV_DATE,COV_YEAR,COV_SPEC,FILEFILENAME
+        FROM(
+       	SELECT COV_NO,MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
 		COV_JOB,COV_DATE,COV_YEAR,COV_SPEC,FILEFILENAME FROM COVERLETTER
+        ORDER BY COV_NO DESC))
+        WHERE RM BETWEEN #start# AND #end#
+	</select>
+
+
+	
+	<select id="getTotalRow" resultClass="java.lang.Integer">
+	 SELECT COUNT(*) FROM COVERLETTER
 	</select>
 
 
@@ -36,11 +51,9 @@
 	<update id="covUpdateData" parameterClass="CovBean">
 		UPDATE COVERLETTER
 		SET COV_TITLE=#cov_title#,COV_COM=#cov_com#,COV_CONTENT=#cov_content#,
-		COV_PRICE=#cov_price#, COV_JOB=#cov_job#,COV_DATE=#cov_date#,
+		COV_PRICE=#cov_price#, COV_JOB=#cov_job#,
 		COV_YEAR=#cov_year#,COV_SPEC=#cov_spec#,FILEFILENAME=#fileFileName#
 		WHERE COV_NO=#cov_no#
-
-
 	</update>
 
 	<delete id="deleteCov" >

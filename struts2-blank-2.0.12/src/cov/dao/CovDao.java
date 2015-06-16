@@ -1,11 +1,15 @@
 package cov.dao;
 
+import java.util.HashMap;
 import java.util.List;
+
+
 
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import cov.bean.CovBean;
+import expo.bean.ExpoBean;
 
 public class CovDao {
 	private static SqlMapClient client;	
@@ -32,10 +36,13 @@ public class CovDao {
 	}
 	
 	
-	public static List<CovBean>selectCov()throws Exception{
-		return client.queryForList("cov.selectCov");
+	public static List<CovBean>selectCov(HashMap<Object, Object>map)throws Exception{
+		return client.queryForList("cov.selectCov", map);
 	}
 	
+	public static Integer getTotalRow() throws Exception{
+		return (Integer) client.queryForObject("cov.getTotalRow");
+	}
 	
 	public static CovBean selectCovInfo(int no)throws Exception{
 		return (CovBean)client.queryForObject("cov.selectCovInfo",no);

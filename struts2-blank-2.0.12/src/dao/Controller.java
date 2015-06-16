@@ -41,19 +41,19 @@ public class Controller {
 			String PW = (String)client.queryForObject("bean.MemberBean.chkPw", id);
 			
 			/*if(PW.equals(pw)){
-				return 1;		// �α��� ����
+				return 1;		
 			}else{
-				return 0;		// ��� Ʋ���� ��
+				return 0;		
 			}*/
 			
 			if(ID!=null){
 				if(PW.equals(pw)){
-					return 1;		// �α��� ����(id, pw ������)
+					return 1;		
 				}else{
-					return 0;		// pw Ʋ���� ��
+					return 0;		
 				}
 			}else{
-				return -1;			// id ���� ��
+				return -1;			
 			}
 			
 		} catch (SQLException e) {
@@ -61,7 +61,7 @@ public class Controller {
 			e.printStackTrace();
 		}
 		
-		return -1;		// ���̵� ���� ��
+		return -1;		
 	}
 	
 	public static void mem_Signup(MemberBean bean){
@@ -87,8 +87,15 @@ public class Controller {
 		return client.queryForList("bean.MemberBean.selectMem");
 	}
 	
+	public static List<MemberBean> adSelectMem(HashMap<Object, Object>map) throws Exception{
+		return client.queryForList("bean.MemberBean.adSelectMem", map);
+	}
 	
-	//마이페이지-자기정보보기
+	public static Integer getTotalRow() throws Exception{
+		return (Integer) client.queryForObject("bean.MemberBean.getTotalRow");
+	}
+	
+	
 	public static MemberBean selectMemInfo(String id)throws Exception{
 		return (MemberBean)client.queryForObject("bean.MemberBean.selectMemInfo",id);
 	}
@@ -98,7 +105,6 @@ public class Controller {
 	}
 	
 	
-	//마이페이지-자기정보보기-정보수정
 	public static void memUpdateData(MemberBean bean){
 		try {
 			client.startTransaction();

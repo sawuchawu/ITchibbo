@@ -16,6 +16,7 @@
 <link href="/css/flexslider.css" rel="stylesheet" />
 <link href="/css/style.css" rel="stylesheet" />
 <script type="text/javascript" src="/js/jquery-2.0.0.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
 	var str="";

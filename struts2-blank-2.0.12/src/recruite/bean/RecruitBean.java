@@ -1,67 +1,52 @@
 package recruite.bean;
 
 public class RecruitBean {
-	String title;
-	String job_type;
-	String salary;
-	String expiration;
-	String expDate;
-	String rId;
+	String rec_id;
+	String rec_title;
+	String rec_job;
+	String rec_sdate;
+	String rec_fdate;
 
-	public String getTitle() {
-		return title;
+	public String getRec_id() {
+		return rec_id;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setRec_id(String rec_id) {
+		this.rec_id = rec_id;
 	}
 
-	public String getJob_type() {
-		return job_type;
+	public String getRec_title() {
+		return rec_title;
 	}
 
-	public void setJob_type(String job_type) {
-		this.job_type = job_type;
+	public void setRec_title(String rec_title) {
+		this.rec_title = rec_title;
 	}
 
-	public String getSalary() {
-		return salary;
+	public String getRec_job() {
+		return rec_job;
 	}
 
-	public void setSalary(String salary) {
-		this.salary = salary;
+	public void setRec_job(String rec_job) {
+		this.rec_job = rec_job;
 	}
 
-	public String getExpiration() {
-		return expiration;
+	public String getRec_sdate() {
+		return rec_sdate;
 	}
 
-	public void setExpiration(String expiration) {
-		this.expiration = expiration;
+	public void setRec_sdate(String rec_sdate) {
+		this.rec_sdate = rec_sdate;
 	}
 
-	public String getExpDate() {
-		return expDate;
+	public String getRec_fdate() {
+		return rec_fdate;
 	}
 
-	public void setExpDate(String expDate) {
-		this.expDate = expDate;
+	public void setRec_fdate(String rec_fdate) {
+		this.rec_fdate = rec_fdate;
 	}
 
-	public String getrId() {
-		return rId;
-	}
 
-	public void setrId(String rId) {
-		this.rId = rId;
-	}
 
-	@Override
-	public String toString() {
-		return "RecruitBean [title=" + title + ", job_type=" + job_type
-				+ ", salary=" + salary + ", expiration=" + expiration
-				+ ", expDate=" + expDate + ", rId=" + rId + "]";
-	}
-
-	
 }
