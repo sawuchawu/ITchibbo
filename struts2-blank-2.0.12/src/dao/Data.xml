@@ -27,14 +27,10 @@
 		WHERE MEM_ID=#id#
 	</select>
 	
-	
-	
-	
 	<insert id="mem_Signup" parameterClass="bean.MemberBean">
 	INSERT INTO MEMBER(MEM_ID,MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE) 
 	VALUES(#mem_id#,#mem_pw#,#mem_name#,#mem_email#,#mem_phone#)
 	</insert>
-	
 	
 	  <select id="selectMem" resultClass="bean.MemberBean">
   		SELECT MEM_ID,MEM_PW,MEM_NAME,MEM_EMAIL,MEM_PHONE
@@ -82,6 +78,7 @@
 	<select id="getTotalRow" resultClass="java.lang.Integer">
 	 SELECT COUNT(*) FROM MEMBER
 	</select>
+	
 </sqlMap>
 
 

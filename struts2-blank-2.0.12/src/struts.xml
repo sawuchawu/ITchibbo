@@ -9,7 +9,6 @@
 	<constant name="struts.devMode" value="false" />
 
 	<include file="app.xml" />
-	<include file="recruit.xml" />
 	<include file="tech.xml" />
 	<include file="qna.xml"></include>
 	<include file="board.xml"></include>
@@ -17,6 +16,8 @@
 	<include file="coverLetter.xml"></include>
 	<include file="portfolio.xml"></include>
 	<include file="expo.xml" />
+	<include file="news.xml" /> 
+	<include file="recruit.xml" /> 
 	<!-- Add packages here -->
 
 </struts>

@@ -3,6 +3,7 @@ package expo.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import recruite.bean.RecruitBean;
 import reply.bean.ReplyBean;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -14,6 +15,7 @@ public class ExpoDao {
 	static{
 		client=dao.ServiceUtil.getSqlMapClient();
 	}
+	
 	public static List<ExpoBean>expoSelectSearch(HashMap<Object, Object>map)throws Exception{
 		return client.queryForList("expo.expoSelectSearch",map);
 	}

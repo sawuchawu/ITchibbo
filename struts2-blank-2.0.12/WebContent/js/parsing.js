@@ -192,12 +192,24 @@ function infoPgae(rId){
 			var job_type = data.position.job_type.text; 	// 근무형태
 			var salary = data.salary.text; 					// 연봉
 			var expiration = data.expiration_timestamp; 	// 마감일
+			var opening = data.opening_timestamp;			// 시작일
+			var rID = data.id;								// 채용 id
+			/* 마감일 계산 */
 			var expDate = new Date(expiration*1000);		// 유닉스 timeStamp를 날짜형으로 변환
+			var epYear = expDate.getFullYear();
 			var epMonth = expDate.getMonth()+1;
 			var epDate = expDate.getDate();
 			var epDay = getWeekday(expDate.getDay());
 			var dDay = getDday(expDate);
 			var deadLine = epMonth + "/" + epDate +" "+ epDay +" (D"+ dDay +")";	//마감일 표시
+			var calFinshDate = epYear +"-"+ epMonth +"-"+ epDate;
+			/* 시작일 계산 */
+			var openDate = new Date(opening*1000);
+			var openYear = openDate.getFullYear();
+			var openMonth = openDate.getMonth()+1;
+			var openDate = openDate.getDate();
+			var calStartDate = openYear +"-"+ openMonth +"-"+ openDate;
+			
 			var ind_cd = data.position.industry.text	;//업종
 			var job_category = data.position.job_category.text;		//직무
 			var experience_level = data.position.experience_level.text; //경력
@@ -212,6 +224,10 @@ function infoPgae(rId){
 			$("td#edu_lv").text(edu_lv);
 			$("td#salary").text(salary);
 			$("#info").attr("onclick", "window.open('"+data.url+"', '"+ title+" 채용공고');");
+			$("input#startDate").val(calStartDate);
+			$("input#finishDate").val(calFinshDate)
+			$("input#rID").val(rID);
+			
 			
 		}
 
@@ -238,4 +254,24 @@ function getWeekday(epDay) {
 	weekday[6] = "토";
 
 	return weekday[epDay];
+}
+
+// json객체 생성후, aciotn으로 전송
+function jsonRecInfo(jsonRec){
+	$.ajax({
+		type : "post",
+		datatype : "json",
+		data : "json="+jsonRec,
+		url : "/recruit/recruitInsert.action",
+		success : function(){
+			
+			alert("채용공고가 스크랩 되었습니다.");
+			
+			if (confirm("[나의 캘린더]로 가시겠습니까?") == true){    //확인
+				window.open("/jsp/myPage/calendar.jsp", "나의 캘린더",'status=no,menubar=no,scrollbars=no,resizable=yes, location=no');
+			}else{   //취소
+			    return;
+			}
+		}
+	});
 }

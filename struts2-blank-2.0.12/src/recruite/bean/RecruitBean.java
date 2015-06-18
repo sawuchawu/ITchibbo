@@ -1,19 +1,27 @@
 package recruite.bean;
 
 public class RecruitBean {
-	String rec_id;
-	String rec_title;
-	String rec_job;
-	String rec_sdate;
-	String rec_fdate;
+	private String rec_no;
+	private String rec_title;
+	private String rec_sdate;
+	private String rec_fdate;
+	//private String rec_job;
 
-	public String getRec_id() {
-		return rec_id;
+	public String getRec_no() {
+		return rec_no;
 	}
 
-	public void setRec_id(String rec_id) {
-		this.rec_id = rec_id;
+	public void setRec_no(String rec_no) {
+		this.rec_no = rec_no;
 	}
+
+	/*public String getRec_job() {
+		return rec_job;
+	}
+
+	public void setRec_job(String rec_job) {
+		this.rec_job = rec_job;
+	}*/
 
 	public String getRec_title() {
 		return rec_title;
@@ -21,14 +29,6 @@ public class RecruitBean {
 
 	public void setRec_title(String rec_title) {
 		this.rec_title = rec_title;
-	}
-
-	public String getRec_job() {
-		return rec_job;
-	}
-
-	public void setRec_job(String rec_job) {
-		this.rec_job = rec_job;
 	}
 
 	public String getRec_sdate() {
@@ -47,6 +47,14 @@ public class RecruitBean {
 		this.rec_fdate = rec_fdate;
 	}
 
+	@Override
+	public String toString() {
+		return "RecruitBean [rec_no=" + rec_no + ", rec_title=" + rec_title
+				+ ", rec_sdate=" + rec_sdate + ", rec_fdate=" + rec_fdate + "]";
+	}
 
 
+	
+
+	
 }

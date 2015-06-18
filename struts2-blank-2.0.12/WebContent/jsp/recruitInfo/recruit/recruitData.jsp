@@ -33,8 +33,8 @@
 				var dDay = getDday(expDate);
 				var rId = jobJson.id;	// 채용공고 id 값 넘기기
 				
-				var data = {"title" : title , "job_type" : job_type, "salary" : salary, "expiration":expiration, 
-						"expDate":expDate,"rId":rId};
+				var data = {"rec_id" : title , "rec_title" : job_type, "rec_job" : salary, "rec_sdate":expiration, 
+						"rec_fdate":expDate};
 				// 이런형식으로 필요한 데이터만 뽑아서 제이슨화시켜서 보내면 다 받는거 같다..? 
 				// 그럼, 파싱한 개수만큼 배열만들어서 제이슨화 시켜서 보내야되나?>???			
 				

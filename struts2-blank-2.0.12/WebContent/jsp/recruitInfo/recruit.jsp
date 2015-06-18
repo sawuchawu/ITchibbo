@@ -57,7 +57,6 @@ function jobSearch(val){
 	$("tr#ind_cd_tr").hide();
 	$("tr#job_category_tr").hide();
 	
-	
 	jobSearchUrl(val);
 }
 
@@ -68,10 +67,11 @@ function reset(){
 	var keywords = $("input#keywords").val("");
 }
 
-// 스크랩
+// 스크랩 $("td#job_category").text()
 function bookmark(){
-	var jsonRec = {"rec_id" : title , "rec_title" : job_type, "rec_job" : salary, "rec_fdate":expiration};
+	var jsonRec = {"rec_no" : $("input#rID").val() , "rec_title" : $("span#title").text(), "rec_sdate": $("input#startDate").val(), "rec_fdate": $("input#finishDate").val()};
 	
+	jsonRecInfo(JSON.stringify(jsonRec));
 }
 
 </script>
@@ -430,22 +430,22 @@ function bookmark(){
 				<center><div id="page" style="font-size: 16px;"></div></center>
 				<!-- recruit INFO -->
 				<div id="recInfo">
-				 
-				
+				<form action="/recruit/recruitInsert.action" method="post" id="frm" name="frm" enctype="multipart/form-data">
 				<table>
 					<colgroup>
 						<col width="800"><col width="20"><col width="60">
 					</colgroup>
 					<tr>
-						<td><span id="title" style="font-size: 16px; font-weight: bold; word-spacing:5px"></span></td>
+						<td><span id="title"  style="font-size: 16px; font-weight: bold; word-spacing:5px"></span></td>
 						<td></td>
 						<td><a href="javascript:bookmark();" class="btn btn-info">스크랩</a></td>
 					</tr>
 					<tr><td height="8"></td></tr>
 				</table>
 				<table cellspacing="0" border="1" class="tbl_type1">
-					<input type="hidden" id="" value/>	<!-- 채용id -->
-					<input type="hidden" id="" value/>	<!-- 시작일 -->
+					<input type="hidden" id="rID" name="rec_no" value=""/>		<!-- 채용id -->
+					<input type="hidden" id="startDate" name="rec_sdate" value=""/>	<!-- 시작일 -->
+					<input type="hidden" id="finishDate" name="rec_fdate" value=""/>	<!-- 시작일 -->
 					
 					<colgroup>
 						<col width="60"><col width="170"><col width="60"><col width="170">
@@ -481,6 +481,7 @@ function bookmark(){
 					</tbody>
 				</table><br>
 				<center><a href="#" id="info"class="btn btn-info">채용공고 자세히 보기</a></center>
+				</form>
 				</div>
 				<!-- //recruit INFO -->
 				

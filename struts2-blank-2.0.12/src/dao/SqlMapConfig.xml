@@ -22,7 +22,9 @@
   <sqlMap resource="/cov/dao/CovDao.xml" /> 
   <sqlMap resource="/portfolio/dao/PortfolioDao.xml" /> 
   <sqlMap resource="/expo/dao/ExpoDao.xml"/>
-  <!-- <sqlMap resource="/expo/dao/ExpoDao.xml"/> -->
+  <sqlMap resource="/news/dao/NewsDao.xml"/>
+  <sqlMap resource="/recruit/dao/RecruitDao.xml"/>
+  
 	
 </sqlMapConfig>
 

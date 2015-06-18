@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!-- <html lang="en"> -->
 <html>
 <head>
@@ -18,14 +18,12 @@
 <link href="/css/style.css" rel="stylesheet" />
 <link href="/css/recruitList.css" rel="stylesheet" />
 <link href="/css/button.css" rel="stylesheet" />
-<link href="/css/finallist.css" rel="stylesheet" />
-<link href="/css/finallist.css" rel="stylesheet" />
-<link href="/css/button.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/tcal.css" />
+<link href="/css/portfolioEdit.css" rel="stylesheet" />
+<!-- Theme skin -->
+<link href="/skins/default.css" rel="stylesheet" />
+
 <script type="text/javascript" src="/js/jquery-2.0.0.js"></script>
-<script type="text/javascript" src="/js/xdomainajax.js"></script>
-<script type="text/javascript" src="/js/xml2json.js"></script>
-<script type="text/javascript" src="/js/calcDate.js"></script>
-<script type="text/javascript" src="/js/paging.js"></script>
 <script src="/js/jquery.easing.1.3.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.fancybox.pack.js"></script>
@@ -36,23 +34,31 @@
 <script src="/js/jquery.flexslider.js"></script>
 <script src="/js/animate.js"></script>
 <script src="/js/custom.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.js"></script>
+<script type="text/javascript" src="/js/jquery-2.0.0.js" charset = "EUC-KR"></script>
+
+
+<script type="text/javascript" charset = "EUC-KR">
+	$(document).ready(function() {
+		$("a#save").click(function() {
+			$("form#frm").submit();
+		});
+	});
+</script>
 <script type="text/javascript">
- function memModi(val){
-		var mem_id = val;
-		var mem_pw = $("input#"+mem_id).val();
+	
+	function sendData() {
+		document.frm.submit();
+	}
+	$(document).ready(function() {
+		$("a#save").click(function() {
+			$("form#frm").submit();
+		});
+	});
 
-		 $("input#"+mem_id).removeAttr("readonly");
-		 $("input#"+mem_id).attr("style","text-align: center;");
-		 $("a#"+mem_id).children().text('저장');
-		 $("a#"+mem_id).attr("onclick","memModi2('"+mem_id+"')");
-
- }
- function memModi2(val){
-		var mem_id = val;
-		var mem_pw = $("input#"+val).val();
-		$("a#"+mem_id).attr("href","/app/pwModify.action?mem_id="+mem_id+"&mem_pw="+mem_pw);
- }
+	function si_ok() {
+		var a = document.getElementById("rdate").value;
+		document.frm.brd_date.value = a;
+	}
 </script>
 
 
@@ -67,9 +73,7 @@
 </head>
 <body>
 <div id="wrapper">
-<!-- start header -->
-	<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
-	<input type="hidden" value="<%=session.getAttribute("mf") %>" id="lmf">
+	<!-- start header -->
 	<header>
         <div class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -79,51 +83,22 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/index.jsp"><font size="13"><span>IT</span>취뽀</font></a>
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" id="log"></a></li> <!-- 로그아웃 바꾸기 -->
-                        <li><a href="#" id="log2"></a></li> <!-- 마이페이지 바꾸기 -->
-                    </ul>
+                    <a class="navbar-brand" href="index.html"><span>M</span>oderna</a>
                 </div>
-             
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="/jsp/recruitInfo/recruit.jsp" class="dropdown-toggle " >채용공고 <b class=" icon-angle-down"></b></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업정보 <b class=" icon-angle-down"></b></a>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="dropdown ">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Features <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/expo/expoList.action">취업 박람회</a></li>
-                                <li><a href="/tech/techList.action">IT기술 동향</a></li>
-								<li><a href="pricingbox.html">취업 뉴스</a></li>
+                                <li><a href="typography.html">Typography</a></li>
+                                <li><a href="components.html">Components</a></li>
+								<li><a href="pricingbox.html">Pricing box</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업가이드 <b class=" icon-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/review/reviewList.action">취업 후기</a></li>
-                                <li><a href="/cov/covList.action">합격 자소서</a></li>
-								<li><a href="/portfolio/portfolioList.action">포트폴리오</a></li>
-								<li><a href="/jsp/recruitGuide/jobAnalysys.jsp">직무분석</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/brd/brdList.action">자유게시판</a></li>
-                                <li><a href="/qna/qnaList.action">Q&A</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/contact/contact.html">CONTACT</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" id="adm"><b class=" icon-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/api/saramin.jsp">사람인</a></li>
-                                <li><a href="/app/adMemList.action">회원관리</a></li>
-                                <li><a href="components.html">메뉴관리</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li class="active"><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -136,7 +111,7 @@
 			<div class="col-lg-12">
 				<ul class="breadcrumb">
 					<li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-					<li class="active">회원관리</li>
+					<li class="active">취업정보</li>
 				</ul>
 			</div>
 		</div>
@@ -149,59 +124,60 @@
 				<article>
 						<div class="post-image">
 							<div class="post-heading">
-								
-<h4>회원관리</h4>
-								
-<table class="tbl_type" border="1" cellspacing="0" summary="게시판의 글제목 리스트">
-<caption>게시판 리스트</caption>
-<colgroup>
-<col>
-<col width="250">
-</colgroup>
-<thead>
-<tr>
-<th scope="col">아이디</th>
-<th scope="col">비밀번호</th>
-<th scope="col">이름</th>
-<th scope="col">이메일</th>
-<th scope="col">핸드폰</th>
-<th scope="col">수정</th>
-
-</tr>
-</thead>
-<tbody>
-<c:forEach var="i" items="${list}" varStatus="cnt">
-<tr>
-
-<td>${i.mem_id}</td>
-<td><input class="i_text" readonly="readonly" style="border: 0px;text-align: center;" type="text" size="10" 
-id="${i.mem_id}" value="${i.mem_pw}"></td>
-<td>${i.mem_name}</td>
-<td>${i.mem_email}</td>
-<td>${i.mem_phone}</td>
-<td><a class="btn_big" href="#" id="${i.mem_id}" onclick="memModi('${i.mem_id}')"><strong>수정</strong></a></td>
-
-</tr>
-</c:forEach>
-</tbody>
-</table>
-<!-- //UI Object -->
-
-					<div class="row">
-						<br>
-						<div>
-
-							<div class="paging" align="center">${sb}</div>
-						</div>
+							
+								<!-- 컨텐츠 넣는 부분 -->
+								<form action="/news/newsInsert.action" method="post" name="frm" id="frm" enctype="multipart/form-data">
+					<fieldset>
+						<legend>취업뉴스</legend>
+						<div class="form_table">
+						<table border="0" cellspacing="0" summary="표의 요약을 반드시 넣어 주세요">
+						<tbody>
+						<tr>
+						<th scope="row">아이디</th>
+						<td>
+							
+								admin
+							
+						</td>
+						</tr>
+						<tr>
+						<th scope="row">제목</th>
+						<td>
+							<div class="item">
+								<input title="레이블 텍스트" class="i_text" type="text" name = "news_title" id = "news_title">
+							</div>
+						</td>
+						</tr>
+	
+						<tr>
+							<th scope="row">내용</th>
+							<td>
+								<div class="item">
+									<textarea title="레이블 텍스트" class="i_text" rows="5" cols="50" name="news_content" id="news_content"></textarea>
+								</div>
+							</td>
+						<tr>
+							<th scope="row">파일</th>
+							<td>
+								<div class="item">
+									<input title="레이블 텍스트" type="file" name="file" id="file">
+								</div>
+							</td>
+						</tr>
+					</tbody>
+						</table>
+					</div>
+					<div align="right">
+					<a class="btn_big" href="javascript:sendData()"><strong>저장</strong></a> 
+					<a class="btn_big" href="/news/newsList.action"><span>취소</span></a>
 
 					</div>
-								
-								
-								
-								
+					</fieldset>
+					
+				</form>
+							
 							</div>
 						</div>
-						
 						<!-- <div class="bottom-article">
 							<ul class="meta-post">
 								<li><i class="icon-calendar"></i><a href="#"> Mar 23, 2013</a></li>
@@ -212,6 +188,7 @@ id="${i.mem_id}" value="${i.mem_pw}"></td>
 							<a href="#" class="pull-right">Continue reading <i class="icon-angle-right"></i></a>
 						</div> -->
 				</article>
+				<center><div id="page" style="font-size: 16px;"></div></center>
 				<!-- <div id="pagination">
 				현재페이지는 class 속성을 current로 바꾸면 된다?///components페이지에 있는 페이징 소스도 보자.
 					<span class="all">Page 1 of 3</span>
@@ -221,30 +198,34 @@ id="${i.mem_id}" value="${i.mem_pw}"></td>
 				</div> -->
 			</div>
 			<div class="col-lg-4">
+			
+				<!-- 오른쪽 메뉴 넣는 부분  -->
+				
 				<aside class="right-sidebar">
-				<!-- <div class="widget">
+				<div class="widget">
 					<form class="form-search">
 						<input class="form-control" type="text" placeholder="Search..">
 					</form>
-				</div> -->
+				</div>
 				<div class="widget">
-					<h4 class="widgetheading">관리자</h4>
-					<ul class="cat">
-						<li><i class="icon-angle-right"></i><a href="#">캘린더</a></li>
-						<li><i class="icon-angle-right"></i><a href="/app/adMemList.action">회원관리</a></li>
-						<li><i class="icon-angle-right"></i><a href="#">메뉴관리</a>
-							<ul>
-							<li><a href="#">취업 박람회</a></li>
-							<li><a href="#">IT 기술동향</a></li>
-							<li><a href="/news/newsList.action">취업 뉴스</a></li>
-							<li><a href="#">합격 자소서</a></li>
-							<li><a href="#">포트폴리오</a></li>
-							</ul>
-						</li>
-
+						<h4 class="widgetheading">취업정보</h4>
+						<ul class="cat">
+							<li><i class="icon-angle-right"></i><a href="javascript:jobSearch(401);">취업박람회</a><span id="j1"></span></li>
+							<li><i class="icon-angle-right"></i><a href="techList.jsp">IT기술동향</a><span id="j2"></span></li>
+							<li><i class="icon-angle-right"></i><a href="/news/newsList.action">취업뉴스</a><span id="j3"></span></li>
+						</ul>
+					</div>
+				<div class="widget">
+					<h5 class="widgetheading">Popular tags</h5>
+					<ul class="tags">
+						<li><a href="#">Web design</a></li>
+						<li><a href="#">Trends</a></li>
+						<li><a href="#">Technology</a></li>
+						<li><a href="#">Internet</a></li>
+						<li><a href="#">Tutorial</a></li>
+						<li><a href="#">Development</a></li>
 					</ul>
 				</div>
-
 				</aside>
 			</div>
 		</div>

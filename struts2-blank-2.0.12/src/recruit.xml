@@ -9,14 +9,9 @@
         <action name="recruitInsert" class="recruit.action.RecruitInsertAction">
         	<result name="success" type="dispatcher">
         		/jsp/recruitInfo/recruit/recruitJsonData.jsp
-        	</result>
-        </action>
+          	</result>
+        </action>       
         
-        <!-- <action name="recruiteList" class="recruite.action.RecruiteListAction">
-        	<result name="success">
-        		/jsp/recruitInfo/recruit/recruitList.jsp
-        	</result>
-        </action> -->
         
     </package>
 </struts>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>IT취뽀 - 나의 캘린더</title>
 
 <link href='/css/fullcalendar.css' rel='stylesheet' />
 <link href='/css/fullcalendar.print.css' rel='stylesheet' media='print' />
@@ -14,6 +14,7 @@
 <script src='/js/fullcalendar.min.js'></script>
 <script type="text/javascript">
 $(document).ready(function() {
+		
 	
 	$('#calendar').fullCalendar({
 		header: {
@@ -27,7 +28,7 @@ $(document).ready(function() {
 		events: [
 			{
 				title: '삼성전자',
-				start: '2015-06-01'
+				start: '2015-6-01'
 			},
 			{
 				title: '쿠팡',

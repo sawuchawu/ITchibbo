@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- jsp 파일 연결 -->
+	<package name="news" namespace="/news" extends="struts-default">
+
+		<action name="newsInsert" class="news.action.newsInsertAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">newsList</param>
+			</result>
+		</action>
+		<action name="newsList" class="news.action.newsListAction">
+			<result>/jsp/jobInfo/news/newslist.jsp</result>
+		</action>
+		<action name="newsInfo" class="news.action.NewsInfoAction">
+			<result name="info">/jsp/jobInfo/news/newsInfo.jsp</result>
+			<result name="modify">/jsp/jobInfo/news/newsModify.jsp</result>
+		</action>
+		
+		<action name="newsModify" class="news.action.NewsModifyAction">
+			<result type="chain">
+				<param name="actionName">newsInfo</param>
+			</result>
+		</action>
+		
+		<action name="newsDelete" class="news.action.newsDeleteAction">
+			<result name="success" type="chain">
+				<param name="actionName">newsList</param>
+			</result>
+		</action>
+
+
+
+		<action name="hit" class="news.action.newsHitAction">
+			<result name="success" type="chain">
+				<param name="actionName">newsInfo</param>
+			</result>
+		</action>
+
+		<action name="newsReplyDelete" class="news.action.newsReplyDeleteAction">
+			<result name="success" type="chain">
+				<param name="actionName">newsInfo</param>
+			</result>
+		</action>
+
+		<action name="newsreplyInsert" class="news.action.newsreplyInsertAction">
+			<result type="chain">
+				<param name="actionName">newsInfo</param>
+			</result>
+		</action>
+		<!-- <action name="dataModify" class="expo.action.DataModifyAction"> <result 
+			type="chain"> <param name="actionName">dataInfo</param> </result> </action> 
+			<action name="dataDelete" class="expo.action.dataDeleteAction"> <result name="success" 
+			type="chain"> <param name="actionName">expoList</param> </result> </action> -->
+	</package>
+</struts>

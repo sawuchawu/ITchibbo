@@ -58,7 +58,7 @@ function logProcess(id) {
 <body onload="logProcess('dd')">
 <!-- <form action="/app/logout.action" method="post"><button type="submit">logout</button></form> -->
 <%-- ${id }
-<%=session.getAttribute("id") %> --%>
+<% getID =session.getAttribute("id") %> --%>
 <div id="wrapper">
 	<!-- start header -->
 	<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
@@ -89,7 +89,7 @@ function logProcess(id) {
                             <ul class="dropdown-menu">
                                 <li><a href="/expo/expoList.action">취업 박람회</a></li>
                                 <li><a href="/tech/techList.action">IT기술 동향</a></li>
-								<li><a href="pricingbox.html">취업 뉴스</a></li>
+								<li><a href="/news/newsList.action">취업 뉴스</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">

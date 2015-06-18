@@ -21,12 +21,29 @@ import com.opensymphony.xwork2.Preparable;
 
 import expo.dao.ExpoDao;
 
-public class RecruitInsertAction implements Action {
-	//, Preparable,	ModelDriven<RecruitBean>
-	private RecruitBean bean;
+public class RecruitJSONAction implements Action, Preparable, ModelDriven<RecruitBean> {
+
+	@Override
+	public RecruitBean getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void prepare() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String execute() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+/*	private RecruitBean bean;
 	private RecruitBean recruitJson;
 
-	/*@Override
+	@Override
 	public RecruitBean getModel() {
 		// TODO Auto-generated method stub
 		return bean;
@@ -35,40 +52,27 @@ public class RecruitInsertAction implements Action {
 	@Override
 	public void prepare() throws Exception {
 		// TODO Auto-generated method stub
-		this.bean = new RecruitBean();
-	}*/
-
-	public RecruitBean getBean() {
-		return bean;
-	}
-
-	public void setBean(RecruitBean bean) {
-		this.bean = bean;
+		bean = new RecruitBean(recruitJson.getRec_id(), recruitJson.getRec_title(), recruitJson.getRec_sdate(), recruitJson.getRec_fdate());
 	}
 
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		/* json(gson) */
-		
+		 json(gson) 
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String jsonData = request.getParameter("json");
-
+		
 		Gson gson = new Gson();
-		recruitJson = gson.fromJson(jsonData, RecruitBean.class);
+		recruitJson=gson.fromJson(jsonData, RecruitBean.class);
 		
-
 		System.out.println(recruitJson);
+		System.out.println(bean);
 		
-
-		
-		RecruitDao.insertRecruitScrap(recruitJson);
-		
-		//System.out.println(bean);
-		//RecruitDao.insertRecruitScrap(bean);
-
-		System.out.println("RecruitInsertAction Complete");
+//		RecruitDao.insertRecruitScrap(recruitJson);
+		RecruitDao.insertRecruitScrap(bean);
+		System.out.println(1);
 		return SUCCESS;
-	}
+	}*/
 
+	
 }
