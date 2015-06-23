@@ -69,7 +69,8 @@ function reset(){
 
 // 스크랩 $("td#job_category").text()
 function bookmark(){
-	var jsonRec = {"rec_no" : $("input#rID").val() , "rec_title" : $("span#title").text(), "rec_sdate": $("input#startDate").val(), "rec_fdate": $("input#finishDate").val()};
+	var jsonRec = {"rec_no" : $("input#rID").val() , "rec_title" : $("span#title").text(), 
+				"rec_sdate": $("input#startDate").val(), "rec_fdate": $("input#finishDate").val()}; 
 	
 	jsonRecInfo(JSON.stringify(jsonRec));
 }
@@ -446,6 +447,7 @@ function bookmark(){
 					<input type="hidden" id="rID" name="rec_no" value=""/>		<!-- 채용id -->
 					<input type="hidden" id="startDate" name="rec_sdate" value=""/>	<!-- 시작일 -->
 					<input type="hidden" id="finishDate" name="rec_fdate" value=""/>	<!-- 시작일 -->
+					<input type="hidden" id="rURL" name="rec_url" value=""/>	<!-- 시작일 -->
 					
 					<colgroup>
 						<col width="60"><col width="170"><col width="60"><col width="170">

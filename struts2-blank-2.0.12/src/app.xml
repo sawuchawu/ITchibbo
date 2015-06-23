@@ -17,7 +17,12 @@
            </result>
          </action> -->
          
-         
+      <action name="mainList" class="action.MainListAction">
+      	<result name="success" type="dispatcher">
+        	/jsp/login/mainListData.jsp
+        </result>
+      </action>
+               
       <action name="login" class="action.LoginAction">
         <result name="success" type="redirect">
            /index.jsp

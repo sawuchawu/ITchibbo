@@ -78,6 +78,13 @@
 	function sendData() {
 		document.frm.submit();
 	}
+function adminCheck(){
+		
+		if($("input#lmf").val()=='0'){
+				$("#writeA").text('수정');
+				$("#writeB").text('삭제');
+		}
+	} 
 </script>
 <!-- Theme skin -->
 <link href="/skins/default.css" rel="stylesheet" />
@@ -88,7 +95,9 @@
     <![endif]-->
 
 </head>
-<body>
+<body onload="adminCheck()">
+<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
+	<input type="hidden" value="<%=session.getAttribute("mf") %>" id="lmf">
 <div id="wrapper">
 	<!-- start header -->
 	<header>
@@ -247,9 +256,9 @@
 
 								<div align="right">
 									<a class="btn_big"
-										href="/news/newsInfo.action?news_no=${bean.news_no}&jobs=modify"><strong>수정</strong></a>
+										href="/news/newsInfo.action?news_no=${bean.news_no}&jobs=modify"><strong id="writeA"><!-- 수정 --></strong></a>
 									<a class="btn_big"
-										href="/news/newsDelete.action?news_no=${bean.news_no}"><strong>삭제</strong></a>
+										href="/news/newsDelete.action?news_no=${bean.news_no}"><strong id="writeB"><!-- 삭제 --></strong></a>
 									<a class="btn_big" href="/news/newsList.action"><span>목록</span></a>
 
 								</div>

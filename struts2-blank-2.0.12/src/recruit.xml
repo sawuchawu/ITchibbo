@@ -10,7 +10,13 @@
         	<result name="success" type="dispatcher">
         		/jsp/recruitInfo/recruit/recruitJsonData.jsp
           	</result>
-        </action>       
+        </action>  
+        
+        <action name="recruitSelect" class="recruit.action.RecruitSelectAction">
+        	<result name="success" type="dispatcher">
+        		/jsp/recruitInfo/recruit/recruitSelectData.jsp
+          	</result>
+        </action>     
         
         
     </package>

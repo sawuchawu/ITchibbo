@@ -69,6 +69,13 @@
 										});
 
 					});
+function adminCheck(){
+		
+		if($("input#lmf").val()=='0'){
+				$("#writeA").text('수정');
+				$("#writeB").text('삭제');
+		}
+	} 
 </script>
 
 
@@ -82,7 +89,9 @@
     <![endif]-->
 
 </head>
-<body>
+<body onload="adminCheck()">
+<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
+	<input type="hidden" value="<%=session.getAttribute("mf") %>" id="lmf">
 	<div id="wrapper">
 		<!-- start header -->
 		<header>
@@ -182,9 +191,9 @@
 
 								<div align="center">
 									<br> <br> <a class="btn_big"
-										href="/tech/techInfo.action?tec_no=${bean.tec_no}&job=modify"><strong>수정</strong></a>
+										href="/tech/techInfo.action?tec_no=${bean.tec_no}&job=modify"><strong id="writeA"><!-- 수정 --></strong></a>
 									<a class="btn_big"
-										href="/tech/techDelete.action?tec_no=${bean.tec_no}"><strong>삭제</strong></a>
+										href="/tech/techDelete.action?tec_no=${bean.tec_no}"><strong id="writeB"><!-- 삭제 --></strong></a>
 									<a class="btn_big" href="/tech/techList.action"><span>목록</span></a>
 								</div>
 							</fieldset>

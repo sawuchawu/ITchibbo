@@ -23,7 +23,12 @@
 <link href="/css/portfolioEdit.css" rel="stylesheet" />
 <script type="text/javascript">
 
+function adminCheck(){
 	
+	if($("input#lmf").val()=='0'){
+			$("#writeA").text('글쓰기');
+	}
+} 
 </script>
 
 
@@ -33,7 +38,7 @@
     <![endif]-->
 
 </head>
-<body>
+<body onload="adminCheck()">
 <div id="wrapper">
 	<!-- start header -->
 	<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
@@ -124,7 +129,7 @@
 				</ul>
 				<input type = "hidden" id = "por_job" value = "developer"></input>
 				
-				<span  ><a class="btn_big" href="/jsp/recruitGuide/portfolio/portfolioEdit.jsp" id="save" ><strong>글쓰기</strong></a></span>
+				<span  ><a class="btn_big" href="/jsp/recruitGuide/portfolio/portfolioEdit.jsp" id="save" ><strong id="writeA"><!-- 글쓰기 --></strong></a></span>
 				
 			</div>
 				

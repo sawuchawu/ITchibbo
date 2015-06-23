@@ -15,7 +15,8 @@
 <script src='/js/ko.js'></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	
+	var moment1 = moment('2013-09-02');
+	var moment2 = moment('2013-09-09');
 	
 	$('#calendar').fullCalendar({
 		header: {
@@ -24,6 +25,7 @@ $(document).ready(function() {
 			right: 'month,basicWeek,basicDay'
 		},
 		lang: 'ko',
+		//duration:{days:1, hours:23, minutes:59},
 		defaultDate: new Date(),
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events

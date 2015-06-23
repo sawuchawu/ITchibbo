@@ -5,7 +5,6 @@ public class RecruitBean {
 	private String rec_title;
 	private String rec_sdate;
 	private String rec_fdate;
-	//private String rec_job;
 
 	public String getRec_no() {
 		return rec_no;
@@ -14,14 +13,6 @@ public class RecruitBean {
 	public void setRec_no(String rec_no) {
 		this.rec_no = rec_no;
 	}
-
-	/*public String getRec_job() {
-		return rec_job;
-	}
-
-	public void setRec_job(String rec_job) {
-		this.rec_job = rec_job;
-	}*/
 
 	public String getRec_title() {
 		return rec_title;
@@ -54,7 +45,5 @@ public class RecruitBean {
 	}
 
 
-	
 
-	
 }

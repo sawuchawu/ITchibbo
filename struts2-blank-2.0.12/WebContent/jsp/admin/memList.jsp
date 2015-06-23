@@ -234,11 +234,11 @@ id="${i.mem_id}" value="${i.mem_pw}"></td>
 						<li><i class="icon-angle-right"></i><a href="/app/adMemList.action">회원관리</a></li>
 						<li><i class="icon-angle-right"></i><a href="#">메뉴관리</a>
 							<ul>
-							<li><a href="#">취업 박람회</a></li>
-							<li><a href="#">IT 기술동향</a></li>
+							<li><a href="/expo/expoList.action">취업 박람회</a></li>
+							<li><a href="/tech/techList.action">IT 기술동향</a></li>
 							<li><a href="/news/newsList.action">취업 뉴스</a></li>
-							<li><a href="#">합격 자소서</a></li>
-							<li><a href="#">포트폴리오</a></li>
+							<li><a href="/cov/covList.action">합격 자소서</a></li>
+							<li><a href="/portfolio/portfolioList.action">포트폴리오</a></li>
 							</ul>
 						</li>
 

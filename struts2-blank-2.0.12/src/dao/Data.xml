@@ -6,6 +6,10 @@
 <sqlMap namespace="bean.MemberBean">
 	<!-- <typeAlias alias="model" type="sist.model.DataBean" /> -->
 	
+	<select id="mainTechList" resultClass="tech.bean.TechBean">
+		<![CDATA[ SELECT TEC_NO, TEC_TITLE FROM TECH WHERE ROWNUM<=3 ]]>		
+	</select>
+	
 	<select id="chkId" resultClass="String" parameterClass="String">
 		select MEM_ID from MEMBER where MEM_ID='$MEM_ID$'	
 	</select>

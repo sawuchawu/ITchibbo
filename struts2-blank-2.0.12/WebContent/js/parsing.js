@@ -227,8 +227,6 @@ function infoPgae(rId){
 			$("input#startDate").val(calStartDate);
 			$("input#finishDate").val(calFinshDate)
 			$("input#rID").val(rID);
-			
-			
 		}
 
 	});

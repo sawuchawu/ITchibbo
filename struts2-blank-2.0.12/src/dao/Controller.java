@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import tech.bean.TechBean;
 import bean.MemberBean;
+
 
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -14,6 +16,10 @@ public class Controller {
 	
 	static{
 		client=dao.ServiceUtil.getSqlMapClient();
+	}
+	
+	public static List<TechBean> selectMainTech() throws Exception{
+		return client.queryForList("bean.MemberBean.mainTechList");
 	}
 	
 	

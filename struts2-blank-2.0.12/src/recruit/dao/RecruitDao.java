@@ -1,5 +1,7 @@
 package recruit.dao;
 
+import java.util.List;
+
 import recruite.bean.RecruitBean;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -10,8 +12,12 @@ public class RecruitDao {
 		client=dao.ServiceUtil.getSqlMapClient();
 	}
 	
-	public static void insertRecruitScrap(RecruitBean bean)throws Exception{
+	public static void insertRecruitScrap(RecruitBean bean) throws Exception{
 		client.insert("recruit.insertRecScrap",bean);
+	}
+	
+	public static List<RecruitBean> selectRecruit() throws Exception{
+		return client.queryForList("recruit.selectRecScrap");
 	}
 	
 	

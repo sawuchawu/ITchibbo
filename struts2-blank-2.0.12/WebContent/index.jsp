@@ -52,6 +52,29 @@ function logProcess(id) {
 		$("#log").text('마이페이지');
 		$("#log").attr("href", "/app/memInfo.action?mem_id=${id}&job=info");
 	}
+
+	/* 최신공고 리스트 */
+	$.ajax({
+		url: "/app/mainList.action",
+		type: "get",
+		dataType: "json",
+		success: function(data){
+			var techList=[];
+			var techData="";
+			$.each(data, function(i, dom){
+				/* techList.push({
+					tec_no: dom.tec_no,
+					tec_title: dom.tec_title
+				}); */			
+				//alert(techList[i].tec_title);
+				//techData += techList[i].tec_title + "<br>";
+				techData += dom.tec_title + "<br>";
+			});  
+			//alert(techData);
+			$("#mT").html(techData);
+		}
+	});
+	
 }
 </script>
 </head>
@@ -251,8 +274,8 @@ function logProcess(id) {
 								<div class="icon">
 								<i class="fa fa-pagelines fa-3x"></i>
 								</div>
-								<p>
-								기술동향1
+								<p id="mT" style="text-align: left;">
+								
 								</p>
 									
 							</div>
@@ -268,8 +291,9 @@ function logProcess(id) {
 								<div class="icon">
 								<i class="fa fa-edit fa-3x"></i>
 								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+								<p id="mR">
+								 test1<br>
+								 test2<br>
 								</p>
 									
 							</div>
@@ -285,8 +309,8 @@ function logProcess(id) {
 								<div class="icon">
 								<i class="fa fa-code fa-3x"></i>
 								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+								<p id="mC">
+								 
 								</p>
 									
 							</div>
@@ -302,8 +326,8 @@ function logProcess(id) {
 								<div class="icon">
 								<i class="fa fa-desktop fa-3x"></i>
 								</div>
-								<p>
-								 Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+								<p id="mP">
+								 
 								</p>
 									
 							</div>

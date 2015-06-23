@@ -215,7 +215,7 @@
 				<div class="widget">
 					<h4 class="widgetheading">마이페이지</h4>
 					<ul class="cat">
-						<li><i class="icon-angle-right"></i><a href="/jsp/myPage/calendar.jsp">캘린더</a></li>
+						<li><i class="icon-angle-right"></i><a href="javascript:window.open('/jsp/myPage/calendar.jsp');">캘린더</a></li>
 						<li><i class="icon-angle-right"></i><a href="#">스크랩</a></li>
 						<li><i class="icon-angle-right"></i><a href="#">구매내역</a></li>
 						<li><i class="icon-angle-right"></i><a href="/app/memInfo.action?mem_id=${id }&job=info">회원정보수정</a></li>

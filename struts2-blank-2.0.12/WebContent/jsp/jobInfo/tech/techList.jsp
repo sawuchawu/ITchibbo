@@ -36,6 +36,12 @@
 	$(document).ready(function() {
 		$(this).location.reload();
 	});
+function adminCheck(){
+		
+		if($("input#lmf").val()=='0'){
+				$("#writeA").text('글쓰기');
+		}
+	} 
 </script>
 
 <!-- Theme skin -->
@@ -47,7 +53,7 @@
     <![endif]-->
 
 </head>
-<body>
+<body onload="adminCheck()">
 	<div id="wrapper">
 		<!-- start header -->
 	<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
@@ -171,7 +177,7 @@
 							<br>
 						</div>
 						<div align="right">
-							<a class="btn_big" href="/jsp/jobInfo/tech/techEdit.jsp"><span>글쓰기</span></a>
+							<a class="btn_big" href="/jsp/jobInfo/tech/techEdit.jsp"><span id="writeA"><!-- 글쓰기 --></span></a>
 						</div>
 					</div>
 					<!-- <div class="bottom-article">

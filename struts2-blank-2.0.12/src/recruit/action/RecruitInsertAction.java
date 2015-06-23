@@ -54,13 +54,13 @@ public class RecruitInsertAction implements Action {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String jsonData = request.getParameter("json");
 
+		System.out.println(jsonData);
+		
 		Gson gson = new Gson();
 		recruitJson = gson.fromJson(jsonData, RecruitBean.class);
 		
 
 		System.out.println(recruitJson);
-		
-
 		
 		RecruitDao.insertRecruitScrap(recruitJson);
 		

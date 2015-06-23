@@ -7,8 +7,19 @@
 <title>Insert title here</title>
 <link href="/css/finalinfo.css" rel="stylesheet" />
 <link href="/css/button.css" rel="stylesheet" />
+
+<script type="text/javascript" charset="EUC-KR">
+
+function adminCheck(){
+		
+		if($("input#lmf").val()=='0'){
+				$("#writeA").text('수정');
+				$("#writeB").text('삭제');
+		}
+	} 
+</script>
 </head>
-<body>
+<body onload="adminCheck()">
 	<!-- UI Object -->
 	<table class="tbl_type" border="1" cellspacing="0" summary="글 내용을 표시">
 		<caption>글 읽기</caption>
@@ -67,9 +78,10 @@
 	</table>
 <!-- UI Object -->
 	<div align="right">
-		 <a class="btn_big" href="/cov/scrapAdd.action?cov_no=${bean.cov_no}"><strong>스크랩</strong></a>  
-		 <a class="btn_big" href="/cov/covInfo.action?cov_no=${bean.cov_no}&job=modify"><strong>수정</strong></a>  
-		  <a class="btn_big" href="/cov/covDelete.action?cov_no=${bean.cov_no}"><strong>삭제</strong></a>  
+		  
+		 <a class="btn_big" href="/cov/covInfo.action?cov_no=${bean.cov_no}&job=modify"><strong id="writeA"><!-- 수정 --></strong></a>  
+		  <a class="btn_big" href="/cov/covDelete.action?cov_no=${bean.cov_no}"><strong id="writeB"><!-- 삭제 --></strong></a>  
+		<a class="btn_big" href="/cov/scrapAdd.action?cov_no=${bean.cov_no}"><strong>스크랩</strong></a> 
 		<a class="btn_big" href="/cov/covList.action"><span>목록</span></a>
 
 	</div>

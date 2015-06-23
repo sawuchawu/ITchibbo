@@ -37,7 +37,12 @@
 <script src="/js/animate.js"></script>
 <script src="/js/custom.js"></script>
 <script type="text/javascript">
-
+function adminCheck(){
+	
+	if($("input#lmf").val()=='0'){
+			$("#writeA").text('글쓰기');
+	}
+} 
 </script>
 
 
@@ -50,7 +55,7 @@
     <![endif]-->
 
 </head>
-<body>
+<body onload="adminCheck()">
 <div id="wrapper">
 <!-- start header -->
 	<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
@@ -174,7 +179,7 @@
 <div align="right">
 		<!-- <a class="btn_big" href="javascript:sendData()"><strong>저장</strong></a>  -->
 		<a class="btn_big"
-			href="/jsp/recruitGuide/coverLetter/covEdit.jsp"><span>글쓰기</span></a>
+			href="/jsp/recruitGuide/coverLetter/covEdit.jsp"><span id="writeA"><!-- 글쓰기 --></span></a>
 
 	</div>
 					<div class="row">

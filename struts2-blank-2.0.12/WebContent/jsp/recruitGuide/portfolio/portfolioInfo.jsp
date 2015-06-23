@@ -69,12 +69,21 @@
 		});
 
 	});
+function adminCheck(){
+		
+		if($("input#lmf").val()=='0'){
+				$("#writeA").text('수정');
+				$("#writeB").text('삭제');
+		}
+	} 
 </script>
 
 
 
 </head>
-<body>
+<body onload="adminCheck()">
+<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
+	<input type="hidden" value="<%=session.getAttribute("mf") %>" id="lmf">
 
 <div id="wrapper">
 	<!-- start header -->
@@ -199,8 +208,8 @@
 					<div align="center">
 					
 						<br><br>
-							<a class="btn_big" href="/portfolio/portfolioModify.action?por_no=${bean.por_no}&job=modify"><strong>수정</strong></a>
-							<a class="btn_big" href="/portfolio/portfolioDelete.action?por_no=${bean.por_no}"><strong>삭제</strong></a>
+							<a class="btn_big" href="/portfolio/portfolioModify.action?por_no=${bean.por_no}&job=modify"><strong id="writeA"><!-- 수정 --></strong></a>
+							<a class="btn_big" href="/portfolio/portfolioDelete.action?por_no=${bean.por_no}"><strong id="writeB"><!-- 삭제 --></strong></a>
 							<a class="btn_big" href="/portfolio/portfolioList.action"><span>목록</span></a> 
 					</div>
 				</fieldset>

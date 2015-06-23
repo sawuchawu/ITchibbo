@@ -9,6 +9,11 @@
 		INSERT INTO RECRUIT
 		VALUES(#rec_no#, #rec_title#, #rec_sdate#, #rec_fdate#)		
 	</insert>
+	
+	<select id="selectRecScrap" resultClass="recruitBean">
+		select REC_NO, REC_TITLE, REC_SDATE, REC_FDATE	
+		from RECRUIT
+	</select>
 </sqlMap>
 
 

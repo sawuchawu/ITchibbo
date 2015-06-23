@@ -45,8 +45,10 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+
+
 </head>
-<body>
+<body >
 <div id="wrapper">
 <!-- start header -->
 	<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
