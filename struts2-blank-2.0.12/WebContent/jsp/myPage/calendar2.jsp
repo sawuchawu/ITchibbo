@@ -25,9 +25,10 @@ $(document).ready(function() {
 			right: 'month,basicWeek,basicDay'
 		},
 		lang: 'ko',
-		//duration:{days:1, hours:23, minutes:59},
+		defaultView: 'basicWeek',
 		defaultDate: new Date(),
 		editable: true,
+		contentHeight: 'auto',
 		eventLimit: true, // allow "more" link when too many events
 		events: function(start, end, timezone, callback) {
 			$.ajax({

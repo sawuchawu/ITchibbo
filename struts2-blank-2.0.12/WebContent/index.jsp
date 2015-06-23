@@ -113,6 +113,7 @@ function logProcess(id) {
                                 <li><a href="/expo/expoList.action">취업 박람회</a></li>
                                 <li><a href="/tech/techList.action">IT기술 동향</a></li>
 								<li><a href="/news/newsList.action">취업 뉴스</a></li>
+								<li><a href="/jsp/jobInfo/lecture/lecture.jsp">취업 강의</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
