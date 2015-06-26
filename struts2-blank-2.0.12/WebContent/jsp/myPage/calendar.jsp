@@ -15,8 +15,6 @@
 <script src='/js/ko.js'></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	
-	
 	$('#calendar').fullCalendar({
 		header: {
 			left: 'prev,next today',
@@ -27,9 +25,10 @@ $(document).ready(function() {
 		defaultDate: new Date(),
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events
+		eventColor: '#68A4C4',
 		events: function(start, end, timezone, callback) {
 			$.ajax({
-				url: "/recruit/recruitSelect.action",
+				url: "/recruit/recruitSelect.action?mId="+$("#mId").val(),
 				type: "get",
 				dataType: "json",
 				success: function(data){
@@ -59,14 +58,14 @@ $(document).ready(function() {
 </script>
 <style>
 
-body {
+body, #title {
 	margin: 40px 10px;
 	padding: 0;
 	font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 	font-size: 14px;
 }
 
-#calendar {
+#calendar, #title {
 	max-width: 900px;
 	margin: 0 auto;
 }
@@ -74,8 +73,10 @@ body {
 </style>
 </head>
 <body>
-
-<div id='calendar'></div>
+<input type="hidden" value="<%=session.getAttribute("id") %>" id="mId"/>
+<p id="title"><b><%=session.getAttribute("id") %></b> 님의 캘린더</p><br><br>
+<div id='calendar'>
+</div>
 
 </body>
 </html>

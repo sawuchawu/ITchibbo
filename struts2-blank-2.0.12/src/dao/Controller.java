@@ -4,12 +4,21 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import portfolio.bean.PortfolioBean;
+import recruite.bean.RecruitBean;
+import review.bean.ReviewBean;
 import tech.bean.TechBean;
 import bean.MemberBean;
 
 
 
+
+
+
+
 import com.ibatis.sqlmap.client.SqlMapClient;
+
+import cov.bean.CovBean;
 
 public class Controller {
 	private static SqlMapClient client;	
@@ -20,6 +29,15 @@ public class Controller {
 	
 	public static List<TechBean> selectMainTech() throws Exception{
 		return client.queryForList("bean.MemberBean.mainTechList");
+	}
+	public static List<ReviewBean> selectMainRev() throws Exception{
+		return client.queryForList("bean.MemberBean.mainRevList");
+	}
+	public static List<CovBean> selectMainCov() throws Exception{
+		return client.queryForList("bean.MemberBean.mainCovList");
+	}
+	public static List<PortfolioBean> selectMainPor() throws Exception{
+		return client.queryForList("bean.MemberBean.mainPorList");
 	}
 	
 	

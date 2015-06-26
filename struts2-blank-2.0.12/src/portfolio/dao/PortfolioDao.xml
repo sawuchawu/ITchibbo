@@ -9,11 +9,7 @@
 			INSERT INTO PORTFOLIO VALUES(
 			PORTFOLIO_SEQ.NEXTVAL,'admin2', #por_title#,#por_job#,#por_content#,#pdfFileName#,#imgFileName#, SYSDATE, 0, 0) 	
 		</insert>
-			
-		
-		
-		
-		
+
 		<select id = "selectPortfolioInfo" resultClass = "portfolioData" parameterClass = "java.lang.Integer">
 			SELECT POR_NO,MEM_ID,POR_TITLE,POR_JOB,POR_CONTENT,PDFFILENAME,IMGFILENAME, TO_CHAR(POR_REGDATE, 'YYYY/MM/DD')POR_REGDATE, POR_HIT
 			FROM PORTFOLIO

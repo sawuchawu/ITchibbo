@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- jsp 파일 연결 -->
+	<package name="jasoseol" namespace="/jasoseol" extends="struts-default">
+
+		<action name="jasoseolChoiceCompany" class="jasoseol.action.JasoseolChoiceCompany">
+			<result name="choice">
+				/jsp/jasoseol/jasoseolGuide.jsp
+			</result>
+			<result name="success" type="dispatcher">
+        		/jsp/jasoseol/jasoseolWrite.jsp
+        	</result>
+		</action>
+		  <action name="jasoseolInsert" class="jasoseol.action.JasoseolInsertAction">
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">jasoseolList</param>
+        	</result>
+        </action>
+		<action name="jasoseolList" class="jasoseol.action.JasoseolListAction">
+			<result name="success">/jsp/jasoseol/jasoseolList.jsp</result>
+		</action>
+		<action name="jasoseolInfo" class="jasoseol.action.JasoseolInfoAction">
+			<result name="info">/jsp/jasoseol/jasoseolInfo.jsp</result>
+			 <result name="modify">/jsp/jasoseol/jasoseolModify.jsp</result> 
+		</action>
+       
+        <action name="jasoseolModify" class="jasoseol.action.JasoseolModifyAction">
+          <result name = "success" type = "chain">
+        	<param name="actionName">jasoseolInfo</param>
+        	</result>
+        </action>  
+ 		<action name="jasoseolDelete" class="jasoseol.action.JasoseolDeleteAction">
+ 			<result name="success" type="chain">
+          		<param name="actionName">jasoseolList</param>
+        	 </result>
+ 		</action>
+
+
+	</package>
+</struts>

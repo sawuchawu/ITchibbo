@@ -38,7 +38,7 @@ public class PortfolioInsert implements Action, Preparable, ModelDriven<Portfoli
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("insertAction");
-		String path="D:\\project\\ITchibbo\\ITchibbo\\struts2-blank-2.0.12\\WebContent\\img\\portfolioUp\\";
+		String path="D:\\project\\ITchibbo\\struts2-blank-2.0.12\\WebContent\\img\\portfolioUp\\";
 		FileInputStream fisPdf=null;		
 		FileOutputStream fosPdf=null;
 		

@@ -7,14 +7,23 @@
 	<typeAlias alias="CovBean" type="cov.bean.CovBean" />
 	<!-- COV_NO MEM_ID COV_TITLE COV_COM COV_CONTENT COV_PRICE COV_JOB COV_DATE 
 		COV_YEAR COV_SPEC COV_PATH -->
+		<typeAlias alias="carta" type="cov.bean.CartListBean" />
 	<insert id="insertCov" parameterClass="CovBean">
 		INSERT INTO COVERLETTER (COV_NO,MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
 		COV_JOB,COV_YEAR,COV_SPEC,FILEFILENAME,COV_DATE)
 		VALUES(COV_NO_SEQ.NEXTVAL,#mem_id#,#cov_title#,#cov_com#,
 		#cov_content#,#cov_price#,#cov_job#,#cov_year#,#cov_spec#,#fileFileName#,SYSDATE)
 	</insert>
-
-
+	<insert id="insertCart" parameterClass="carta">
+	INSERT INTO CARTLIST VALUES(CARTLIST_SEQ.NEXTVAL,#mem_id#,#cov_no#)
+	</insert>
+	<select id="selectCart" resultClass="CovBean" parameterClass="java.lang.String">
+	
+SELECT A.COV_NO,A.MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
+COV_JOB,COV_DATE,COV_YEAR,COV_SPEC,FILEFILENAME,COV_LIKE	 
+FROM COVERLETTER C,CARTLIST A
+WHERE A.MEM_ID=#VALUE# AND C.COV_NO=A.COV_NO
+	</select>
 	<select id="selectCov" resultClass="CovBean" parameterClass="java.util.HashMap"> 
 		SELECT RM,COV_NO,MEM_ID,COV_TITLE,COV_COM,COV_CONTENT,COV_PRICE,
 		COV_JOB,COV_DATE,COV_YEAR,COV_SPEC,FILEFILENAME

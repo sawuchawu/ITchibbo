@@ -1,77 +1,86 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ITÃë»Ç - IT Ãë¾÷Á¤º¸ »çÀÌÆ®</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ITì·¨ë½€ - IT ì·¨ì—…ì •ë³´ ì‚¬ì´íŠ¸</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="http://bootstraptaste.com" />
 <!-- css -->
 <link href="/css/bootstrap.min.css" rel="stylesheet" />
 <link href="/css/fancybox/jquery.fancybox.css" rel="stylesheet">
-<link href="/css/jcarousel.css" rel="stylesheet" />
+<!-- <link href="/css/jcarousel.css" rel="stylesheet" /> -->
 <link href="/css/flexslider.css" rel="stylesheet" />
 <link href="/css/style.css" rel="stylesheet" />
+<link href="/skins/default.css" rel="stylesheet" />
+<link href='/css/fullcalendar.css' rel='stylesheet' />
+<link href='/css/fullcalendar.print.css' rel='stylesheet' media='print' />
 
 <!-- Theme skin -->
-<link href="/skins/default.css" rel="stylesheet" />
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 <script type="text/javascript" src="/js/jquery-2.0.0.js"></script>
 <script type="text/javascript">
 function popupLogin(){
-	var popUrl = "/jsp/login/login.jsp";	//ÆË¾÷Ã¢¿¡ Ãâ·ÂµÉ ÆäÀÌÁö URL
-	var popOption = "width=525, height=685, resizable=no, scrollbars=no, status=no";    //ÆË¾÷Ã¢ ¿É¼Ç(optoin)
+	var popUrl = "/jsp/login/login.jsp";	//íŒì—…ì°½ì— ì¶œë ¥ë  í˜ì´ì§€ URL
+	var popOption = "width=525, height=685, resizable=no, scrollbars=no, status=no";    //íŒì—…ì°½ ì˜µì…˜(optoin)
 		window.open(popUrl,"",popOption);
 	}
 function popupJoin(){
-	var popUrl = "/jsp/login/signup.jsp";	//ÆË¾÷Ã¢¿¡ Ãâ·ÂµÉ ÆäÀÌÁö URL
-	var popOption = "width=525, height=685, resizable=no, scrollbars=no, status=no";    //ÆË¾÷Ã¢ ¿É¼Ç(optoin)
+	var popUrl = "/jsp/login/signup.jsp";	//íŒì—…ì°½ì— ì¶œë ¥ë  í˜ì´ì§€ URL
+	var popOption = "width=525, height=685, resizable=no, scrollbars=no, status=no";    //íŒì—…ì°½ ì˜µì…˜(optoin)
 		window.open(popUrl,"",popOption);
 	}	
-	
 function logProcess(id) {
 	var ids=id;
-
-	if(ids==='dd'&& $("input#lid").val()=='null'){// ·Î±×ÀÎÇØ¾ßµÊ
-		$("#log").text('·Î±×ÀÎ');
+	//alert(ids+" "+$("input#lid").val());
+	if(ids==='dd'&& $("input#lid").val()=='null'){// ë¡œê·¸ì¸í•´ì•¼ë¨
+		$("#log").text('ë¡œê·¸ì¸');
 		$("#log").attr("href", "/jsp/login/login.jsp");
-		$("#log2").text('È¸¿ø°¡ÀÔ');
+		$("#log2").text('íšŒì›ê°€ì…');
 		$("#log2").attr("href", "/jsp/login/signup.jsp");
-	}else{// ·Î±×¾Æ¿ô
-	if($("input#lmf").val()=='0'){
-			$("#adm").text('°ü¸®ÀÚ');
+	}else{// ë¡œê·¸ì•„ì›ƒ
+		if($("input#lmf").val()=='0'){
+				$("#adm").text('ê´€ë¦¬ì');
 		}
-		$("#log2").text('·Î±×¾Æ¿ô');
+		$("#log2").text('ë¡œê·¸ì•„ì›ƒ');
 		$("#log2").attr("href", "/app/logout.action");
-		$("#log").text('¸¶ÀÌÆäÀÌÁö');
+		$("#log").text('ë§ˆì´í˜ì´ì§€');
 		$("#log").attr("href", "/app/memInfo.action?mem_id=${id}&job=info");
 	}
 
-	/* ÃÖ½Å°ø°í ¸®½ºÆ® */
+	/* ìµœì‹ ê³µê³  ë¦¬ìŠ¤íŠ¸ */
 	$.ajax({
 		url: "/app/mainList.action",
 		type: "get",
 		dataType: "json",
 		success: function(data){
-			var techList=[];
-			var techData="";
+			var tData="";
+			var rData="";
+			var cData="";
+			var pData="";
+			
 			$.each(data, function(i, dom){
-				/* techList.push({
-					tec_no: dom.tec_no,
-					tec_title: dom.tec_title
-				}); */			
-				//alert(techList[i].tec_title);
-				//techData += techList[i].tec_title + "<br>";
-				techData += dom.tec_title + "<br>";
+
+				if(dom.tec_title!=undefined){
+					tData+="<a href=\"/tech/techHit.action?tec_no="+dom.tec_no+"&job=info\">"+dom.tec_title+"</a><br>";
+				}
+				if(dom.rev_title!=undefined){
+					rData+="<a href=\"/review/hit.action?rev_no="+dom.rev_no+"&job=info\">"+dom.rev_title+"</a><br>"
+				}
+				if(dom.cov_title!=undefined){
+					cData+="<a href=\"/cov/covInfo.action?cov_no="+dom.cov_no+"&job=info\">"+dom.cov_title+"</a><br>"
+				}
+				if(dom.por_title!=undefined){
+					pData+="<a href=\"/portfolio/hit.action?por_no="+dom.por_no+"&job=info\">"+dom.por_title+"</a><br>"
+				}
+				 
 			});  
-			//alert(techData);
-			$("#mT").html(techData);
+ 			$("#tecMt").html(tData);
+			$("#recMt").html(rData);
+			$("#covMt").html(cData);
+			$("#porMt").html(pData); 
 		}
 	});
 	
@@ -95,52 +104,55 @@ function logProcess(id) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/index.jsp"><font size="13"><span>IT</span>Ãë»Ç</font></a>
+                    <a class="navbar-brand" href="/index.jsp"><font size="13"><span>IT</span>ì·¨ë½€</font></a>
                     <ul class="nav navbar-nav">
-                        <li><a href="#" id="log"></a></li> <!-- ·Î±×¾Æ¿ô ¹Ù²Ù±â -->
-                        <li><a href="#" id="log2"></a></li> <!-- ¸¶ÀÌÆäÀÌÁö ¹Ù²Ù±â -->
+                        <li><a href="#" id="log"></a></li> <!-- ë¡œê·¸ì•„ì›ƒ ë°”ê¾¸ê¸° -->
+                        <li><a href="#" id="log2"></a></li> <!-- ë§ˆì´í˜ì´ì§€ ë°”ê¾¸ê¸° -->
                     </ul>
                 </div>
              
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="/jsp/recruitInfo/recruit.jsp" class="dropdown-toggle " >Ã¤¿ë°ø°í <b class=" icon-angle-down"></b></a>
+                            <a href="/jsp/recruitInfo/recruit.jsp" class="dropdown-toggle " >ì±„ìš©ê³µê³  <b class=" icon-angle-down"></b></a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Ãë¾÷Á¤º¸ <b class=" icon-angle-down"></b></a>
+                            <a href="/jasoseol/jasoseolChoiceCompany.action?job=choice" class="dropdown-toggle " >ìê¸°ì†Œê°œì„œ <b class=" icon-angle-down"></b></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">ì·¨ì—…ì •ë³´ <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/expo/expoList.action">Ãë¾÷ ¹Ú¶÷È¸</a></li>
-                                <li><a href="/tech/techList.action">IT±â¼ú µ¿Çâ</a></li>
-								<li><a href="/news/newsList.action">Ãë¾÷ ´º½º</a></li>
-								<li><a href="/jsp/jobInfo/lecture/lecture.jsp">Ãë¾÷ °­ÀÇ</a></li>
+                                <li><a href="/expo/expoList.action">ì·¨ì—… ë°•ëŒíšŒ</a></li>
+                                <li><a href="/tech/techList.action">ITê¸°ìˆ  ë™í–¥</a></li>
+								<li><a href="/news/newsList.action">ì·¨ì—… ë‰´ìŠ¤</a></li>
+								<li><a href="/jsp/jobInfo/lecture/lecture.jsp">ì·¨ì—… ê°•ì˜</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Ãë¾÷°¡ÀÌµå <b class=" icon-angle-down"></b></a>
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">ì·¨ì—…ê°€ì´ë“œ <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/review/reviewList.action">Ãë¾÷ ÈÄ±â</a></li>
-                                <li><a href="/cov/covList.action">ÇÕ°İ ÀÚ¼Ò¼­</a></li>
-								<li><a href="/portfolio/portfolioList.action">Æ÷Æ®Æú¸®¿À</a></li>
-								<li><a href="/jsp/recruitGuide/jobAnalysys.jsp">Á÷¹«ºĞ¼®</a></li>
+                                <li><a href="/review/reviewList.action">ì·¨ì—… í›„ê¸°</a></li>
+                                <li><a href="/cov/covList.action">í•©ê²© ìì†Œì„œ</a></li>
+								<li><a href="/portfolio/portfolioList.action">í¬íŠ¸í´ë¦¬ì˜¤</a></li>
+								<li><a href="/jsp/recruitGuide/jobAnalysys.jsp">ì§ë¬´ë¶„ì„</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Ä¿¹Â´ÏÆ¼ <b class=" icon-angle-down"></b></a>
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">ì»¤ë®¤ë‹ˆí‹° <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/brd/brdList.action">ÀÚÀ¯°Ô½ÃÆÇ</a></li>
+                                <li><a href="/brd/brdList.action">ììœ ê²Œì‹œíŒ</a></li>
                                 <li><a href="/qna/qnaList.action">Q&A</a></li>
                             </ul>
                         </li>
-                        <li><a href="/contact/contact.html">CONTACT</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" id="adm"><b class=" icon-angle-down"></b></a>
+                        <li><a href="/jsp/contact/contact.jsp">CONTACT</a></li>
+                        <li><a href="/app/adMemList.action" id="adm"></a></li>
+                        <!-- <li class="dropdown">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" id="adm">ê´€ë¦¬ì<b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/api/saramin.jsp">»ç¶÷ÀÎ</a></li>
-                                <li><a href="/app/adMemList.action">È¸¿ø°ü¸®</a></li>
-                                <li><a href="components.html">¸Ş´º°ü¸®</a></li>
+                                <li><a href="/app/adMemList.action">ê´€ë¦¬</a></li>
+                                <li><a href="/app/adMemList.action">ë©”ë‰´ê´€ë¦¬</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -158,28 +170,19 @@ function logProcess(id) {
               <li>
                 <img src="img/slides/1.jpg" alt="" />
                 <div class="flex-caption">
-                    <!-- <h3>Modern Design</h3> 
-					<p>Duis fermentum auctor ligula ac malesuada. Mauris et metus odio, in pulvinar urna</p> 
-					<a href="#" class="btn btn-theme">Learn More</a> -->
-					<p>ITÁ÷¹« Ã¤¿ë ¹× Ãë¾÷ Á¤º¸ Á¦°ø</p> 
+					<p>ITì§ë¬´ ì±„ìš© ë° ì·¨ì—… ì •ë³´ ì œê³µ</p> 
                 </div>
               </li>
               <li>
                 <img src="img/slides/2.jpg" alt="" />
                 <div class="flex-caption">
-                   <!--  <h3>Fully Responsive</h3> 
-					<p>Sodales neque vitae justo sollicitudin aliquet sit amet diam curabitur sed fermentum.</p> 
-					<a href="#" class="btn btn-theme">Learn More</a> -->
-					<p>ITÁ÷¹« Ã¤¿ë°ø°í ÀÏÁ¤ °ü¸®</p>
+					<p>ITì§ë¬´ ì±„ìš©ê³µê³  ì¼ì • ê´€ë¦¬</p>
                 </div>
               </li>
               <li>
                 <img src="img/slides/3.jpg" alt="" />
                 <div class="flex-caption">
-                    <!-- <h3>Clean & Fast</h3> 
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit donec mer lacinia.</p> 
-					<a href="#" class="btn btn-theme">Learn More</a> -->
-					<p>ITÀÎµé¸¸ÀÇ Ä¿¹Â´ÏÆ¼ °ø°£</p>
+					<p>ITì¸ë“¤ë§Œì˜ ì»¤ë®¤ë‹ˆí‹° ê³µê°„</p>
                 </div>
               </li>
             </ul>
@@ -188,152 +191,104 @@ function logProcess(id) {
 			</div>
 		</div>
 	</div>	
-	
-	
-
 	</section>
-	<!-- <section class="callaction">
+
+	<!-- <section class="callaction"> -->
 	<div class="container">
+		<h4 class="heading">&nbsp;&nbsp;ìµœì‹  ê³µê³ </h4>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="big-cta">
-					<div class="cta-text">
-						<h2><span>´Ş·Â</span> ³Ö±â// ´Ş·ÂÀ» ¸Ş´º¾ÈÀ¸·Î ³ÖÀ»±î?</h2>
+				 	<div class="cta-text">
+						
+						<iframe src="/jsp/myPage/mainCalendar.jsp" frameborder="0" width="100%" height="230"></iframe>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</section> -->
+	<!-- </section> -->
 	<section id="content">
 	<div class="container">
 		<!-- Portfolio Projects -->
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-lg-12">
-				<h4 class="heading">ÃÖ½Å °ø°í</h4>
+				
 				<div class="row">
-					<section id="projects">
-					<ul id="thumbs" class="portfolio">
-						<!-- Item Project and Filter Name -->
-						<li class="col-lg-3 design" data-id="id-0" data-type="web">
-						<div class="item-thumbs">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 1" href="img/works/1.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="img/works/1.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-						</div>
-						</li>
-						<!-- End Item Project -->
-						<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 2" href="img/works/2.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="img/works/2.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-						</li>
-						<!-- End Item Project -->
-						<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 3" href="img/works/3.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="img/works/3.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-						</li>
-						<!-- End Item Project -->
-						<!-- Item Project and Filter Name -->
-						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-						<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 4" href="img/works/4.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-						<!-- Thumb Image and Description -->
-						<img src="img/works/4.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-						</li>
-						<!-- End Item Project -->
-					</ul>
-					</section>
+					
+					
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="row">
 					<div class="col-lg-3">
 						<div class="box">
 							<div class="box-gray aligncenter">
-								<h4>IT ±â¼úµ¿Çâ</h4>
+								<h4>IT ê¸°ìˆ ë™í–¥</h4>
 								<div class="icon">
 								<i class="fa fa-pagelines fa-3x"></i>
 								</div>
-								<p id="mT" style="text-align: left;">
+								<p id="tecMt" style="text-align: left;">
 								
 								</p>
 									
 							</div>
 							<div class="box-bottom">
-								<a href="#">Learn more</a>
+								<a href="/tech/techList.action">Learn more</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-3">
 						<div class="box">
 							<div class="box-gray aligncenter">
-								<h4>Ãë¾÷°¡ÀÌµå</h4>
+								<h4>ì·¨ì—…í›„ê¸°</h4>
 								<div class="icon">
 								<i class="fa fa-edit fa-3x"></i>
 								</div>
-								<p id="mR">
-								 test1<br>
-								 test2<br>
+								<p id="recMt" style="text-align: left;">
+								
 								</p>
 									
 							</div>
 							<div class="box-bottom">
-								<a href="#">Learn more</a>
+								<a href="/review/reviewList.action">Learn more</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-3">
 						<div class="box">
 							<div class="box-gray aligncenter">
-								<h4>ÇÕ°İ ÀÚ¼Ò¼­</h4>
+								<h4>í•©ê²© ìì†Œì„œ</h4>
 								<div class="icon">
 								<i class="fa fa-code fa-3x"></i>
 								</div>
-								<p id="mC">
-								 
+								<p id="covMt" style="text-align: left;">
+								
 								</p>
 									
 							</div>
 							<div class="box-bottom">
-								<a href="#">Learn more</a>
+								<a href="/cov/covList.action">Learn more</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-3">
 						<div class="box">
 							<div class="box-gray aligncenter">
-								<h4>Æ÷Æ®Æú¸®¿À</h4>
+								<h4>í¬íŠ¸í´ë¦¬ì˜¤</h4>
 								<div class="icon">
 								<i class="fa fa-desktop fa-3x"></i>
 								</div>
-								<p id="mP">
-								 
+								<p id="porMt" style="text-align: left;">
+								
 								</p>
 									
 							</div>
 							<div class="box-bottom">
-								<a href="#">Learn more</a>
+								<a href="/portfolio/portfolioList.action">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -353,77 +308,7 @@ function logProcess(id) {
 	</div>
 	</section>
 	<footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Get in touch with us</h5>
-					<address>
-					<strong>Moderna company Inc</strong><br>
-					 Modernbuilding suite V124, AB 01<br>
-					 Someplace 16425 Earth </address>
-					<p>
-						<i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
-						<i class="icon-envelope-alt"></i> email@domainname.com
-					</p>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Pages</h5>
-					<ul class="link-list">
-						<li><a href="#">Press release</a></li>
-						<li><a href="#">Terms and conditions</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Career center</a></li>
-						<li><a href="#">Contact us</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Latest posts</h5>
-					<ul class="link-list">
-						<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-						<li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-						<li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Flickr photostream</h5>
-					<div class="flickr_badge">
-						<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
-					</div>
-					<div class="clear">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="sub-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="copyright">
-						<p>
-							<span>&copy; Moderna 2014 All right reserved. By </span><a href="http://bootstraptaste.com" target="_blank">Bootstraptaste</a>
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<ul class="social-network">
-						<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+<%@ include file="/jsp/bottominfo.jsp" %>
 	</footer>
 </div>
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>

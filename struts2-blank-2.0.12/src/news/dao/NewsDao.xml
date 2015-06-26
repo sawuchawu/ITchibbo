@@ -9,7 +9,7 @@
 	<insert id="insertNews" parameterClass="NewsBean">
 		INSERT INTO NEWS
 		VALUES(
-		NEWS_SEQ.NEXTVAL,'admin1',#news_title#,#news_content#,SYSDATE,#fileFileName#,0)
+		NEWS_SEQ.NEXTVAL,#mem_id#,#news_title#,#news_content#,SYSDATE,#fileFileName#,0)
 	</insert>
 	<!-- <select id="selectNews" resultClass="NewsBean"> SELECT NEWS_NO,MEM_ID,NEWS_TITLE,NEWS_CONTENT,NEWS_DATE,FILEFILENAME 
 		FROM NEWS </select> -->

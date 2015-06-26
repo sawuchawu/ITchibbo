@@ -60,7 +60,7 @@ public class brdListAction implements Action {
 	public void paging() {
 		try {
 			// paging
-			int pageScale = 3;// tuple or page NumberCount
+			int pageScale = 6;// tuple or page NumberCount
 			int totalRow = 1;
 			totalRow = BrdDao.getTotalRow();
 

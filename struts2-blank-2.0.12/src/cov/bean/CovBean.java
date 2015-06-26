@@ -3,7 +3,7 @@ package cov.bean;
 import java.io.File;
 
 public class CovBean {
-
+	private String pk;
 	private String cov_no;
 	private String mem_id;
 	private String cov_title;
@@ -17,6 +17,12 @@ public class CovBean {
 	private String cov_date;
 	private File file;
 	
+	public String getPk() {
+		return pk;
+	}
+	public void setPk(String pk) {
+		this.pk = pk;
+	}
 	public File getFile() {
 		return file;
 	}

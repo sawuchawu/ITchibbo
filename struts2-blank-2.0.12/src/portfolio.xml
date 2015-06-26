@@ -74,5 +74,14 @@
         		
         	</result>
         </action>
+         <action name="scrapAdd" class="mypage.action.ScrapAddAction1">
+         <result>/jsp/myPage/scrapList.jsp</result>
+       </action> 
+         <action name="deleteScrap" class="mypage.action.ScrapDeleteAction1">
+         <result name="success" type="redirect">/jsp/myPage/scrapList.jsp</result>
+         <result name="empty" type="redirectAction">
+          <param name="actionName">portfolioList</param>
+         </result>
+       </action>    
     </package>
 </struts>

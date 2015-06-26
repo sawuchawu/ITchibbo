@@ -44,8 +44,71 @@ $(document).ready(function() {
 	parsing(0);
 	jobParsing(401);jobParsing(402);jobParsing(403);jobParsing(404);jobParsing(406);jobParsing(407);jobParsing(408);jobParsing(409);
 	jobParsing(410);jobParsing(411);jobParsing(412);jobParsing(413);jobParsing(414);jobParsing(415);jobParsing(416);jobParsing(405);
-	$("div#recInfo").hide();
+	$("div#recInfo").hide(); 
 });
+
+function popupLogin(){
+	var popUrl = "/jsp/login/login.jsp";	//팝업창에 출력될 페이지 URL
+	var popOption = "width=525, height=685, resizable=no, scrollbars=no, status=no";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+	}
+function popupJoin(){
+	var popUrl = "/jsp/login/signup.jsp";	//팝업창에 출력될 페이지 URL
+	var popOption = "width=525, height=685, resizable=no, scrollbars=no, status=no";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+	}	
+function logProcess(id) {
+	var ids=id;
+
+	if(ids==='dd'&& $("input#lid").val()=='null'){// 로그인해야됨
+		$("#log").text('로그인');
+		$("#log").attr("href", "/jsp/login/login.jsp");
+		$("#log2").text('회원가입');
+		$("#log2").attr("href", "/jsp/login/signup.jsp");
+	}else{// 로그아웃
+	if($("input#lmf").val()=='0'){
+			$("#adm").text('관리자');
+		}
+		$("#log2").text('로그아웃');
+		$("#log2").attr("href", "/app/logout.action");
+		$("#log").text('마이페이지');
+		$("#log").attr("href", "/app/memInfo.action?mem_id=${id}&job=info");
+	}
+
+	/* 최신공고 리스트 */
+	$.ajax({
+		url: "/app/mainList.action",
+		type: "get",
+		dataType: "json",
+		success: function(data){
+			var tData="";
+			var rData="";
+			var cData="";
+			var pData="";
+			
+			$.each(data, function(i, dom){
+
+				if(dom.tec_title!=undefined){
+					tData+="<a href=\"/tech/techHit.action?tec_no="+dom.tec_no+"&job=info\">"+dom.tec_title+"</a><br>";
+				}
+				if(dom.rev_title!=undefined){
+					rData+="<a href=\"/review/hit.action?rev_no="+dom.rev_no+"&job=info\">"+dom.rev_title+"</a><br>"
+				}
+				if(dom.cov_title!=undefined){
+					cData+="<a href=\"/cov/covInfo.action?cov_no="+dom.cov_no+"&job=info\">"+dom.cov_title+"</a><br>"
+				}
+				if(dom.por_title!=undefined){
+					pData+="<a href=\"/portfolio/hit.action?por_no="+dom.por_no+"&job=info\">"+dom.por_title+"</a><br>"
+				}
+				 
+			});  
+ 			$("#tecMt").html(tData);
+			$("#recMt").html(rData);
+			$("#covMt").html(cData);
+			$("#porMt").html(pData); 
+		}
+	});
+}
 
 // 직무별 url 생성
 function jobSearch(val){
@@ -70,7 +133,7 @@ function reset(){
 // 스크랩 $("td#job_category").text()
 function bookmark(){
 	var jsonRec = {"rec_no" : $("input#rID").val() , "rec_title" : $("span#title").text(), 
-				"rec_sdate": $("input#startDate").val(), "rec_fdate": $("input#finishDate").val()}; 
+				"rec_sdate": $("input#startDate").val(), "rec_fdate": $("input#finishDate").val(), "mem_id": $("input#lid").val()}; 
 	
 	jsonRecInfo(JSON.stringify(jsonRec));
 }
@@ -84,7 +147,7 @@ function bookmark(){
     <![endif]-->
 
 </head>
-<body>
+<body onload="logProcess('dd')">
 <div id="wrapper">
 	<!-- start header -->
 	<input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
@@ -111,11 +174,15 @@ function bookmark(){
                             <a href="/jsp/recruitInfo/recruit.jsp" class="dropdown-toggle " >채용공고 <b class=" icon-angle-down"></b></a>
                         </li>
                         <li class="dropdown">
+                            <a href="/jasoseol/jasoseolChoiceCompany.action?job=choice" class="dropdown-toggle " >자기소개서 <b class=" icon-angle-down"></b></a>
+                        </li>
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업정보 <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/expo/expoList.action">취업 박람회</a></li>
                                 <li><a href="/tech/techList.action">IT기술 동향</a></li>
-								<li><a href="pricingbox.html">취업 뉴스</a></li>
+								<li><a href="/news/newsList.action">취업 뉴스</a></li>
+								<li><a href="/jsp/jobInfo/lecture/lecture.jsp">취업 강의</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -134,15 +201,15 @@ function bookmark(){
                                 <li><a href="/qna/qnaList.action">Q&A</a></li>
                             </ul>
                         </li>
-                        <li><a href="/contact/contact.html">CONTACT</a></li>
-                        <li class="dropdown">
+                        <li><a href="/jsp/contact/contact.jsp">CONTACT</a></li>
+                        <li><a href="/app/adMemList.action">관리자</a></li>
+                        <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" id="adm"><b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/api/saramin.jsp">사람인</a></li>
-                                <li><a href="/app/adminMemList.action">회원관리</a></li>
-                                <li><a href="components.html">메뉴관리</a></li>
+                                <li><a href="/app/adMemList.action">관리</a></li>
+                                <li><a href="/app/adMemList.action">메뉴관리</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -533,77 +600,7 @@ function bookmark(){
 	</div>
 	</section>
 	<footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Get in touch with us</h5>
-					<address>
-					<strong>Moderna company Inc</strong><br>
-					 Modernbuilding suite V124, AB 01<br>
-					 Someplace 16425 Earth </address>
-					<p>
-						<i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
-						<i class="icon-envelope-alt"></i> email@domainname.com
-					</p>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Pages</h5>
-					<ul class="link-list">
-						<li><a href="#">Press release</a></li>
-						<li><a href="#">Terms and conditions</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Career center</a></li>
-						<li><a href="#">Contact us</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Latest posts</h5>
-					<ul class="link-list">
-						<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-						<li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-						<li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Flickr photostream</h5>
-					<div class="flickr_badge">
-						<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
-					</div>
-					<div class="clear">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="sub-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="copyright">
-						<p>
-							<span>&copy; Moderna 2014 All right reserved. By </span><a href="http://bootstraptaste.com" target="_blank">Bootstraptaste</a>
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<ul class="social-network">
-						<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+<%@ include file="/jsp/bottominfo.jsp" %>
 	</footer>
 </div>
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>

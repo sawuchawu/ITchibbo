@@ -23,6 +23,7 @@
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
 <script type="text/javascript" src="/js/jquery-2.0.0.js"></script>
 <script type="text/javascript">
 function popupLogin(){
@@ -91,6 +92,7 @@ $(document).ready(function() {
                     </ul>
                 </div>
              
+			 
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
@@ -106,7 +108,7 @@ $(document).ready(function() {
                             <ul class="dropdown-menu">
                                 <li><a href="/expo/expoList.action">취업 박람회</a></li>
                                 <li><a href="components.html">IT기술 동향</a></li>
-								<li><a href="pricingbox.html">취업 뉴스</a></li>
+								<li><a href="/news/newsList.action">취업 뉴스</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">

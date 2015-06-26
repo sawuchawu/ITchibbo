@@ -25,7 +25,7 @@ public class ScrapAddAction implements Action{
 		// TODO Auto-generated method stub
 		CovBean bean = CovDao.selectCovInfo(cov_no);
 		HttpSession session=ServletActionContext.getRequest().getSession();
-		ArrayList<CovBean> scrap = (ArrayList<CovBean>)session.getAttribute("scrap");
+		ArrayList<CovBean> scrap = (ArrayList<CovBean>)session.getAttribute("scrap12");
 		if(scrap==null){
 			scrap=new ArrayList<CovBean>();
 		}for (int i = 0; i < scrap.size(); i++) {
@@ -37,7 +37,7 @@ public class ScrapAddAction implements Action{
 		//HashSet<CovBean> scrap2= new HashSet<CovBean>(scrap);
 		//ArrayList<CovBean> scrap3 = new ArrayList<CovBean>(scrap2);
 		//ArrayList<CovBean> aa = new ArrayList<CovBean>(new HashSet<CovBean>(scrap));
-		session.setAttribute("scrap", scrap);
+		session.setAttribute("scrap12", scrap);
 		return SUCCESS;
 	}
 	

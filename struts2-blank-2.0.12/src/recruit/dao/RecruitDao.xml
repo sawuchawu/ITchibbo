@@ -7,12 +7,13 @@
 	<typeAlias alias="recruitBean" type="recruite.bean.RecruitBean" />
 	<insert id="insertRecScrap" parameterClass="recruitBean">
 		INSERT INTO RECRUIT
-		VALUES(#rec_no#, #rec_title#, #rec_sdate#, #rec_fdate#)		
+		VALUES(#rec_no#, #rec_title#, #rec_sdate#, #rec_fdate#, #mem_id#)		
 	</insert>
 	
-	<select id="selectRecScrap" resultClass="recruitBean">
-		select REC_NO, REC_TITLE, REC_SDATE, REC_FDATE	
+	<select id="selectRecScrap" resultClass="recruitBean" parameterClass="java.lang.String">
+		select REC_NO, REC_TITLE, REC_SDATE, REC_FDATE, MEM_ID	
 		from RECRUIT
+		where MEM_ID=#value#
 	</select>
 </sqlMap>
 

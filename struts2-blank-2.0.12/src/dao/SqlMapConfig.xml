@@ -24,6 +24,7 @@
   <sqlMap resource="/expo/dao/ExpoDao.xml"/>
   <sqlMap resource="/news/dao/NewsDao.xml"/>
   <sqlMap resource="/recruit/dao/RecruitDao.xml"/>
+  <sqlMap resource="/jasoseol/dao/JasoseolDao.xml"/>
   
 	
 </sqlMapConfig>

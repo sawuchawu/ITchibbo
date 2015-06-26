@@ -14,6 +14,15 @@ import com.opensymphony.xwork2.Action;
 public class RecruitSelectAction implements Action {
 	private List<RecruitBean> recList;
 	private JSONArray jsonArray = new JSONArray();
+	private String mId;
+
+	public String getmId() {
+		return mId;
+	}
+
+	public void setmId(String mId) {
+		this.mId = mId;
+	}
 
 	public List<RecruitBean> getRecList() {
 		return recList;
@@ -36,7 +45,7 @@ public class RecruitSelectAction implements Action {
 		// TODO Auto-generated method stub
 		System.out.println("select Recruit");
 
-		recList = RecruitDao.selectRecruit();
+		recList = RecruitDao.selectRecruit(mId);
 
 		for (int i = 0; i < recList.size(); i++) {
 			JSONObject obj = new JSONObject();
@@ -46,6 +55,7 @@ public class RecruitSelectAction implements Action {
 			obj.put("title", bean.getRec_title());
 			obj.put("sDate", bean.getRec_sdate());
 			obj.put("fDate", bean.getRec_fdate());
+			obj.put("mId", bean.getMem_id());
 
 			jsonArray.add(obj);
 		}

@@ -9,7 +9,7 @@
 	<insert id="insertTech" parameterClass="TechBean">
 		INSERT INTO TECH
 		VALUES(
-		TECH_SEQ.NEXTVAL,'admin2',#tec_title#,#tec_content#,SYSDATE,#fileFileName#,#tec_hit#)
+		TECH_SEQ.NEXTVAL,#mem_id#,#tec_title#,#tec_content#,SYSDATE,#fileFileName#,#tec_hit#)
 		
 	</insert>
 	<select  id="selectTech"

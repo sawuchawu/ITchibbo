@@ -48,10 +48,8 @@ public class PortfolioInfo implements Action {
 		System.out.println(por_no);
 		this.bean = PortfolioDao.selectPortfolioInfo(por_no);
 		
-		
 		System.out.println("BEAN : " + bean);
 		System.out.println("JOB : " + job);
-		
 		
 		list = PortfolioDao.selectPortfolioReply(por_no);
 		

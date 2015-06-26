@@ -12,17 +12,17 @@
 	<insert id="insertBrd" parameterClass="BoardBean">
 		INSERT INTO BOARD
 		VALUES(
-		BRD_SEQ.NEXTVAL,'admin1',#brd_title#,#brd_content#,SYSDATE,0,'0','0','0','0','0')
+		BRD_SEQ.NEXTVAL,#mem_id#,#brd_title#,#brd_content#,SYSDATE,0,'0','0','0','0','0')
 	</insert>
 
 
 
 	<select id="selectBrd" resultClass="BoardBean" parameterClass="java.util.HashMap">
-		SELECT RM,BRD_NO,BRD_TITLE,BRD_DATE,BRD_HIT
+		SELECT RM,BRD_NO,MEM_ID,BRD_TITLE,BRD_DATE,BRD_HIT
 		FROM(
-		SELECT ROWNUM RM,BRD_NO,BRD_TITLE,BRD_DATE,BRD_HIT
+		SELECT ROWNUM RM,BRD_NO,MEM_ID,BRD_TITLE,BRD_DATE,BRD_HIT
 		FROM(
-		SELECT BRD_NO,BRD_TITLE,TO_CHAR(BRD_DATE,'YYYY/MM/DD')BRD_DATE,BRD_HIT
+		SELECT BRD_NO,MEM_ID,BRD_TITLE,TO_CHAR(BRD_DATE,'YYYY/MM/DD')BRD_DATE,BRD_HIT
 		FROM
 		BOARD
 		ORDER BY BRD_NO DESC))

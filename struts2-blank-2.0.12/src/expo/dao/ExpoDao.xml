@@ -9,7 +9,7 @@
 	<insert id="insertExpo" parameterClass="ExpoBean">
 		INSERT INTO EXPO
 		VALUES(
-		EXPO_SEQ.NEXTVAL,'admin1',#exp_title#,#exp_date#,#fileFileName#,0,0)
+		EXPO_SEQ.NEXTVAL,#mem_id#,#exp_title#,#exp_date#,#fileFileName#,0,0)
 	</insert>
 	<select  id="selectExpo"
 		resultClass="ExpoBean" parameterClass="java.util.HashMap"> 

@@ -10,6 +10,18 @@
 		<![CDATA[ SELECT TEC_NO, TEC_TITLE FROM TECH WHERE ROWNUM<=3 ]]>		
 	</select>
 	
+	<select id="mainRevList" resultClass="review.bean.ReviewBean">
+		<![CDATA[ SELECT REV_NO, REV_NO,MEM_ID,TO_CHAR(REV_YEAR,'YYYY')||' '||REV_COM||' '||REV_JOB REV_TITLE FROM REVIEW WHERE ROWNUM<=3 ]]>		
+	</select>
+	
+	<select id="mainCovList" resultClass="cov.bean.CovBean">
+		<![CDATA[ SELECT COV_NO, COV_TITLE FROM COVERLETTER WHERE ROWNUM<=3 ]]>		
+	</select>
+	
+	<select id="mainPorList" resultClass="portfolio.bean.PortfolioBean">
+		<![CDATA[ SELECT POR_NO, POR_TITLE FROM PORTFOLIO WHERE ROWNUM<=3 ]]>		
+	</select>
+	
 	<select id="chkId" resultClass="String" parameterClass="String">
 		select MEM_ID from MEMBER where MEM_ID='$MEM_ID$'	
 	</select>

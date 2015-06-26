@@ -85,6 +85,7 @@ function adminCheck(){
 		<a class="btn_big" href="/cov/covList.action"><span>목록</span></a>
 
 	</div>
+	
 	<!-- //UI Object -->
 
 </body>

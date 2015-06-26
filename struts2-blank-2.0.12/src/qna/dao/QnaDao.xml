@@ -11,7 +11,7 @@
 	<insert id="insertQna" parameterClass="QnaBean">
 		INSERT INTO QNA
 		VALUES(
-		QNA_NO_SEQ.NEXTVAL,'admin1',#qna_title#,#qna_content#,SYSDATE,'0','0','0','0','0',0)
+		QNA_NO_SEQ.NEXTVAL,#mem_id#,#qna_title#,#qna_content#,SYSDATE,'0','0','0','0','0',0)
 	</insert>
 	
 	
@@ -21,11 +21,11 @@
 	
 	<select  id="selectQna"
 		resultClass="QnaBean" parameterClass="java.util.HashMap"> 
-		SELECT RM,QNA_NO,QNA_TITLE,QNA_DATE,QNA_HIT
+		SELECT RM,QNA_NO,MEM_ID,QNA_TITLE,QNA_DATE,QNA_HIT
         FROM(
-        SELECT ROWNUM RM,QNA_NO,QNA_TITLE,QNA_DATE,QNA_HIT
+        SELECT ROWNUM RM,QNA_NO,MEM_ID,QNA_TITLE,QNA_DATE,QNA_HIT
         FROM(
-        SELECT QNA_NO,QNA_TITLE,TO_CHAR(QNA_DATE,'YYYY/MM/DD')QNA_DATE,QNA_HIT
+        SELECT QNA_NO,MEM_ID,QNA_TITLE,TO_CHAR(QNA_DATE,'YYYY/MM/DD')QNA_DATE,QNA_HIT
         FROM QNA
         ORDER BY QNA_NO DESC))
         WHERE RM BETWEEN #start# AND #end#

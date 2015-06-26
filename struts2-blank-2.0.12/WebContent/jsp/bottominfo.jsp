@@ -14,7 +14,7 @@
 			<h2>02)3482-4632</h2>
 			<p>근무시간 : 평일 09:00 ~ 19:00</p>
 			<p>팩스번호 : 02-565-9351</p>
-			<p><a href="mailto:helpdesk@jobkorea.co.kr">문의 이메일 보내기 : helpdesk@jobkorea.co.kr</a></p>
+			<p><a href="mailto:s_chai@naver.com">문의 이메일 보내기 : s_chai@naver.com</a></p>
 			<a href="http://www.jobkorea.co.kr/Customer_C/ETC/CC_Inquiry.asp?Offer=0">1:1문의하기</a>
 			<a href="http://www.jobkorea.co.kr/Customer_C/CC_Main.asp">&nbsp&nbsp FAQ</a>
 			
@@ -49,7 +49,17 @@
 				<div class="widget">
 					<h5 class="widgetheading">개발자소개</h5>
 					<div class="flickr_badge">
-						<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
+						<!-- <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script> -->
+						<a href="/jsp/contact/contact.jsp">
+						<img src="/img/team/ksc.png">
+						<img src="/img/team/bws.jpg">
+						<img src="/img/team/kbs.jpg">
+						<img src="/img/team/lje.jpg">
+						<img src="/img/team/ksh.jpg">
+						<img src="/img/team/kty.jpg">
+						<img src="/img/team/ctw.jpg">
+						<img src="/img/team/hjs.jpg">
+						</a>
 					</div>
 					<div class="clear">
 					</div>

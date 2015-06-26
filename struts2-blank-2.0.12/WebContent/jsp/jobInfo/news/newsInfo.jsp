@@ -40,6 +40,8 @@
 <script type="text/javascript" charset="EUC-KR">
 	$(document)
 			.ready(
+					
+					
 					function() {
 						$("a#save").click(function() {
 							$("form#frm").submit();
@@ -67,6 +69,10 @@
 												$("form#replyForm").submit();
 											}
 										});
+						if($("input#lmf").val()=='0'){
+							$("#writeA").text('수정');
+							$("#writeB").text('삭제');
+					}
 
 					});
 
@@ -78,13 +84,6 @@
 	function sendData() {
 		document.frm.submit();
 	}
-function adminCheck(){
-		
-		if($("input#lmf").val()=='0'){
-				$("#writeA").text('수정');
-				$("#writeB").text('삭제');
-		}
-	} 
 </script>
 <!-- Theme skin -->
 <link href="/skins/default.css" rel="stylesheet" />
@@ -95,76 +94,12 @@ function adminCheck(){
     <![endif]-->
 
 </head>
-<body onload="adminCheck()">
+<body>
 <input type="hidden" value="<%=session.getAttribute("id") %>" id="lid">
 	<input type="hidden" value="<%=session.getAttribute("mf") %>" id="lmf">
 <div id="wrapper">
 	<!-- start header -->
-	<header>
-		
-        <div class="navbar navbar-default navbar-static-top">
-       		
-            <div class="container">
-            	
-               <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.jsp"><font size="13"><span>IT</span>취뽀</font></a>
-                    <ul class="nav navbar-nav">
-                        <li><a href="javascript:popupLogin()">로그인</a></li> <!-- 로그아웃 바꾸기 -->
-                        <li><a href="javascript:popupJoin()">회원가입</a></li> <!-- 마이페이지 바꾸기 -->
-                    </ul>
-                </div>
-                <div class="navbar-collapse collapse ">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">채용정보 <b class=" icon-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="typography.html">채용공고</a></li>
-                                <li><a href="components.html">직종별 검색</a></li>
-								<li><a href="pricingbox.html">채용정보 상세검색</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업정보 <b class=" icon-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/jsp/jobInfo/expo/finallist.jsp">취업 박람회</a></li>
-                                <li><a href="components.html">IT기술 동향</a></li>
-								<li><a href="pricingbox.html">취업 뉴스</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">취업가이드 <b class="icon-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="typography.html">취업 후기</a></li>
-                                <li><a href="components.html">합격 자소서</a></li>
-								<li><a href="pricingbox.html">포트폴리오</a></li>
-								<li><a href="/jsp/recruitGuide/jobAnalysys.jsp">직무분석</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/brd/brdList.action">자유게시판</a></li>
-                                <li><a href="/qna/qnaList.action">Q&A</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">관리자 <b class=" icon-angle-down"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/api/saramin.jsp">사람인</a></li>
-                                <li><a href="typography.html">회원관리</a></li>
-                                <li><a href="components.html">메뉴관리</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-	</header>
+<%@ include file="/jsp/header.jsp" %>
 	<!-- end header -->
 	<section id="inner-headline">
 	<div class="container">
@@ -335,8 +270,8 @@ function adminCheck(){
 				<div class="widget">
 						<h4 class="widgetheading">취업정보</h4>
 						<ul class="cat">
-							<li><i class="icon-angle-right"></i><a href="javascript:jobSearch(401);">취업박람회</a><span id="j1"></span></li>
-							<li><i class="icon-angle-right"></i><a href="techList.jsp">IT기술동향</a><span id="j2"></span></li>
+							<li><i class="icon-angle-right"></i><a href="/expo/expoList.action">취업박람회</a><span id="j1"></span></li>
+							<li><i class="icon-angle-right"></i><a href="/tech/techList.action">IT기술동향</a><span id="j2"></span></li>
 							<li><i class="icon-angle-right"></i><a href="/news/newsList.action">취업뉴스</a><span id="j3"></span></li>
 						</ul>
 					</div>
@@ -357,77 +292,7 @@ function adminCheck(){
 	</div>
 	</section>
 	<footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Get in touch with us</h5>
-					<address>
-					<strong>Moderna company Inc</strong><br>
-					 Modernbuilding suite V124, AB 01<br>
-					 Someplace 16425 Earth </address>
-					<p>
-						<i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
-						<i class="icon-envelope-alt"></i> email@domainname.com
-					</p>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Pages</h5>
-					<ul class="link-list">
-						<li><a href="#">Press release</a></li>
-						<li><a href="#">Terms and conditions</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Career center</a></li>
-						<li><a href="#">Contact us</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Latest posts</h5>
-					<ul class="link-list">
-						<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-						<li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-						<li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Flickr photostream</h5>
-					<div class="flickr_badge">
-						<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
-					</div>
-					<div class="clear">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="sub-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="copyright">
-						<p>
-							<span>&copy; Moderna 2014 All right reserved. By </span><a href="http://bootstraptaste.com" target="_blank">Bootstraptaste</a>
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<ul class="social-network">
-						<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+<%@ include file="/jsp/bottominfo.jsp" %>
 	</footer>
 </div>
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>

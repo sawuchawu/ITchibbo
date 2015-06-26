@@ -52,7 +52,7 @@ public class PortfolioList implements Action {
 	public void paging(){	
 		try{		 
 		   //paging
-		   int pageScale=4;//tuple or page NumberCount
+		   int pageScale=8;//tuple or page NumberCount
 		   int totalRow=1;		  
 		   totalRow=PortfolioDao.getTotalRow();
 		   

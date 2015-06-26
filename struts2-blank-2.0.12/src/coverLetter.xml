@@ -6,7 +6,15 @@
 <struts>
 <!-- jsp 파일 연결 -->
     <package name="cov" namespace="/cov" extends="struts-default">
-
+		<action name="cartInsert" class="cov.actoin.CartInsertAction">
+			<result type="redirectAction">
+				<param name="actionName">cartList</param>
+			</result>
+		</action>
+		<action name="cartList" class="cov.action.CartListAction">
+			<result>/jsp/myPage/cartEndList.jsp</result>
+		</action>
+		
         <action name="covInsert" class="cov.action.covInsertAction">
         	<result name="success" type="redirectAction">
         		<param name="actionName">covList</param>
@@ -19,6 +27,7 @@
 		<action name="covInfo" class="cov.action.covInfoAction">
 			<result name="info">/jsp/recruitGuide/coverLetter/covInfo.jsp</result>
 			 <result name="modify">/jsp/recruitGuide/coverLetter/covModify.jsp</result> 
+			 <result name="cartinfo">/jsp/myPage/cartInfo1.jsp</result>
 		</action>
        
        

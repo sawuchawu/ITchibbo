@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="jasoseol">
+
+	<!-- COM_NO COM_NAME COM_TITLE1 COM_TITLE2 COM_TITLE3 COM_TITLE4 COM_TITLE5 -->
+
+	<typeAlias alias="jasoseolData" type="jasoseol.bean.JasoseolBean" />
+
+	<select id="selectJasoseolCompany" resultClass="jasoseolData">
+		SELECT
+		COM_NO,COM_NAME,COM_TITLE1,COM_TITLE2,COM_TITLE3,COM_TITLE4,COM_TITLE5
+		FROM COMPANY
+		ORDER BY COM_NAME ASC
+	</select>
+
+	<select id="selectJasoseolOneCompany" resultClass="jasoseolData" parameterClass="java.lang.String">
+		SELECT
+		COM_NO,COM_NAME,COM_TITLE1,COM_TITLE2,COM_TITLE3,COM_TITLE4,COM_TITLE5
+		FROM COMPANY
+		WHERE COM_NAME = #VALUE#
+		
+	</select>
+
+	<insert id="insertJasoseol" parameterClass="jasoseolData">
+		INSERT INTO COMPANY VALUES(
+		COMPANY_SEQ.NEXTVAL,#com_name#,#com_title1#,#com_title2#,#com_title3#,#com_title4#,#com_title5#)
+
+	</insert>
+
+	<select id="selectJasoseol" resultClass="jasoseolData"	parameterClass="java.util.HashMap">
+	SELECT
+	RM,COM_NO,COM_NAME,COM_TITLE1,COM_TITLE2,COM_TITLE3,COM_TITLE4,COM_TITLE5
+	FROM(
+	SELECT ROWNUM
+	RM,COM_NO,COM_NAME,COM_TITLE1,COM_TITLE2,COM_TITLE3,COM_TITLE4,COM_TITLE5
+	FROM COMPANY
+	ORDER BY COM_NAME ASC)
+	WHERE RM BETWEEN #start# AND #end#
+	</select>
+
+	<select id="selectJasoseolInfo" resultClass="jasoseolData"	parameterClass="java.lang.Integer">
+		SELECT
+		COM_NO,COM_NAME,COM_TITLE1,COM_TITLE2,COM_TITLE3,COM_TITLE4,COM_TITLE5
+		FROM COMPANY
+		WHERE COM_NO=#VALUE#
+	</select>
+
+	<update id="jasoseolUpdate" parameterClass="jasoseolData">
+		UPDATE COMPANY 
+		SET
+		COM_NAME=#com_name#,COM_TITLE1=#com_title1#,COM_TITLE2=#com_title2#,COM_TITLE3=#com_title3#,
+		COM_TITLE4=#com_title4#,COM_TITLE5=#com_title5#
+		WHERE COM_NO=#com_no#
+	</update>
+
+	<delete id="deleteJasoseol" parameterClass="java.lang.Integer">
+		DELETE FROM COMPANY
+		WHERE COM_NO=#VALUE#
+	</delete>
+	
+	<select id="getTotalRow" resultClass="java.lang.Integer">
+	 SELECT COUNT(*) FROM COMPANY
+	</select>
+</sqlMap>

@@ -23,13 +23,13 @@ public class ScrapDeleteAction implements Action {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session=ServletActionContext.getRequest().getSession();
-		ArrayList<CovBean> scrap = (ArrayList<CovBean>)session.getAttribute("scrap");
+		ArrayList<CovBean> scrap = (ArrayList<CovBean>)session.getAttribute("scrap12");
 		for (int i = 0; i < scrap.size(); i++) {
 			if(Integer.parseInt(scrap.get(i).getCov_no())==cov_no){
 				scrap.remove(i);
 			}
 		}
-		session.setAttribute("scrap", scrap);
+		session.setAttribute("scrap12", scrap);
 		if(scrap.size()==0){
 			return "empty";
 		}

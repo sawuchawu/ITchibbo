@@ -5,6 +5,7 @@ public class RecruitBean {
 	private String rec_title;
 	private String rec_sdate;
 	private String rec_fdate;
+	private String mem_id;
 
 	public String getRec_no() {
 		return rec_no;
@@ -38,12 +39,19 @@ public class RecruitBean {
 		this.rec_fdate = rec_fdate;
 	}
 
+	public String getMem_id() {
+		return mem_id;
+	}
+
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
+
 	@Override
 	public String toString() {
 		return "RecruitBean [rec_no=" + rec_no + ", rec_title=" + rec_title
-				+ ", rec_sdate=" + rec_sdate + ", rec_fdate=" + rec_fdate + "]";
+				+ ", rec_sdate=" + rec_sdate + ", rec_fdate=" + rec_fdate
+				+ ", mem_id=" + mem_id + "]";
 	}
-
-
 
 }

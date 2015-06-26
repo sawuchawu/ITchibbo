@@ -18,6 +18,7 @@
 	<include file="expo.xml" />
 	<include file="news.xml" /> 
 	<include file="recruit.xml" /> 
+	<include file="jasoseol.xml" /> 
 	<!-- Add packages here -->
 
 </struts>

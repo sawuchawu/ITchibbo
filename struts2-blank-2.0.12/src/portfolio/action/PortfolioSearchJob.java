@@ -1,5 +1,6 @@
 package portfolio.action;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -54,7 +55,16 @@ public class PortfolioSearchJob implements Action {
 		
 		System.out.println("PortfolioSearchJob : JSONArray");
 		System.out.println(por_job);
-		list = PortfolioDao.selectPortfolioSearchJob(por_job);
+		if(!por_job.equals("null")) {
+			list = PortfolioDao.selectPortfolioSearchJob(por_job);
+		} else {
+			System.out.println("NULL 값이 확인 되었습니다.");
+			HashMap<Object, Object> map = new HashMap<Object, Object>();
+			map.put("start", 1);
+			int end=PortfolioDao.getTotalRow();
+			map.put("end", end);
+			list = PortfolioDao.selectPortfolio(map);
+		}
 		System.out.println(list);
 		for(int i=0; i<list.size(); i++) {
 			JSONObject obj = new JSONObject();

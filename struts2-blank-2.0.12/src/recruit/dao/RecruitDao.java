@@ -16,8 +16,8 @@ public class RecruitDao {
 		client.insert("recruit.insertRecScrap",bean);
 	}
 	
-	public static List<RecruitBean> selectRecruit() throws Exception{
-		return client.queryForList("recruit.selectRecScrap");
+	public static List<RecruitBean> selectRecruit(String mId) throws Exception{
+		return client.queryForList("recruit.selectRecScrap", mId);
 	}
 	
 	

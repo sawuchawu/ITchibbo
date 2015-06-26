@@ -261,15 +261,24 @@ function jsonRecInfo(jsonRec){
 		datatype : "json",
 		data : "json="+jsonRec,
 		url : "/recruit/recruitInsert.action",
-		success : function(){
+		success : function(data){
+			var flag;
+			$.each(JSON.parse(data), function(i, dom){
+				flag = dom.no;
+			});
 			
-			alert("채용공고가 스크랩 되었습니다.");
+			if(flag == 1){		// 중복 스크랩 경우
+				alert("이미 스크랩한 채용공고 입니다.");
+			}else{							// 정상 스크랩 경우
+				alert("채용공고가 스크랩 되었습니다.");
 			
-			if (confirm("[나의 캘린더]로 가시겠습니까?") == true){    //확인
-				window.open("/jsp/myPage/calendar.jsp", "나의 캘린더",'status=no,menubar=no,scrollbars=no,resizable=yes, location=no');
-			}else{   //취소
-			    return;
+				if (confirm("[나의 캘린더]로 가시겠습니까?") == true){    //확인
+					window.open("/jsp/myPage/calendar.jsp", "나의 캘린더",'status=no,menubar=no,scrollbars=no,resizable=yes, location=no');
+				}else{   //취소
+					return;
+				}
 			}
+			
 		}
 	});
 }

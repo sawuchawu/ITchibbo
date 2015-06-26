@@ -6,8 +6,10 @@ import java.util.List;
 
 
 
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import cov.bean.CartListBean;
 import cov.bean.CovBean;
 import expo.bean.ExpoBean;
 
@@ -34,10 +36,32 @@ public class CovDao {
 			}
 		}
 	}
+	public static void insertCart(CartListBean bean)throws Exception{
+		try {
+			client.startTransaction();
+			client.insert("cov.insertCart", bean);
+			client.commitTransaction();
+			System.out.println(bean);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}finally{
+			try {
+				client.endTransaction();				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 	
 	
 	public static List<CovBean>selectCov(HashMap<Object, Object>map)throws Exception{
 		return client.queryForList("cov.selectCov", map);
+	}
+	public static List<CovBean>selectCart(String id)throws Exception{
+		System.out.println(id+"dao ¿À³Ä");
+		return client.queryForList("cov.selectCart", id);
 	}
 	
 	public static Integer getTotalRow() throws Exception{
